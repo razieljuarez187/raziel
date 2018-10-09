@@ -1,0 +1,243 @@
+﻿/*----------------------Llamado a otras hojas de estilo -------------------------------*/
+@import url('EstiloPaginaInicio.css');
+@import url('Sitio.css');
+/*=================================Código para resetear estilos ===================================*/
+html, body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, fieldset, input, hr
+{
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6, pre, code, address, caption, cite, code, em, strong, th
+{
+    font-size: 1em;
+    font-weight: normal;
+    font-style: normal;
+}
+ul, ol
+{
+    list-style: none;
+}
+fieldset, img, hr
+{
+    border: none;
+}
+caption, th
+{
+    text-align: left;
+}
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td
+{
+    vertical-align: top;
+}
+/*----------------Cuerpo de las páginas---------------------------*/
+body
+{
+    font-family: "Century Gothic" , Arial, Verdana, Serif;
+    font-size: 14px;
+    background-color: #f5f6f7;
+}
+/*-----------------------------------------------------------------------Estilos para el contenido de la Página Máster----------------------------------------------------------------------------------*/
+#ContenedorPrincipalMDI
+{
+    width: 1020px;
+    margin: 0 auto;
+    border: 1px outset #dfe0ea;
+    border-style: solid;
+    background-color: White;
+}
+/*-----------------------Datos del Encabezado----------------------------*/
+#EncabezadoMDI
+{
+    width: 1020px;
+    height: 95px;
+    margin: 0 auto;
+    background-image: url(../Imagenes/Desarrollo.jpg);
+    color: White;
+}
+#EncabezadoMDI .CerrarSesion
+{
+    font-size: 11px;
+    color: white;
+}
+#EncabezadoMDI .CerrarSesion:hover
+{
+    font-weight: bold;
+    color: orange;
+    text-decoration: none;
+}
+#DatosSesion
+{
+    float: right;
+    width: 130px;
+    height: 40px;
+    background-color: #3a4f63;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 20px 24px 0 0;
+    color: White;
+    text-align: center;
+    overflow: auto;
+    text-transform: uppercase;
+}
+#DatosEncabezado
+{
+    float: right;
+    width: 810px;
+    height: 100px;
+}
+#LineaEncabezado
+{
+    float: left;
+    background-color: #3a4f63;
+    height: 4px;
+    width: 100%;
+}
+#EncabezadoMDI #AdscripcionTituloMDI
+{
+    float: left;
+    width: 500px;
+    text-align: left;
+    margin: 25px 0 0 0px;
+    text-transform: uppercase;
+    font-family: Century Gothic, Arial, Verdana, Serif;
+    font-size: 12px;
+    color: black;
+    overflow: hidden;
+}
+/*-----------------------Datos del menú para la Navegación------------------------*/
+#NavegacionMDI
+{
+    clear: both;
+    width: 100%;
+    height: 30px;
+    float: left;
+    margin-top: 13px;
+}
+div.menuPrincipal
+{
+    float: left;
+    background-color: transparent;
+    font-family: Century Gothic, Arial, Verdana, Serif;
+    text-transform: uppercase;
+}
+/*-----------Estilos para los elementos estáticos del menú------------------*/
+#NavegacionMDI .MenuEstiloEstatico
+{
+    margin: 0;
+    float: left;
+    text-align: center;
+    background-color: transparent;
+    width: 800px;
+    height: 30px;
+}
+#NavegacionMDI .MenuEstiloElementoEstatico
+{
+    clear: both;
+    margin: 0;
+    margin-right: 5px;
+    padding: 3px 10px;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: #56421f;
+    border: solid 1px #c3c2be;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: none;
+    background-color: White;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    box-shadow: 2px -1px 1px #cececc;
+    -webkit-box-shadow: 1px -1px 3px #cececc;
+    -moz-box-shadow: 1px -1px 3px #cececc;
+}
+/*---------------Estilos para los elementos dinámicos---------------------*/
+.MenuEstiloDinamico
+{
+    margin: 2px auto;
+    padding: 0;
+    background-color: White;
+    border: 1px solid gray;
+    border-top: none;
+    min-width: 100px;
+    z-index: 10;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.MenuElementoDinamico
+{
+    clear: both;
+    display: block;
+    margin: 0 1px;
+    padding: 8px 15px;
+    width: 130px;
+    color: #56421f;
+    text-decoration: none;
+    font-size: 12px;
+    text-align: left;
+    border-bottom: 1px dotted #7e8285;
+}
+/*-------------------------------Estilo para el elemento seleccionado del menú-----------------------------------------*/
+.MenuPrincipalSeleccionado
+{
+    background-color: #cacad9;
+    color: White;
+}
+/*-----------------------------Estilos para el cuerpo de la página Máster--------------------------------*/
+#CuerpoMDI
+{
+    width: 1020px;
+    background-image: url(../Imagenes/FondoDesarrollo.png);
+    background-repeat: repeat-x;
+    background-color: White;
+}
+#PaginaContenido
+{
+    width: 100%;
+    font-family: Century Gothic, Arial, Verdana, Serif;
+    font-size: 14px;
+    color: #56421f;
+    background-image: url(../Imagenes/FondoDesarrollo.png);
+    background-repeat: repeat-x;
+    background-color: White;
+    margin-bottom: 15px;
+    min-height: 500px;
+}
+/*-------------------------Estilos para el pie de la página Máster ----------------------------------*/
+#PieMDI
+{
+    background-image: url(../Imagenes/footerServicio.jpg);
+    height: 33px;
+    width: 1020px;
+}
+/*------------------------------------------------------------Fin de los estilos para la página Máster------------------------------------------------------------------*/
+
+/*------------------Estilos generales para todas las páginas del sitio--------------------------*/
+/*--------------Estilos para la navegación-------------*/
+#BarraUbicacion
+{
+    background-color: #3a4f63;
+    width: 1020px;
+    height: 20px;
+    margin-top: 3px;
+}
+.BarraHerramientas
+{
+    background-color: transparent;
+    background-image: url(../Imagenes/Parametro-barra-de-herramientas.jpg);
+    background-repeat: repeat-x;
+    width: 831px;
+    float: left;
+    height: 40px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+}

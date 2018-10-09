@@ -1,0 +1,1929 @@
+﻿/*Todos los elementos siguientes siguen siendo comunes en todos los ambientes*/
+/*Estilos para las barras y menús del sistema*/
+/*--------------Barras orden de servicio--------------------*/
+#BarraHerramientasOS
+{
+    background-image: url(../Imagenes/Parametro-barra-de-herramientas.jpg);
+    width: 800px;
+    height: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/*---------------------Sección de menús-----------------*/
+#MenuSecundario
+{
+    margin-top: 1px;
+    background-color: #e3e3e3;
+    width: 185px;
+}
+#MenuSecundario li
+{
+    width: 185px;
+    height: 30px;
+    background-color: Transparent;
+    border-right: 1px solid #c3c2be;
+    border-bottom: 1px solid #c3c2be;
+    border-bottom-right-radius: 5px;
+    -moz-box-shadow: 0 #cececc;
+    -webkit-box-shadow: 0 #cececc;
+    box-shadow: 0 0 1px 1px #cececc;
+    font-weight: normal;
+}
+#MenuSecundario li a
+{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    float: left;
+    margin: 3px 0 0 5px;
+}
+/*-------------clases generales para menús secundarios-----------------*/
+.MenuSecundario
+{
+    margin-top: 1px;
+    background-color: #e3e3e3;
+    width: 185px;
+}
+.MenuSecundarioSecundarioli
+{
+    width: 185px;
+    height: 30px;
+    background-color: Transparent;
+    border-right: 1px solid #c3c2be;
+    border-bottom: 1px solid #c3c2be;
+    border-bottom-right-radius: 5px;
+    -moz-box-shadow: 0 #cececc;
+    -webkit-box-shadow: 0 #cececc;
+    box-shadow: 0 0 1px 1px #cececc;
+    font-weight: normal;
+}
+.MenuSecundariolia
+{
+    width: 185px;
+    height: 30px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    float: left;
+    margin: 3px 0 0 5px;
+}
+.MenuOpciones
+{
+    min-width: 300px;
+    height: 30px;
+    float: left;
+    position: relative;
+}
+.MenuOpcionesli
+{
+    height: 20px;
+    min-width: 70px;
+    float: left;
+    background-image: none;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    border-right: 1px solid #ccc;
+}
+/*------menús para la orden de Orden de compra-----*/
+#orden
+{
+    width: 85px;
+}
+#editar
+{
+    width: 85px;
+}
+
+.MenuPrimarioOC
+{
+    height: 40px;
+    text-align: center;
+    float: left;
+}
+.itemNoSeleccionado
+{
+    height: 26px;
+    cursor: pointer;
+    padding-top: 5px;
+    float: left;
+    border-right: 1px solid #ccc;
+}
+
+.itemNoSeleccionado:hover
+{
+    background-color: #0E4FAD;
+    color: White;
+}
+.itemSeleccionado
+{
+    float: left;
+    height: 35px;
+    cursor: pointer;
+    background-image: url(../Imagenes/reasignar.png);
+    background-repeat: no-repeat;
+    color: White;
+    padding-top: 5px;
+    position: relative;
+    z-index: 2;
+    border: 0;
+}
+.SubMenuOrdenCompra
+{
+    top: -9px;
+    position: relative;
+}
+.SubMenuOrdenCompra li
+{
+    height: 20px;
+    min-width: 30px;
+    float: left;
+    background-color: Transparent;
+    border: 1px solid #c3c2be;
+    border-top: none;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+.SubMenuOrdenCompra li:hover
+{
+    background-color: #0E4FAD;
+    color: White;
+    cursor: pointer;
+}
+/*---------------------Estilos para los submenús de la orden de servicio-----------------------------------*/
+#ulTaps
+{
+    background-color: white;
+    width: 100%;
+    height: 30px;
+}
+
+.SubMenuOrden
+{
+    min-width: 100px;
+    height: 20px;
+    float: left;
+    background-color: #cccccc;
+    margin-right: 5px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#ulTaps li a
+{
+    color: black;
+    text-transform: uppercase;
+}
+#ulTaps li a:hover
+{
+    color: #E9581B;
+}
+#MenuEstatusOrden
+{
+    margin-top: -97px;
+    margin-right: 169px;
+    background-color: #e3e3e3;
+    width: 105px;
+    float: right;
+    position: relative;
+    z-index: 2;
+    border-left: 1px solid #c3c2be;
+    border-bottom: 1px solid #c3c2be;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#MenuEstatusOrden li
+{
+    width: 105px;
+    height: 30px;
+    background-color: Transparent;
+    border-top: 1px solid #c3c2be;
+    text-align: center;
+    font-weight: normal;
+    z-index: 3;
+}
+#MenuEstatusOrden li:hover
+{
+    background-color: #E9581B;
+    cursor: pointer;
+    color: White;
+}
+/*----------Clases para los elementos seleccionados de los menús---------*/
+.MenuOrdenSeleccionado
+{
+    min-width: 100px;
+    height: 20px;
+    float: left;
+    background-color: #f2f2f2;
+    margin-right: 5px;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
+}
+.MenuOpcionesOrdenlihover
+{
+    background-image: url(../Imagenes/SubMenuCierreOrden.png);
+    color: White;
+    cursor: pointer;
+}
+.SubMenuSeleccionado
+{
+    color: White;
+    border-right: none;
+    height: 30px;
+}
+.ImagenFondoGral
+{
+    background-image: url(../Imagenes/SubmenuOrden.png);
+}
+.ImagenFondoCierre
+{
+    background-image: url(../Imagenes/SubMenuCierreOrden.png);
+}
+.SeleccionGeneral
+{
+    background-image: url(../Imagenes/SubMenuCierreOrden.png);
+    color: White;
+    cursor: pointer;
+}
+.SubMenuOrdenServicio
+{
+    background-color: transparent;
+    width: 530px;
+    height: 30px;   
+}
+.BotonSubmenu
+{
+    background-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    border: 0;
+    padding: 0 4px 0 4px;
+    margin: 0;
+    height: 20px;
+    cursor: pointer;
+    font-weight: bold;    
+}
+.BotonSubmenuHabilitadoOS
+{
+    color:Black;
+}
+.BotonSubmenuSeleccionadoOS
+{
+   color:White;
+}
+.BotonSubmenuSeleccionado
+{
+    background-color: #0E4FAD;
+    text-transform: uppercase;
+    text-align: center;
+    border: 0;
+    padding: 0 4px 0 4px;
+    margin: 0;
+    height: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: White;
+}
+.SubMenuOrdenServicio li
+{
+    height: 20px;
+    min-width: 90px;
+    float: left;
+    background-color: White;
+    border: 1px solid #c3c2be;
+    border-top: none;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+/*---------------Clases para los elementos seleccionados en los Catálogos-------------*/
+.MenuOpcionesCatalogoslihover
+{
+    background-image: url(../Imagenes/SubMenuCatalogosExtraBig.png);
+    color: White;
+    cursor: pointer;
+}
+.ImagenFondoGralCatalogos
+{
+    background-image: url(../Imagenes/SubmenuCatalogos.png);
+}
+.ImagenFondoGralSubBigCatalogos
+{
+    background-image: url(../Imagenes/SubMenuCatalogosSubBig.png);
+}
+.ImagenFondoGralBigCatalogos
+{
+    background-image: url(../Imagenes/SubMenuCatalogosBig.png);
+}
+.ImagenFondoGralExtraBigCatalogos
+{
+    background-image: url(../Imagenes/SubMenuCatalogosExtraBig.png);
+}
+.SubMenuCatalogosDeshabilitado
+{
+    color: #ccc;
+    cursor: default;
+}
+/*-----------Botones de navegación para la ayuda----------*/
+#cerrarAyuda:hover, #prev:hover, #next:hover
+{
+    opacity: 0.8;
+}
+#divAyuda #slider
+{
+    cursor:move;
+}
+/*--------------------------Estilos para agrupadores-------------------------------*/
+.GroupHeader
+{
+    background-image: url('../Imagenes/FondoGroupHeader.png');
+    height: 27px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.GroupHeaderOpciones
+{
+    background-image: url('../Imagenes/GroupHeaderOpciones.png');
+    height: 44px;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.HeaderBusqueda
+{
+    width: 100%;
+    height: 22px;
+    background-color: #5c5e5d;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: white;
+}
+.GroupBody
+{
+    background-color: #f2f2f2;
+    width: 940px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.GridHeaderGral
+{
+    background-image: url('../Imagenes/barra-alterna.jpg');
+    height: 27px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.GridHeaderGral a
+{
+    color: Black;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+}
+.GridHeaderGral a:hover
+{
+    color: #E9581B;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+}
+/*----------------------------------------------------------------------------Procesos-------------------------------------------------------------------------------------------*/
+.SubElementosOrden
+{
+    width: 100%;
+}
+
+/*------------------------------------------------------------------------Elementos generales HTML-----------------------------------------------------------------------*/
+fieldset
+{
+    border: 1px solid #d6d6d6;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+legend
+{
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/*-----------------------------------Estilos para los mensajes de alertas----------------------------------------------------*/
+/*--------Alertas Despliegue Barra Superior------------*/
+.info, .exito, .alerta, .error
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    border: 1px solid;
+    margin: 10px 10px 0px 10px;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    position: relative;
+    width: 94%;
+}
+.info
+{
+    color: #00529B;
+    background-color: #BDE5F8;
+    background-image: url('../imagenes/info.png');
+}
+.exito
+{
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image: url('../imagenes/exito.png');
+}
+.alerta
+{
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('../imagenes/alerta.png');
+}
+.error
+{
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('../imagenes/error.png');
+}
+
+/*----------Alertas GrowUI-------------*/
+div.growlUIExito
+{
+    background: url(../imagenes/exito.png) no-repeat 5px 5px;
+}
+div.growlUIAlerta
+{
+    background: url(../imagenes/alerta.png) no-repeat 5px 5px;
+}
+div.growlUIInfo
+{
+    background: url(../imagenes/info.png) no-repeat 5px 5px;
+}
+div.growlUI h1, div.growlUI h2
+{
+    color: white;
+    padding: 0px 2px 2px 50px;
+    text-align: left;
+}
+
+/*----------------Estilos para los GridView------------------*/
+.Grid
+{
+    border: 1px solid #cccccc;
+    margin-top: 0px;
+}
+/*-----------Sección del encabezado------------*/
+.GridHeader
+{
+    background-color: #5c5e5d;
+    color: White;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.GridHeader a
+{
+    color: White;
+}
+.GridHeader a:hover
+{
+    color: Yellow;
+    text-decoration: none;
+}
+.GridHeaderBitacora
+{
+    background-color: #cccccc;
+    color: White;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.GridHeaderBitacora a
+{
+    color: White;
+}
+.GridHeaderBitacora a:hover
+{
+    color: Yellow;
+    text-decoration: none;
+}
+/*----------Sección de paginación-----------*/
+.GridPager
+{
+    background-color: #5c5e5d;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+}
+.GridPager a
+{
+    color: White;
+    font-weight: normal;
+}
+.GridPager a:hover
+{
+    color: Yellow;
+    text-decoration: none;
+}
+
+.GridSelectedRow, .GridRow, .GridAlternatingRow, .GridFooter
+{
+    border-bottom: solid 1px #f2f2f2;
+    border-left: solid 1px #f2f2f2;
+    border-right: solid 1px #f2f2f2;
+}
+.GridSelectedRow
+{
+    background-color: #E2DED6;
+    color: #333333;
+    font-size: 8pt;
+    font-weight: bold;
+}
+.GridRow
+{
+    background-color: white;
+    color: Black;
+}
+.GridAlternatingRow
+{
+    background-color: #f2f2f2;
+    color: black;
+}
+/*------ Sección del pie-----*/
+.GridFooter
+{
+    background-color: #5c5e5d;
+    color: black;
+    font-size: small;
+    font-weight: bold;
+}
+
+/*----------------------Clases generales para los botones de todas las páginas del sitio--------------------------------------*/
+.BotonComando
+{
+    width: 103px;
+    height: 41px;
+    background-image: url(../Imagenes/boton1.png);
+    border: none;
+    margin-left: 200px;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+}
+.BotonComando:hover
+{
+    background-image: url(../Imagenes/boton2.png);
+    cursor: pointer;
+}
+
+.BotonAutorizar
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonImprimir.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonAutorizarDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonImprimirDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonAutorizar:hover
+{
+    background-image: url(../Imagenes/botonImprimirSeleccionado.png);
+    cursor: pointer;
+}
+.BotonRechazar
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonRechazar.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonRechazarDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonRechazarDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonRechazar:hover
+{
+    background-image: url(../Imagenes/botonRechazarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonCancelarAut
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonCancelarAut.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonCancelarAutDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonCancelarAutDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonCancelarAut:hover
+{
+    background-image: url(../Imagenes/botonCancelarAutSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAutorizarAut
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonAutorizarAut.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonAutorizarAutDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonAutorizarAutDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonAutorizarAut:hover
+{
+    background-image: url(../Imagenes/botonAutorizarAutSeleccionado.png);
+    cursor: pointer;
+}
+.BotonBorrarAut
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonBorrarAut.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonBorrarAutDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonBorrarDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonBorrarAut:hover
+{
+    background-image: url(../Imagenes/botonBorrarAutSeleccionado.png);
+    cursor: pointer;
+}
+.BotonRegresar
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonRegresar.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonRegresarDeshabilitado
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonRegresarDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonRegresar:hover
+{
+    background-image: url(../Imagenes/botonRegresarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonTerminar
+{
+    width: 139px;
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    height: 25px;
+    background-image: url('../Imagenes/botonTerminar.png');
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonTerminarDeshabilitado
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/botonTerminarDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonTerminar:hover
+{
+    background-image: url(../Imagenes/botonTerminarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonConcluir
+{
+    width: 139px;
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    height: 25px;
+    background-image: url('../Imagenes/botonConcluir.png');
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonConcluirDeshabilitado
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/botonConcluirDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonConcluir:hover
+{
+    background-image: url(../Imagenes/botonConcluirSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAceptar
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonAceptar.png);
+    border: none;
+    float: left;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+.BotonAceptarDeshabilitado
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonAceptarDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonAceptar:hover
+{
+    background-image: url(../Imagenes/botonAceptarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonCancelar
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonCancelar.png);
+    border: none;
+    float: left;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.BotonCancelarDeshabilitado
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/BotonCancelarDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.BotonCancelar:hover
+{
+    background-image: url(../Imagenes/botonCancelarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAgregarTrabajo
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/botonNuevoTrabajo.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-weight: bold;
+}
+.BotonAgregarTrabajoDeshabilitado
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/botonNuevoTrabajoDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-weight: bold;
+}
+.BotonAgregarTrabajo:hover
+{
+    background-image: url(../Imagenes/botonNuevoTrabajoSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAgregar
+{
+    width: 81px;
+    height: 20px;
+    background-image: url(../Imagenes/AgregarBtn.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+}
+.BotonAgregar:hover
+{
+    background-image: url(../Imagenes/AgregarBtnSeleccionado.png);
+    cursor: pointer;
+}
+.BotonEditar
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonEditar.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonEditarDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonEditarDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonEditar:hover
+{
+    background-image: url(../Imagenes/botonEditarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAgregarTrabajoRapido
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/botonNuevoTrabajoRapido.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonAgregarTrabajoRapidoDeshabilitado
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/botonNuevoTrabajoDeshabilitadoRapido.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonAgregarTrabajoRapido:hover
+{
+    background-image: url(../Imagenes/botonNuevoTrabajoSeleccionadoRapido.png);
+    cursor: pointer;
+}
+.BotonDeshacer
+{
+    width: 99px;
+    height: 25px;
+    background-image: url(../Imagenes/botonDeshacer.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonDeshacerDeshabilitado
+{
+    width: 99px;
+    height: 25px;
+    background-image: url(../Imagenes/botonDeshacerDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonDeshacer:hover
+{
+    background-image: url(../Imagenes/botonDeshacerSeleccionado.png);
+    cursor: pointer;
+}
+.BotonRegistrarEdicion
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/botonRegistrarEdicion.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 26px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonRegistrarEdicionDeshabilitado
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/botonRegistrarEdicionDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 26px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonRegistrarEdicion:hover
+{
+    background-image: url(../Imagenes/botonRegistrarEdicionSeleccionado.png);
+    cursor: pointer;
+}
+
+.BotonBuscarOC
+{
+    width: 103px;
+    height: 41px;
+    background-image: url(../Imagenes/BuscarOC.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+}
+.BotonBuscarOC:hover
+{
+    background-image: url(../Imagenes/BuscarOCHover.png);
+    cursor: pointer;
+}
+.BotonBuscarCatalogo
+{
+    width: 103px;
+    height: 41px;
+    background-image: url(../Imagenes/botonCatalogo.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+}
+.BotonBuscarCatalogo:hover
+{
+    background-image: url(../Imagenes/botonCatalogoSeleccionado.png);
+    cursor: pointer;
+}
+.BotonBuscarReporte
+{
+    width: 103px;
+    height: 41px;
+    background-image: url(../Imagenes/botonBuscarReporte.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+}
+.BotonBuscarReporte:hover
+{
+    background-image: url(../Imagenes/botonBuscarReporteSeleccionado.png);
+    cursor: pointer;
+}
+.BotonBuscarAsignacion
+{
+    width: 103px;
+    height: 41px;
+    background-image: url(../Imagenes/botonAsignacion.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+}
+.BotonBuscarAsignacion:hover
+{
+    background-image: url(../Imagenes/botonAsignacionSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAjustarOrden
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/Ajustar.jpg);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonAjustarOrdenDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/AjustarDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonAjustarOrden:hover
+{
+    background-image: url(../Imagenes/AjustarSeleccionado.jpg);
+    cursor: pointer;
+}
+.BotonPosicionTrabajo
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/PosicionTrabajo.jpg);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonPosicionTrabajoDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/PosicionTrabajoDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonPosicionTrabajo:hover
+{
+    background-image: url(../Imagenes/PosicionTrabajoSeleccionado.jpg);
+    cursor: pointer;
+}
+.BotonBitacora
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/Bitacora.jpg);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonBitacoraDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/BitacoraDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonBitacora:hover
+{
+    background-image: url(../Imagenes/BitacoraSeleccionado.jpg);
+    cursor: pointer;
+}
+.BotonReporte
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonImprimir.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 25px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonReporteDeshabilitado
+{
+    width: 140px;
+    height: 25px;
+    background-image: url(../Imagenes/botonImprimirDeshabilitado.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 25px;
+    font-weight: bold;
+    font-size: 12px;
+}
+.BotonReporte:hover
+{
+    background-image: url(../Imagenes/botonImprimirSeleccionado.png);
+    cursor: pointer;
+}
+.BotonCierre
+{
+    width: 177px;
+    height: 31px;
+    background-image: url(../Imagenes/Cierre.jpg);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 25px;
+    font-size: 10px;
+    font-weight: bold;
+}
+.BotonCierre:hover
+{
+    background-image: url(../Imagenes/CierreSeleccionado.jpg);
+    cursor: pointer;
+}
+.BotonAgregarPosicion
+{
+    width: 196px;
+    height: 25px;
+    background-image: url(../Imagenes/botonAgregarPosicion.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 25px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.BotonAgregarPosicionDeshabilitado
+{
+    width: 196px;
+    height: 25px;
+    background-image: url(../Imagenes/botonAgregarPosicionDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.BotonAgregarPosicion:hover
+{
+    background-image: url(../Imagenes/botonAgregarPosicionSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAgregarItem
+{
+    width: 190px;
+    height: 25px;
+    background-image: url(../Imagenes/botonAgregarPosicion.png);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 25px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.BotonAgregarItem:hover
+{
+    background-image: url(../Imagenes/botonAgregarPosicionSeleccionado.png);
+    cursor: pointer;
+}
+.BotonGuardar
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/BotonGuardar.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.BotonGuardarDeshabilitado
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/BotonGuardarDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.BotonGuardar:hover
+{
+    background-image: url(../Imagenes/BotonGuardarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonDeshacer
+{
+    width: 99px;
+    height: 25px;
+    background-image: url(../Imagenes/botonDeshacer.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.BotonDeshacerDeshabilitado
+{
+    width: 99px;
+    height: 25px;
+    background-image: url(../Imagenes/botonDeshacerDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.BotonDeshacer:hover
+{
+    background-image: url(../Imagenes/botonDeshacerSeleccionado.png);
+    cursor: pointer;
+}
+.BotonTerminar
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/BotonTerminar.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.BotonTerminarrDeshabilitado
+{
+    width: 139px;
+    height: 25px;
+    background-image: url(../Imagenes/BotonTerminarDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+.BotonTerminar:hover
+{
+    background-image: url(../Imagenes/BotonTerminarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonFacturar
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonFacturar.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonFacturarDeshabilitado
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonFacturarDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonFacturar:hover
+{
+    background-image: url(../Imagenes/botonFacturarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonReFacturarValorizado
+{
+    width: 178px;
+    height: 25px;
+    background-image: url(../Imagenes/botonFacturarValorizado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 35px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonReFacturarValorizadoDeshabilitado
+{
+    width: 178px;
+    height: 25px;
+    background-image: url(../Imagenes/botonFacturarValorizadoDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 35px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonReFacturarValorizado:hover
+{
+    background-image: url(../Imagenes/botonFacturarValorizadoSeleccionado.png);
+    cursor: pointer;
+}
+.BotonConceptosFacturacion
+{
+    width: 178px;
+    height: 25px;
+    background-image: url(../Imagenes/botonConceptosFacturacion.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 25px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonConceptosFacturacionDeshabilitado
+{
+    width: 178px;
+    height: 25px;
+    background-image: url(../Imagenes/botonConceptosFacturacionDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 25px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonConceptosFacturacion:hover
+{
+    background-image: url(../Imagenes/botonConceptosFacturacionSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAsignar
+{
+    width: 178px;
+    height: 25px;
+    background-image: url(../Imagenes/AsignarOrden.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonAsignar:hover
+{
+    background-image: url(../Imagenes/AsignarOrdenSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAsignarDeshabilitado
+{
+    width: 178px;
+    height: 25px;
+    background-image: url(../Imagenes/AsignarOrdenDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.BotonCambiarEstatus
+{
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: #5C5E5D;
+    width: 60px;
+    height: 25px;
+    font-size: 11px;
+}
+.BotonCambiarEstatus:hover
+{
+    opacity: .5;
+    cursor: pointer;
+}
+.BotonConsultarOrden
+{
+    border: none;
+    background-color: #5C5E5D;
+    background-image: url(../Imagenes/lupa-blanca.png);
+    width: 25px;
+    height: 25px;
+}
+.BotonConsultarOrden:hover
+{
+    opacity: .5;
+    cursor: pointer;
+}
+.BotonActualizarOrden
+{
+    width: 31px;
+    height: 30px;
+    background-image: url(../Imagenes/recargar.png);
+    background-color:transparent;
+    border: none;
+}
+.BotonActualizarOrden:hover
+{
+    opacity: .5;
+    cursor: pointer;    
+}
+.BotonInfoBitacora
+{
+    width: 31px;
+    height: 30px;
+    background-image: url(../Imagenes/infoBitacora.png);
+    background-color:transparent;
+    border: none;    
+}
+.BotonInfoBitacora:hover
+{
+    opacity: .5;
+    cursor: pointer;
+}
+.BotonAyudaGeneral
+{
+    width: 31px;
+    height: 30px;
+    background-image: url(../Imagenes/pregunta.png);
+    background-color:transparent;
+    border: none;
+}
+.BotonAyudaGeneral:hover
+{
+    opacity: .5;
+    cursor: pointer;
+}
+.BotonRefrescarDatos
+{
+    width: 20px;
+    height: 20px;
+    background-image: url(../Imagenes/botonRecargar.png);
+    border: none;
+    float: left;
+    font-weight: bold;
+}
+.BotonRefrescarDatos:hover
+{
+    background-image: url(../Imagenes/botonRecargarSeleccionado.png);
+    cursor: pointer;
+}
+.BotonNuevaConsulta
+{
+    width: 120px;
+    font-size: 11px;
+    height: 32px;
+    margin: 0;
+    float: right;
+    border: 1px solid #c3c2be;
+    background-color: #e3e3e3;
+    border-radius: none;
+}
+.BotonNuevaConsulta:hover
+{
+    opacity: .5;
+    cursor: pointer;
+}
+.BotonNuevaConsultaOS
+{
+    width: 180px;
+    font-size: 11px;
+    height: 40px;
+    margin: 0;
+    float: right;
+    border: 1px solid #c3c2be;
+    background-color: #e3e3e3;
+    border-radius: none;
+}
+.BotonNuevaConsultaOS:hover
+{
+    opacity: .5;
+    cursor: pointer;
+}
+.BotonCrearOrdenCompra
+{
+    font-size: 11px;
+    width: 170px;
+    height: 32px;
+    float: right;
+    border: 1px solid #c3c2be;
+    background-color: #e3e3e3;
+    border-radius: none;
+}
+.BotonCrearOrdenCompra:hover
+{
+    opacity: .5;
+    cursor: pointer;
+}
+.BotonBorrarTodo
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/BotonBorrarTodo.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 7px;
+}
+.BotonBorrarTodoDeshabilitado
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/BotonBorrarTodoDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 7px;
+}
+.BotonBorrarTodo:hover
+{
+    background-image: url(../Imagenes/BotonBorrarTodoSeleccionado.png);
+    cursor: pointer;
+}
+.BotonAceptarROS
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonRefacturar.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+.BotonAceptarROSDeshabilitado
+{
+    width: 130px;
+    height: 25px;
+    background-image: url(../Imagenes/botonRefacturarDeshabilitado.png);
+    border: none;
+    float: left;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-left: 10px;
+    font-weight: bold;
+}
+.BotonAceptarROS:hover
+{
+    background-image: url(../Imagenes/botonRefacturarSeleccionado.png);
+    cursor: pointer;
+}
+/*--------------------------------Clases generales del sitio-----------------------------*/
+.trDerecha
+{
+    text-align: right;
+}
+.trAlinearDerecha tr td:first-child
+{
+    text-align: right;
+}
+#TablaBusqueda
+{
+    text-transform: uppercase;
+}
+#TablaBusqueda tr
+{
+    height: 30px;
+}
+.TipoLetra
+{
+    font-family: Century Gothic, Arial, Verdana, Serif;
+}
+/*--------Estilos para las notas de taller-------------*/
+.PanelNotasTaller
+{
+    min-height: 50px;
+    max-height: 400px;
+    background-color: transparent;
+    margin: 20px 0 0 17px;
+}
+.SinNotas
+{
+    float: left;
+    margin: 50px auto;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 18px;
+    margin: auto;
+}
+.EncabezadoNotaTaller
+{
+    clear: both;
+    padding: 0;
+    text-align: center;
+    width: 100px;
+    border-right: 1px solid orange;
+    font-size: 12px;
+    font-weight: bold;
+}
+/*-------------------Valorizado---------------------*/
+.tdValorizado td
+{
+    text-align: right;
+}
+.textValorizado
+{
+    background: #E6E6E6;
+    border: 1px solid #CCCCCC;
+    padding: 1px;
+    text-align: right;
+    border-radius: 5px;
+    height: 20px;
+    font-size: 14px;
+    color: Black;
+}
+/*------------------Estilos para las opciones de búsqueda---------------------*/
+.textBoxSearch
+{
+    background: #FFFFFF url('../Imagenes/buscar.png') no-repeat 2px 2px;
+    padding: 2px 2px 2px 18px;
+    border: 1px solid #CCCCCC;
+    font-size: 11px;
+}
+.textBoxDisabledSearch
+{
+    background: #E6E6E6;
+    border: 1px solid #CCCCCC;
+    padding: 1px;
+    font-size: 11px;
+}
+.textBoxDisabled
+{
+    background: #E6E6E6;
+    border: 1px solid #CCCCCC;
+    padding: 1px;
+}
+.txtMoneda
+{
+    text-align: right;
+    padding: 2px 4px 2px 4px;
+    border: 1px solid #CCCCCC;
+    font-family: "Helvetica Neue" , "Lucida Grande" , "Segoe UI" , Arial, Helvetica, Verdana, sans-serif;
+}
+.monedaDisabled
+{
+    text-align: right;
+    background: #E6E6E6;
+    padding: 1px;
+    border: 1px solid #CCCCCC;
+}
+.ColorValidator
+{
+    color: Red;
+}
+.imgBtnSelect
+{
+    background-image: url('../Imagenes/select.png');
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 17px;
+}
+/*-------------------------Sección para los reportes-----------------*/
+.ArbolAdscripcion
+{
+    font-family: Century Gothic, Arial, Verdana, Serif;
+    font-size: 12px;
+    min-height: 250px;
+    text-transform: uppercase;
+    margin-left: 2px;
+    width: 98%;
+}
+.NodosArbolAdscripcion
+{
+    padding-top: 5px;
+    color: black;
+    width: 100%;
+    height: 20px;
+    cursor: default;
+}
+.NodosArbolAdscripcionRaiz
+{
+    width: 100%;
+    min-width: 185px;
+    height: 20px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    padding-top: 5px;
+    margin-left: 5px;
+}
+#MenuArbolAdscripcion td img
+{
+    float: left;
+    margin-right: 3px;
+}
+#MenuArbolAdscripcion td img:hover
+{
+    cursor: pointer;
+}
+input[type="checkbox"]:hover
+{
+    cursor: pointer;
+}
+.BarraDesplazamientoHorizontal
+{
+    width: 18px;
+    height: 265px;
+    background-color: White;
+    margin-top: -10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    float: right;
+    position: relative;
+}
+.BarraDesplazamientoHorizontal:hover
+{
+    background-color: #5c5e5d;
+    cursor: pointer;
+}
+/*------------------------------------------------------------------------------Estilos para elemento nuevos------------------------------------------------------------------------------------------------*/
+/*-----Clases para la información de la bitácora------*/
+.InformacionBitacora
+{
+    width: 239px;
+    height: 250px;
+    position: absolute;
+    left: 745px;   
+    top: 50px;
+    z-index: 1;
+    cursor:move;
+    background-color: #b0b0b0;
+    border-left: 1px solid #c3c2be;
+    border-bottom: 1px solid #c3c2be;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: none;    
+}
+.BotonInformacionBitacora
+{
+    background-color: #b0b0b0;
+}
+.ContenidoInformacionBitacora
+{
+    margin: 10px;
+    background-color: White;
+    width: 215px;
+    height: 227px;
+    border: 1px solid #c3c2be;
+    border-radius: 5px;
+}
+/*---Estilos para iconos---*/
+.IconoMenu
+{
+    width:17px;
+    height:17px;
+    margin-right:2px;
+    float:left;
+}

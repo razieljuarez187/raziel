@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMO.Refacciones.BR", "BPMO.Refacciones.BR\BPMO.Refacciones.BR.csproj", "{0F7EB7CB-0C0A-4943-A8A7-2D199DDBC360}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMO.Refacciones.BO", "BPMO.Refacciones.BO\BPMO.Refacciones.BO.csproj", "{0481A0CB-A4C1-4593-8AA3-CFA5EB8CB217}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMO.Refacciones.TEST", "BPMO.Refacciones.TEST\BPMO.Refacciones.TEST.csproj", "{962D32CE-0C4B-4697-A724-71BDDCE432FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2668E8FE-0E1B-41BC-8807-685EEF238CB0}"
+	ProjectSection(SolutionItems) = preProject
+		BPMO.Refacciones.vsmdi = BPMO.Refacciones.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMO.Refacciones.Catalogos.PRE", "BPMO.Refacciones.Catalogos.PRE\BPMO.Refacciones.Catalogos.PRE.csproj", "{AA864620-231C-4E66-958C-92AC25718491}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMO.Refacciones.UI", "BPMO.Refacciones.UI\BPMO.Refacciones.UI.csproj", "{C3D809E7-C109-4DA6-9CD3-A25F9811B525}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPMO.Refacciones.Procesos.PRE", "BPMO.Refacciones.Procesos.PRE\BPMO.Refacciones.Procesos.PRE.csproj", "{5A4631C6-0E8A-47B6-B908-EC19A54312F6}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = BPMO.Refacciones.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F7EB7CB-0C0A-4943-A8A7-2D199DDBC360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F7EB7CB-0C0A-4943-A8A7-2D199DDBC360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F7EB7CB-0C0A-4943-A8A7-2D199DDBC360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F7EB7CB-0C0A-4943-A8A7-2D199DDBC360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0481A0CB-A4C1-4593-8AA3-CFA5EB8CB217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0481A0CB-A4C1-4593-8AA3-CFA5EB8CB217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0481A0CB-A4C1-4593-8AA3-CFA5EB8CB217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0481A0CB-A4C1-4593-8AA3-CFA5EB8CB217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{962D32CE-0C4B-4697-A724-71BDDCE432FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{962D32CE-0C4B-4697-A724-71BDDCE432FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{962D32CE-0C4B-4697-A724-71BDDCE432FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{962D32CE-0C4B-4697-A724-71BDDCE432FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA864620-231C-4E66-958C-92AC25718491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA864620-231C-4E66-958C-92AC25718491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA864620-231C-4E66-958C-92AC25718491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA864620-231C-4E66-958C-92AC25718491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D809E7-C109-4DA6-9CD3-A25F9811B525}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D809E7-C109-4DA6-9CD3-A25F9811B525}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D809E7-C109-4DA6-9CD3-A25F9811B525}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D809E7-C109-4DA6-9CD3-A25F9811B525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A4631C6-0E8A-47B6-B908-EC19A54312F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A4631C6-0E8A-47B6-B908-EC19A54312F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A4631C6-0E8A-47B6-B908-EC19A54312F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A4631C6-0E8A-47B6-B908-EC19A54312F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

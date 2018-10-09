@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C3D809E7-C109-4DA6-9CD3-A25F9811B525}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BPMO.Refacciones.UI</RootNamespace>
+    <AssemblyName>BPMO.Refacciones.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BPMO.Basicos">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Basicos.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Buscador">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Buscador.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Generales.BR">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Generales.BR.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Primitivos, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BPMO.Librerias\BPMO.Primitivos.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Security, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BPMO.Librerias\BPMO.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Utilerias">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Utilerias.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMOBaseLibrary">
+      <HintPath>..\..\BPMO.Librerias\BPMOBaseLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v11.2.Core, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v11.2.Core, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v11.2.Core, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v11.2.Core, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxEditors.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Web.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v11.2, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v11.2.Web, Version=11.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Buscador\UI\BuscadorUI.aspx" />
+    <Content Include="Buscador\XML\Buscador.AlmacenLider.xml" />
+    <Content Include="Buscador\XML\Buscador.Cuenta.xml" />
+    <Content Include="Buscador\XML\Buscador.Empleado.xml" />
+    <Content Include="Buscador\XML\Buscador.EmpresaLider.xml" />
+    <Content Include="Buscador\XML\Buscador.Sucursal.xml" />
+    <Content Include="Buscador\XML\Buscador.SucursalLider.xml" />
+    <Content Include="Buscador\XML\Buscador.TipoPedido.xml" />
+    <Content Include="Buscador\XML\Buscador.UnidadOperativa.xml" />
+    <Content Include="Catalogos.UI\ConfiguracionInicio.aspx" />
+    <Content Include="Catalogos.UI\default.aspx" />
+    <Content Include="Conexiones.xml" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_0_dcdbdb_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_55_e0e0e0_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_65_e9581b_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_75_666666_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_75_808080_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_75_cbcdcc_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_75_e9581b_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_flat_95_fce3e3_40x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_glass_55_f6f2e0_1x400.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_highlight-soft_75_808080_1x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="CSS\custom-theme\images\ui-icons_000000_256x240.png" />
+    <Content Include="CSS\custom-theme\images\ui-icons_222222_256x240.png" />
+    <Content Include="CSS\custom-theme\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="CSS\custom-theme\images\ui-icons_454545_256x240.png" />
+    <Content Include="CSS\custom-theme\images\ui-icons_888888_256x240.png" />
+    <Content Include="CSS\custom-theme\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="CSS\custom-theme\images\ui-icons_dad7d7_256x240.png" />
+    <Content Include="CSS\custom-theme\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="CSS\custom-theme\jquery-ui-1.9.1.custom.css" />
+    <Content Include="CSS\custom-theme\jquery-ui.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.accordion.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.all.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.autocomplete.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.base.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.button.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.core.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.datepicker.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.dialog.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.menu.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.progressbar.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.resizable.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.selectable.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.slider.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.spinner.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.tabs.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.theme.css" />
+    <Content Include="CSS\custom-theme\jquery.ui.tooltip.css" />
+    <Content Include="CSS\EstiloDesarrollo.css" />
+    <Content Include="CSS\EstiloPaginaInicio.css" />
+    <Content Include="CSS\EstiloProduccion.css" />
+    <Content Include="CSS\EstiloPruebas.css" />
+    <Content Include="CSS\Sitio.css" />
+    <Content Include="Imagenes\Abajo.jpg" />
+    <Content Include="Imagenes\alerta.png" />
+    <Content Include="Imagenes\Arriba.jpg" />
+    <Content Include="Imagenes\AsignarOrden.png" />
+    <Content Include="Imagenes\AsignarOrdenDeshabilitado.png" />
+    <Content Include="Imagenes\AsignarOrdenSeleccionado.png" />
+    <Content Include="Imagenes\barra-alterna.jpg" />
+    <Content Include="Imagenes\barra-alterna.png" />
+    <Content Include="Imagenes\boton1.png" />
+    <Content Include="Imagenes\boton2.png" />
+    <Content Include="Imagenes\botonAceptar.png" />
+    <Content Include="Imagenes\botonAceptarDeshabilitado.png" />
+    <Content Include="Imagenes\botonAceptarSeleccionado.png" />
+    <Content Include="Imagenes\botonAutorizarAut.png" />
+    <Content Include="Imagenes\botonAutorizarAutDeshabilitado.png" />
+    <Content Include="Imagenes\botonAutorizarAutSeleccionado.png" />
+    <Content Include="Imagenes\botonBuscarReporte.png" />
+    <Content Include="Imagenes\botonBuscarReporteSeleccionado.png" />
+    <Content Include="Imagenes\botonCancelar.png" />
+    <Content Include="Imagenes\botonCancelarDeshabilitado.png" />
+    <Content Include="Imagenes\botonCancelarSeleccionado.png" />
+    <Content Include="Imagenes\botonCatalogo.png" />
+    <Content Include="Imagenes\botonCatalogoSeleccionado.png" />
+    <Content Include="Imagenes\botonConcluir.png" />
+    <Content Include="Imagenes\botonConcluirDeshabilitado.png" />
+    <Content Include="Imagenes\botonConcluirSeleccionado.png" />
+    <Content Include="Imagenes\botonEditar.png" />
+    <Content Include="Imagenes\botonEditarDeshabilitado.png" />
+    <Content Include="Imagenes\botonEditarSeleccionado.png" />
+    <Content Include="Imagenes\botonFacturar.png" />
+    <Content Include="Imagenes\botonFacturarDeshabilitado.png" />
+    <Content Include="Imagenes\botonFacturarSeleccionado.png" />
+    <Content Include="Imagenes\BotonGuardar.png" />
+    <Content Include="Imagenes\BotonGuardarDeshabilitado.png" />
+    <Content Include="Imagenes\BotonGuardarSeleccionado.png" />
+    <Content Include="Imagenes\botonImprimir.png" />
+    <Content Include="Imagenes\botonImprimirDeshabilitado.png" />
+    <Content Include="Imagenes\botonImprimirSeleccionado.png" />
+    <Content Include="Imagenes\botonNuevoTrabajoRapido.png" />
+    <Content Include="Imagenes\botonNuevoTrabajoSeleccionado.png" />
+    <Content Include="Imagenes\botonNuevoTrabajoSeleccionadoRapido.png" />
+    <Content Include="Imagenes\botonRechazar.png" />
+    <Content Include="Imagenes\botonRechazarDeshabilitado.png" />
+    <Content Include="Imagenes\botonRechazarSeleccionado.png" />
+    <Content Include="Imagenes\botonTerminar.png" />
+    <Content Include="Imagenes\botonTerminarDeshabilitado.png" />
+    <Content Include="Imagenes\botonTerminarSeleccionado.png" />
+    <Content Include="Imagenes\buscar.png" />
+    <Content Include="Imagenes\calendar.gif" />
+    <Content Include="Imagenes\Cargando.gif" />
+    <Content Include="Imagenes\Combo.png" />
+    <Content Include="Imagenes\Desarrollo.jpg" />
+    <Content Include="Imagenes\Detalle.png" />
+    <Content Include="Imagenes\Editar.png" />
+    <Content Include="Imagenes\EditarSeleccionado.jpg" />
+    <Content Include="Imagenes\error.png" />
+    <Content Include="Imagenes\exito.png" />
+    <Content Include="Imagenes\favicon.ico" />
+    <Content Include="Imagenes\flechaAbajo.png" />
+    <Content Include="Imagenes\FlechaArriba.png" />
+    <Content Include="Imagenes\FondoDesarrollo.png" />
+    <Content Include="Imagenes\FondoGroupHeader.png" />
+    <Content Include="Imagenes\FondoPrueba.png" />
+    <Content Include="Imagenes\footerServicio.jpg" />
+    <Content Include="Imagenes\GroupHeaderOpciones.png" />
+    <Content Include="Imagenes\IconoConsultar.png" />
+    <Content Include="Imagenes\IconoConsultarSeleccionado.png" />
+    <Content Include="Imagenes\IconoNuevo.png" />
+    <Content Include="Imagenes\IconoNuevoSeleccionado.png" />
+    <Content Include="Imagenes\imgReloj.png" />
+    <Content Include="Imagenes\imgSlideDerecha.png" />
+    <Content Include="Imagenes\imgSlideIzquierda.png" />
+    <Content Include="Imagenes\info.png" />
+    <Content Include="Imagenes\infoBitacora.png" />
+    <Content Include="Imagenes\logos\akt.png" />
+    <Content Include="Imagenes\logos\ams.png" />
+    <Content Include="Imagenes\logos\aup.png" />
+    <Content Include="Imagenes\logos\bmo.png" />
+    <Content Include="Imagenes\logos\cpa.png" />
+    <Content Include="Imagenes\logos\e-ldr.png" />
+    <Content Include="Imagenes\logos\equ.png" />
+    <Content Include="Imagenes\logos\idl.png" />
+    <Content Include="Imagenes\logos\mfx.png" />
+    <Content Include="Imagenes\logos\mgk.png" />
+    <Content Include="Imagenes\logos\mkc.png" />
+    <Content Include="Imagenes\logos\mkg.png" />
+    <Content Include="Imagenes\logos\mkr.png" />
+    <Content Include="Imagenes\logos\mrt.png" />
+    <Content Include="Imagenes\logos\qua.png" />
+    <Content Include="Imagenes\logos\rmi.png" />
+    <Content Include="Imagenes\MenuSeleccionado.png" />
+    <Content Include="Imagenes\Notificaciones\Aviso.png" />
+    <Content Include="Imagenes\Notificaciones\Notificacion.png" />
+    <Content Include="Imagenes\Parametro-barra-de-herramientas.jpg" />
+    <Content Include="Imagenes\pregunta.png" />
+    <Content Include="Imagenes\Produccion.jpg" />
+    <Content Include="Imagenes\Pruebas.jpg" />
+    <Content Include="Imagenes\SeleccionAdscripcion.jpg" />
+    <Content Include="Imagenes\select.jpg" />
+    <Content Include="Imagenes\select.png" />
+    <Content Include="Imagenes\SelectorBlanco.png" />
+    <Content Include="Imagenes\SignoAyuda.png" />
+    <Content Include="Imagenes\SubmenuCatalogos.png" />
+    <Content Include="Imagenes\SubMenuCatalogosBig.png" />
+    <Content Include="Imagenes\SubMenuCatalogosExtraBig.png" />
+    <Content Include="Imagenes\SubMenuCatalogosSubBig.png" />
+    <Content Include="Master.UI\Site.Master" />
+    <Content Include="Procesos.UI\BuscadorConfiguracionReglaUI.aspx" />
+    <Content Include="Procesos.UI\BuscadorConfiguracionTransferenciasUI.aspx" />
+    <Content Include="Procesos.UI\MantenimientoConfiguracionReglaUI.aspx" />
+    <Content Include="Procesos.UI\MantenimientoConfiguracionTransferenciaUI.aspx" />
+    <Content Include="Reportes\ConfiguracionesReglasAsignadasUI.aspx" />
+    <Content Include="Script\Funcionalidad.js" />
+    <Content Include="Script\jconfigBuscadorWeb.js" />
+    <Content Include="Script\jconfProgramaVisita.js" />
+    <Content Include="Script\jDateTimePicker.js" />
+    <Content Include="Script\jPage.BlockUI.js" />
+    <Content Include="Script\jquery-1.7.1.min.js" />
+    <Content Include="Script\jquery-ui-1.8.10.custom.min.js" />
+    <Content Include="Script\jquery.blockUI.js" />
+    <Content Include="Script\jquery.jlabel-1.3.min.js" />
+    <Content Include="Script\jquery.ui.datepicker-es.js" />
+    <Content Include="Script\jServicio.BlockUI.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buscador\UI\BuscadorUI.aspx.cs">
+      <DependentUpon>BuscadorUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buscador\UI\BuscadorUI.aspx.designer.cs">
+      <DependentUpon>BuscadorUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos.UI\ConfiguracionInicio.aspx.cs">
+      <DependentUpon>ConfiguracionInicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos.UI\ConfiguracionInicio.aspx.designer.cs">
+      <DependentUpon>ConfiguracionInicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos.UI\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos.UI\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master.UI\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master.UI\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos.UI\BuscadorConfiguracionReglaUI.aspx.cs">
+      <DependentUpon>BuscadorConfiguracionReglaUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Procesos.UI\BuscadorConfiguracionReglaUI.aspx.designer.cs">
+      <DependentUpon>BuscadorConfiguracionReglaUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos.UI\BuscadorConfiguracionTransferenciasUI.aspx.cs">
+      <DependentUpon>BuscadorConfiguracionTransferenciasUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos.UI\BuscadorConfiguracionTransferenciasUI.aspx.designer.cs">
+      <DependentUpon>BuscadorConfiguracionTransferenciasUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos.UI\MantenimientoConfiguracionReglaUI.aspx.cs">
+      <DependentUpon>MantenimientoConfiguracionReglaUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Procesos.UI\MantenimientoConfiguracionReglaUI.aspx.designer.cs">
+      <DependentUpon>MantenimientoConfiguracionReglaUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos.UI\MantenimientoConfiguracionTransferenciaUI.aspx.cs">
+      <DependentUpon>MantenimientoConfiguracionTransferenciaUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos.UI\MantenimientoConfiguracionTransferenciaUI.aspx.designer.cs">
+      <DependentUpon>MantenimientoConfiguracionTransferenciaUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\ConfiguracionesReglasAsignadasRpt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ConfiguracionesReglasAsignadasRpt.Designer.cs">
+      <DependentUpon>ConfiguracionesReglasAsignadasRpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ConfiguracionesReglasAsignadasUI.aspx.cs">
+      <DependentUpon>ConfiguracionesReglasAsignadasUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ConfiguracionesReglasAsignadasUI.aspx.designer.cs">
+      <DependentUpon>ConfiguracionesReglasAsignadasUI.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Buscador\XML\Buscador.Schema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\ConfiguracionesReglasAsignadasRpt.resx">
+      <DependentUpon>ConfiguracionesReglasAsignadasRpt.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BPMO.Refacciones.BO\BPMO.Refacciones.BO.csproj">
+      <Project>{0481A0CB-A4C1-4593-8AA3-CFA5EB8CB217}</Project>
+      <Name>BPMO.Refacciones.BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BPMO.Refacciones.Catalogos.PRE\BPMO.Refacciones.Catalogos.PRE.csproj">
+      <Project>{AA864620-231C-4E66-958C-92AC25718491}</Project>
+      <Name>BPMO.Refacciones.Catalogos.PRE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BPMO.Refacciones.Procesos.PRE\BPMO.Refacciones.Procesos.PRE.csproj">
+      <Project>{5A4631C6-0E8A-47B6-B908-EC19A54312F6}</Project>
+      <Name>BPMO.Refacciones.Procesos.PRE</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50983</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

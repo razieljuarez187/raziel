@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F7EB7CB-0C0A-4943-A8A7-2D199DDBC360}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BPMO.Refacciones.BR</RootNamespace>
+    <AssemblyName>BPMO.Refacciones.BR</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BPMO.Basicos">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Basicos.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.CatalogosLider">
+      <HintPath>..\..\BPMO.Librerias\BPMO.CatalogosLider.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Generales.BR">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Generales.BR.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Patterns">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Patterns.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Primitivos">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Primitivos.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Security, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BPMO.Librerias\BPMO.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BR\AlmacenLiderBR.cs" />
+    <Compile Include="BR\ConfiguracionCantidadTransferenciaBR.cs" />
+    <Compile Include="BR\ConfiguracionHoraTransferenciaBR.cs" />
+    <Compile Include="BR\ConfiguracionReglaUsuarioBR.cs" />
+    <Compile Include="BR\ConfiguracionTransferenciaBR.cs" />
+    <Compile Include="BR\CotizacionNotaTallerBR.cs" />
+    <Compile Include="BR\CreditoCoresBR.cs" />
+    <Compile Include="BR\CreditoCoresProcesosBR.cs" />
+    <Compile Include="BR\DetalleCotizacionNotaTallerBR.cs" />
+    <Compile Include="BR\DetalleNotaTallerBR.cs" />
+    <Compile Include="BR\EmpresaLiderBR.cs" />
+    <Compile Include="BR\ExistenciaAlmacenRefaccionesBR.cs" />
+    <Compile Include="BR\MovimientoCoreBR.cs" />
+    <Compile Include="BR\MovimientoRefaccionBR.cs" />
+    <Compile Include="BR\NivelABCBR.cs" />
+    <Compile Include="BR\NotaTallerBR.cs" />
+    <Compile Include="BR\NotaTallerMovimientoRefaccionBR.cs" />
+    <Compile Include="BR\NotaTallerProcesosBR.cs" />
+    <Compile Include="BR\RefaccionBR.cs" />
+    <Compile Include="BR\SucursalLiderBR.cs" />
+    <Compile Include="BR\TipoPedidoBR.cs" />
+    <Compile Include="BR\UsuarioLiderBR.cs" />
+    <Compile Include="DAO\AlmacenLiderConsultarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionCantidadTransferenciaActualizarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionCantidadTransferenciaConsultarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionCantidadTransferenciaInsertarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionHoraTransferenciaActualizarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionHoraTransferenciaConsultarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionHoraTransferenciaInsertarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionReglaUsuarioActualizarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionReglaUsuarioBorrarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionReglaUsuarioConsultarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionReglaUsuarioInsertarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionTransferenciaActualizarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionTransferenciaConsultarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionTransferenciaInsertarDAO.cs" />
+    <Compile Include="DAO\CotizacionNotaTallerActualizarDAO.cs" />
+    <Compile Include="DAO\CotizacionNotaTallerConsultarDAO.cs" />
+    <Compile Include="DAO\CotizacionNotaTallerInsertarDAO.cs" />
+    <Compile Include="DAO\CreditoCoresConsultarDAO.cs" />
+    <Compile Include="DAO\DetalleCotizacionNotaTallerActualizarDAO.cs" />
+    <Compile Include="DAO\DetalleCotizacionNotaTallerConsultarDAO.cs" />
+    <Compile Include="DAO\DetalleCotizacionNotaTallerInsertarDAO.cs" />
+    <Compile Include="DAO\DetalleMovimientoRefaccionInsertarDAO.cs" />
+    <Compile Include="DAO\DetalleNotaTallerActualizarDAO.cs" />
+    <Compile Include="DAO\DetalleNotaTallerConsultarDAO.cs" />
+    <Compile Include="DAO\DetalleNotaTallerInsertarDAO.cs" />
+    <Compile Include="DAO\EmpresaLiderConsultarDAO.cs" />
+    <Compile Include="DAO\ExistenciaAlmacenRefaccionesConsultarDAO.cs" />
+    <Compile Include="DAO\MovimientoCoreInsertarDAO.cs" />
+    <Compile Include="DAO\MovimientoRefaccionInsertarDAO.cs" />
+    <Compile Include="DAO\NivelABCConsultarDAO.cs" />
+    <Compile Include="DAO\NotaTallerActualizarDAO.cs" />
+    <Compile Include="DAO\NotaTallerConsultarDAO.cs" />
+    <Compile Include="DAO\NotaTallerInsertarDAO.cs" />
+    <Compile Include="DAO\NotaTallerMovimientoRefaccionInsertarDAO.cs" />
+    <Compile Include="DAO\RefaccionConsultarDAO.cs" />
+    <Compile Include="DAO\SucursalLiderConsultarDAO.cs" />
+    <Compile Include="DAO\TipoPedidoConsultarDAO.cs" />
+    <Compile Include="DAO\UsuarioLiderConsultarDAO.cs" />
+    <Compile Include="DAO\Utileria.cs" />
+    <Compile Include="DA\ConfiguracionTransferenciaNivelABCBorrarDA.cs" />
+    <Compile Include="DA\ConfiguracionTransferenciaNivelABCConsultarDA.cs" />
+    <Compile Include="DA\ConfiguracionTransferenciaNivelABCInsertarDA.cs" />
+    <Compile Include="DA\ObtenerConfiguracionesReglasAsignadasDA.cs" />
+    <Compile Include="DA\ObtenerPrecioRefaccionActualDA.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BPMO.Refacciones.BO\BPMO.Refacciones.BO.csproj">
+      <Project>{0481A0CB-A4C1-4593-8AA3-CFA5EB8CB217}</Project>
+      <Name>BPMO.Refacciones.BO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

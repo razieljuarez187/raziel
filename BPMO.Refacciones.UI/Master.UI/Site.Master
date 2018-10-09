@@ -1,0 +1,189 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="BPMO.Refacciones.Master.UI.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+    <meta name="msapplication-window" content="width=1024;height=768" /><link rel="icon" type="image/x-icon" href="../Imagenes/favicon.ico" />
+    <title></title>
+    <!-- hojas de estilo-->
+    <asp:Literal ID="ltEstilo" runat="server" Text="<link href='../CSS/EstiloDesarrollo.css' rel='Stylesheet' type='text/css'/>"></asp:Literal>
+    <link href="../CSS/custom-theme/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+    <link href="../CSS/custom-theme/jquery-ui-1.9.1.custom.css" rel="stylesheet" type="text/css" />
+    <!--Funcionalidad javascript-->
+    <script src="../Script/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="../Script/jquery-ui-1.8.10.custom.min.js" type="text/javascript"></script>
+    <!-- JS para activar el mensajes GrowUI y Bloqueo de la UI-->
+    <script src="../Script/jquery.blockUI.js" type="text/javascript"></script>
+    <!--Funcionalidad del buscador-->
+    <script src="../Script/jconfigBuscadorWeb.js" type="text/javascript"></script>
+    <!--Funcionalidad javascript para la página de inicio-->
+    <script src="../Script/Funcionalidad.js" type="text/javascript"></script>
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+        initClient();
+        Contador($("#<%=hdnContadorSession.ClientID %>").selector, $("#<%=hdnIniContFinSession.ClientID %>").selector);
+    });
+    function initClient() {
+        if ($("#<%=hdnTipoMensaje.ClientID %>").val() == "1") {
+            mostrarMensaje("1");
+        }
+        if ($("#<%=hdnTipoMensaje.ClientID %>").val() == "2") {
+            mostrarMensaje("2");
+        }
+        if ($("#<%=hdnTipoMensaje.ClientID %>").val() == "3") {
+            MensajeError($("#<%=hdnMensaje.ClientID %>").val(), $("#<%=hdnDetalle.ClientID %>").val());
+        }
+        if ($("#<%=hdnTipoMensaje.ClientID %>").val() == "4") {
+            mostrarMensaje("4");
+        }
+        initBuscador();
+    }
+    //Mensaje GrowUI
+    function mostrarMensaje(tipo) {
+        var message = $("#<%=hdnMensaje.ClientID %>").val();
+        MensajeGrowUI(message, tipo);
+    }
+    //Limpiar Hidden de Mensajes
+    function LimpiarHdn() {
+        $("#<%= hdnTipoMensaje.ClientID %>").val("0");
+        $("#<%= hdnMensaje.ClientID %>").val("");
+        $("#<%= hdnDetalle.ClientID %>").val("");
+    }
+
+    document.onkeydown = function () {
+        if (window.event && window.event.keyCode == 116) {
+            window.event.keyCode = 505;
+        }
+        if (window.event && window.event.keyCode == 505) {
+            return false;
+        }
+    }
+
+    function ObtenerHora() {
+        var Fecha = new Date();
+        var hora = Fecha.getHours();
+        var minutos = parseFloat(Fecha.getMinutes()) < 10 ? '0' + Fecha.getMinutes().toString() : Fecha.getMinutes();
+        var segundos = parseFloat(Fecha.getSeconds()) < 10 ? '0' + Fecha.getSeconds().toString() : Fecha.getSeconds();
+        $('#<%= lblHora.ClientID %>').html(hora + ':' + minutos + ':' + segundos);
+    }
+    window.setInterval('ObtenerHora()', '100');
+    $(document).ready(function () {
+        $('a.MenuEstiloElementoEstatico').removeAttr('onclick');
+        $('ul.MenuEstiloEstatico > li').click(function (event) {
+            var evento = event.target;
+            var texto = $(this).find('a.MenuEstiloElementoEstatico');
+            if (texto.attr('href') != '#') {
+                window.location = texto.attr('href') + '?MenuSeleccionado=' + texto.text();                
+                return false;                
+            }
+            if (this != evento) {
+                if ($(evento).is('a') && !$(evento).is('a.MenuEstiloElementoEstatico')) {
+                    window.location = $(evento).attr('href') + '?MenuSeleccionado=' + texto.text();                   
+                }
+                return false;
+            }
+        });
+        SeleccionarMenu();
+    });
+    function SeleccionarMenu() {
+        var menuSeleccionado = $('#<%= hdnMenuSeleccionado.ClientID %>').val();
+        if (menuSeleccionado != '') {
+            var colorFondo = $('#DatosSesion').css('backgroundColor');
+            $('a.MenuEstiloElementoEstatico').filter(function () {
+                return $(this).text() == menuSeleccionado;
+            }).css({ 'backgroundColor': colorFondo, 'color': 'white' }).addClass('MenuPrincipalSeleccionado');
+        }
+    }
+</script>
+<asp:contentplaceholder id="HeadContent" runat="server">
+    </asp:contentplaceholder>
+<body>
+    <form id="form1" runat="server">
+    <!-- Para el uso de UpdatePanel-->
+    <asp:ScriptManager runat="server" ID="smScriptManejador" EnableScriptGlobalization="true"
+        AsyncPostBackTimeout="1080" AsyncPostBackErrorMessage="Se perdió la conexión con el servidor.">
+    </asp:ScriptManager>
+    <script type="text/javascript" src="../Script/jServicio.BlockUI.js"></script>
+    <!-- Finaliza-->
+    <div id="ContenedorPrincipalMDI">
+        <!--inicio del encabezado-->
+        <div id="EncabezadoMDI">
+            <asp:Image ID="imgLogo" runat="Server" ImageUrl="../Imagenes/logos/bmo.png" Width="186px"
+                Height="100px" Style="float: left" />
+            <div id="DatosEncabezado">
+                <div id="DatosSesion">
+                    <asp:Label ID="lblNombre" runat="server" Text=""></asp:Label>
+                    <br />
+                    <asp:LinkButton ID="lkCerrarSesion" runat="server" CssClass="CerrarSesion" ToolTip="Cerrar esta sesión"
+                        OnClick="lkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton>
+                </div>
+                <div id="AdscripcionTituloMDI">
+                    <asp:Label ID="lblAdscripcion" runat="server" CssClass="AdscripcionTitulo"></asp:Label>
+                </div>
+                <div id="HoraMDI" style="width: 130px; margin: 25px 10px 0 0px; float: right; position: relative;
+                    overflow: auto;">
+                    <asp:Image ID="imgRelog" runat="server" ImageUrl="../Imagenes/imgReloj.png" Style="width: 30px;
+                        height: 33px; float: left;" />
+                    <asp:Label ID="lblHora" runat="server" Width="80px" Style="float: right; margin: 7px 0 0 7px;
+                        font-weight: bold; color: Black; font-size: 16px; background-color: transparent;"></asp:Label>
+                </div>
+                <hr id="LineaEncabezado" />
+                <!--Navegacion-->
+                <div id="NavegacionMDI">
+                    <!--Menu principal-->
+                    <asp:Menu ID="mnuPrincipal" runat="server" CssClass="menuPrincipal" Orientation="Horizontal"
+                        ForeColor="White" IncludeStyleBlock="false">                        
+                        <DynamicMenuItemStyle CssClass="MenuElementoDinamico" />
+                        <DynamicMenuStyle CssClass="MenuEstiloDinamico" />
+                        <DynamicSelectedStyle CssClass="MenuEstiloSeleccionEstatico" />
+                        <StaticMenuItemStyle CssClass="MenuEstiloElementoEstatico" />
+                        <StaticMenuStyle CssClass="MenuEstiloEstatico" />
+                        <StaticSelectedStyle CssClass="MenuElementoSeleccionadoEstatico" />
+                    </asp:Menu>
+                    <!-- fin del menu -->
+                </div>
+                <!--fin de la navegación-->
+            </div>
+        </div>
+        <!--fin del encabezado-->
+        <div id="CuerpoMDI">
+            <%-- inicio del cuerpo--%>
+            <asp:UpdatePanel ID="upContenedor" runat="server">
+                <ContentTemplate>
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <!--fin del cuerpo-->
+        <!-- Sección para Mensajes -->
+        <div id="dialog-confirm" title="Confirmación" style="display: none;">
+            <div id="dMensajeConfirmacion">
+            </div>
+        </div>
+        <asp:UpdatePanel ID="upMensaje" runat="server">
+            <ContentTemplate>
+                <asp:HiddenField runat="server" ID="hdnDetalle" />
+                <asp:HiddenField runat="server" ID="hdnMensaje" />
+                <asp:HiddenField runat="server" ID="hdnTipoMensaje" Value="0" />
+                <asp:HiddenField runat="server" ID="hdnMostrarMenu" Value="True" />
+                <asp:HiddenField runat="server" ID="hdnContadorSession" Value="" />
+                <asp:HiddenField runat="server" ID="hdnIniContFinSession" Value="" />
+                <asp:HiddenField runat="server" ID="hdnSessionKey" Value="" />
+                <asp:HiddenField runat="server" ID="hdnMenuSeleccionado" Value="Inicio" />
+                <asp:HiddenField ID="hdnShowBuscador" runat="server" value="0"/>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <!--elementos para mensajes dentro del update panel-->
+        <!-- Termina código para mensajes -->
+        <div id="PieMDI">
+        </div>
+        <!--fin del pie-->
+    </div>
+    </form>
+    <!--fin del form-->
+</body>
+</html>

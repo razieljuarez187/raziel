@@ -1,0 +1,41 @@
+﻿/* File Created: julio 17, 2012 */
+//CONFIGURACIÓN DEL Buscador Web
+/*--------------------------------------------*/
+var btnName = "";
+$.BuscadorWeb = function (opts) {
+    opts = $.extend({}, $.BuscadorWeb.defaults, opts || {});
+    if (opts.url === undefined || opts.xml === undefined || opts.guid === undefined || opts.btnSender === undefined) {
+        alert("Buscador Web: Los siguientes datos son requeridos: url, xml, guid, btnSender");
+        return;
+    }
+    if (opts.preCarga != null)
+        opts.preCarga();
+    var strFeatures = "dialogWidth=" + opts.features.dialogWidth + ";dialogHeight=" + opts.features.dialogHeight + ";center=" + opts.features.center + ";help=" + opts.features.help + ";maximize=" + opts.features.maximize + ";minimize=" + opts.features.minimize + ";";
+    var valor = window.showModalDialog(opts.url + "?cfg=" + opts.xml + "&pktId=" + opts.guid, 'Buscador', strFeatures);
+    if (valor != undefined) {
+        btnName = opts.btnSender.selector.toString();
+        setTimeout('btnResult_Click()', 10);
+    }
+}
+//Ejecuta el evento Click sobre el BtnSender para reflejar el resultado del buscador
+function btnResult_Click() {
+    $(btnName).click();
+}
+//Configuración Default del Buscador
+$.BuscadorWeb.defaults = {
+    url: '../Buscador/UI/BuscadorUI.aspx',
+    xml: undefined,
+    guid: undefined,
+    btnSender: undefined,
+    features: {
+        border: 'thick',
+        dialogWidth: '700px',
+        dialogHeight: '350px',
+        center: 'yes',
+        help: 'no',
+        maximize: '0',
+        minimize: 'no'
+    },
+    preCarga: null
+};
+/*--------------------------------------------*/

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5A4631C6-0E8A-47B6-B908-EC19A54312F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BPMO.Refacciones.Procesos</RootNamespace>
+    <AssemblyName>BPMO.Refacciones.Procesos.PRE</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BPMO.Basicos">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Basicos.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Generales.BR">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Generales.BR.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Patterns">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Patterns.dll</HintPath>
+    </Reference>
+    <Reference Include="BPMO.Primitivos">
+      <HintPath>..\..\BPMO.Librerias\BPMO.Primitivos.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PRE\ConfiguracionReglaUsuarioPRE.cs" />
+    <Compile Include="PRE\ConfiguracionTransferenciaPRE.cs" />
+    <Compile Include="REPORTESPRE\ConfiguracionesAsignadasPRE.cs" />
+    <Compile Include="VIS\IBuscadorConfiguracionReglaVIS.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VIS\IBuscadorConfiguracionTransferenciasVIS.cs" />
+    <Compile Include="VIS\IMantenimientoConfiguracionReglaVIS.cs" />
+    <Compile Include="REPORTESVIS\IConfiguracionesAsignadasVIS.cs" />
+    <Compile Include="VIS\IMantenimientoConfiguracionTransferenciaVIS.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BPMO.Refacciones.BO\BPMO.Refacciones.BO.csproj">
+      <Project>{0481A0CB-A4C1-4593-8AA3-CFA5EB8CB217}</Project>
+      <Name>BPMO.Refacciones.BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BPMO.Refacciones.BR\BPMO.Refacciones.BR.csproj">
+      <Project>{0F7EB7CB-0C0A-4943-A8A7-2D199DDBC360}</Project>
+      <Name>BPMO.Refacciones.BR</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
