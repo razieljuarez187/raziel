@@ -343,6 +343,7 @@
     </Compile>
     <Compile Include="Procesos.UI\BuscadorConfiguracionTransferenciasUI.aspx.cs">
       <DependentUpon>BuscadorConfiguracionTransferenciasUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Procesos.UI\BuscadorConfiguracionTransferenciasUI.aspx.designer.cs">
       <DependentUpon>BuscadorConfiguracionTransferenciasUI.aspx</DependentUpon>
@@ -356,6 +357,7 @@
     </Compile>
     <Compile Include="Procesos.UI\MantenimientoConfiguracionTransferenciaUI.aspx.cs">
       <DependentUpon>MantenimientoConfiguracionTransferenciaUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Procesos.UI\MantenimientoConfiguracionTransferenciaUI.aspx.designer.cs">
       <DependentUpon>MantenimientoConfiguracionTransferenciaUI.aspx</DependentUpon>

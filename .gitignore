@@ -1,0 +1,21 @@
+# Extensiones
+*.dll
+*.user
+*.vspscc
+*.scc
+*.pdb
+*.txt
+*.cache
+*.suo
+
+# Rutas
+/BPMO.Refacciones.BO/bin
+/BPMO.Refacciones.BO/obj
+/BPMO.Refacciones.BR/bin
+/BPMO.Refacciones.BR/obj
+/BPMO.Refacciones.Catalogos.PRE/bin
+/BPMO.Refacciones.Catalogos.PRE/obj
+/BPMO.Refacciones.Procesos.PRE/bin
+/BPMO.Refacciones.Procesos.PRE/obj
+/BPMO.Refacciones.UI/bin
+/BPMO.Refacciones.UI/obj

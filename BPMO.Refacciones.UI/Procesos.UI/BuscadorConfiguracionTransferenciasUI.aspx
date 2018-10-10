@@ -137,7 +137,7 @@
         <!-- Barra de localización -->
         <div id="BarraUbicacion">
             <span style="margin-left: 5px; color: White; font-size: 12px; font-weight: bold;">PROCESOS
-                - CONFIGURACION DE TRANSFERENCIAS - BUSCAR TRANSFERENCIA </span>
+                - CONFIGURACION DE TRANSFERENCIAS - BUSCAR CONFIGURACIÓN </span>
         </div>
         <div style="height: 110px;">
             <ul id="MenuSecundario">
@@ -146,7 +146,7 @@
                         ForeColor="White" Width="100%"><img src="../Imagenes/IconoConsultarSeleccionado.png" alt="Icono" class="IconoMenu" /> CONSULTAR <img src="../Imagenes/SelectorBlanco.png" alt="selección" style="float:right; margin-right:10px" /></asp:HyperLink>
                 </li>
                 <li>
-                    <asp:HyperLink ID="hlRegistroCotizacion" runat="server" NavigateUrl="~/Procesos.UI/MantenimientoConfiguracionTransferenciaUI.aspx"> <img src="../Imagenes/IconoNuevo.png" alt="Icono" class="IconoMenu" />NUEVA CONFIGURACIÓN</asp:HyperLink>
+                    <asp:HyperLink ID="hlRegistroCotizacion" runat="server" NavigateUrl="~/Procesos.UI/MantenimientoConfiguracionTransferenciaUI.aspx" Font-Size=Small> <img src="../Imagenes/IconoNuevo.png" alt="Icono" class="IconoMenu" />NUEVA CONFIGURACIÓN</asp:HyperLink>
                 </li>
             </ul>
         </div>
@@ -284,7 +284,7 @@
                                 <asp:Label ID="lblAlmacen" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="TipoPedido" SortExpression="TIPOPEDIDO">
+                        <asp:TemplateField HeaderText="Tipo" SortExpression="TIPOPEDIDO">
                             <ItemStyle HorizontalAlign="Left" Width="200px" Wrap="True" />
                             <ItemTemplate>
                                 <asp:Label ID="lblTipoPedido" runat="server" />
