@@ -1,4 +1,5 @@
 # Extensiones
+*.sln
 *.dll
 *.user
 *.vspscc
