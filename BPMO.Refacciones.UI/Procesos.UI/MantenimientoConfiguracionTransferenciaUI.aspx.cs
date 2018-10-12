@@ -579,6 +579,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.ibtnBuscaTipoPedido.Visible = true;
             this.DesactivarTexts(false);
             this.btnCancelar.Enabled = true;
+            this.lbNivelABC.Enabled = true;
+            this.lbNivelABCRel.Enabled = true;
             this.hdnTipoAccion.Value = "INSERTAR";
             this.lblEncabezadoLeyenda.Text = "CATÁLOGOS - REGISTRAR CONFIGURACIÓN";
             this.AsignarClaseCss();
@@ -602,6 +604,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.ibtnBuscaAlmacen.Visible = true;
             this.ibtnBuscaTipoPedido.Visible = true;
             this.btnCancelar.Enabled = true;
+            this.lbNivelABC.Enabled = true;
+            this.lbNivelABCRel.Enabled = true;
             this.hdnTipoAccion.Value = "EDITAR";
             this.lblEncabezadoLeyenda.Text = "CATÁLOGOS - EDITAR CONFIGURACIÓN";
             this.AsignarClaseCss();
@@ -624,6 +628,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.ibtnBuscaAlmacen.Visible = false;
             this.ibtnBuscaTipoPedido.Visible = false;
             this.btnCancelar.Enabled = false;
+            this.lbNivelABC.Enabled = false;
+            this.lbNivelABCRel.Enabled = false;
             this.hdnTipoAccion.Value = "EDITAR";
             this.lblEncabezadoLeyenda.Text = "CATÁLOGOS - CONSULTAR CONFIGURACIÓN";
             this.AsignarClaseCss(false, false, true);
@@ -870,7 +876,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 if (this.btnGuardar.CommandName.Equals("EDITAR")) {
                     presentador.CancelarEdicion();
                 } else {
-                    this.Response.Redirect("~/Procesos.UI/BuscadorConfiguracionTransferenciaUI.aspx");
+                    this.Response.Redirect("~/Procesos.UI/BuscadorConfiguracionTransferenciasUI.aspx");
                 }
             } catch (Exception ex) {
                 MostrarMensaje("Inconsistencias al cancelar", ETipoMensajeIU.ERROR, ex.Message);
@@ -878,20 +884,24 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         }
         protected void btnAgregar_Click(object sender, ImageClickEventArgs e) {
             try {
+                List<NivelABCBO> lstAux = new List<NivelABCBO>();
                 for (int i = 0; i < lbNivelABC.Items.Count; i++) {
                     if (lbNivelABC.Items[i].Selected)
-                        this.presentador.AgregarConfiguracionABC(i);
+                        lstAux.Add(this.NivelABCBO[i]);
                 }
+                this.presentador.AgregarConfiguracionABC(lstAux);
             } catch (Exception ex) {
                 MostrarMensaje("Error con la configuración", ETipoMensajeIU.ERROR, ex.Message);
             }
         }
         protected void btnQuitar_Click(object sender, ImageClickEventArgs e) {
             try {
+                List<NivelABCBO> lstAux = new List<NivelABCBO>();
                 for (int i = 0; i < lbNivelABCRel.Items.Count; i++) {
                     if (lbNivelABCRel.Items[i].Selected)
-                        this.presentador.QuitarConfiguracionABC(i);
+                        lstAux.Add(this.ConfNivelABCBO[i]);                        
                 }
+                this.presentador.QuitarConfiguracionABC(lstAux);
             } catch (Exception ex) {
                 MostrarMensaje("Error con la configuración", ETipoMensajeIU.ERROR, ex.Message);
             }

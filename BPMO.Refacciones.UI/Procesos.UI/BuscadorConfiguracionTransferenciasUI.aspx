@@ -3,93 +3,15 @@
     Inherits="BPMO.Refacciones.UI.BuscadorConfiguracionTransferenciasUI" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <script src="../Script/jquery.ui.datepicker-es.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function pageLoad() {
-            if ($("#<%=grvConfiguracionesTransferencia.ClientID %>").length == 1 && $("#<%=grvConfiguracionesTransferencia.ClientID %>")[0].rows.length == 1 && $("#<%=txtId.ClientID %>").val().length > 0)
-                SetValue("", "", "", "", "", "", "", "", "", true);
-
-            $("#<%=txtId.ClientID %>").change(function () {
-                if (typeof (Page_ClientValidate) == 'function') {
-                    Page_ClientValidate("FormatoValido");
-                }
-                if (this.value.length > 0) {
-                    if (Page_IsValid)
-                        CopyData();
-                    else
-                        return;
-                } else {
-                    //Restablecer Filtros
-                    var valores = $("#<%=hdnViewUI.ClientID %>").val();
-                    if (valores.length > 0) {
-                        var filtros = valores.split("$$");
-                        SetValue(filtros[0], filtros[1], filtros[2], filtros[3], filtros[4], filtros[5], filtros[6], filtros[7], filtros[8], false);
-                        $("#<%=hdnViewUI.ClientID %>").val("");
-                    }
-                }
-            });
-            $('form').keypress(function (e) {
-                if (e.which == 13)
-                    return false;
-            });
-            $("#<%=txtId.ClientID %>").keypress(function (e) {
-                if (e.which == 13 && this.value.length !== 0) {
-                    if (typeof (Page_ClientValidate) == 'function')
-                        Page_ClientValidate("FormatoValido");
-                    if (Page_IsValid) {
-                        CopyData();
-                        $('.BotonComando').click();
-                    } else {
-                        return;
-                    }
-                }
-            });
-            EventTxtBuscar();
-        }
-        function CopyData() {
-            if ($("#<%=hdnViewUI.ClientID %>").val().length > 0)
-                return;
-            //Almacenar Filtro y limpiar la UI
-            var filtros = $("#<%=hdnSucursalId.ClientID %>").val() + "$$" + $("#<%=txtSucursal.ClientID %>").val() + "$$" +
-            $("#<%=hdnAlmacenId.ClientID %>").val() + "$$" + $("#<%=txtAlmacen.ClientID %>").val() + "$$" +
-            $("#<%=hdnTipoPedidoId.ClientID %>").val() + "$$" + $("#<%=txtTipoPedido.ClientID %>").val() + "$$" + $("#<%=ddlEstatus.ClientID %>").val();
-            $("#<%=hdnViewUI.ClientID %>").val(filtros);
-            SetValue("", "", "", "", "", "", "", "", "", "", "", true);
-        }
-        function SetValue(val1, val2, val3, val4, val5, val6, val7, disabled) {
-            var sucursal = $("#<%=txtSucursal.ClientID %>").selector;
-            var almacen = $("#<%=txtAlmacen.ClientID %>").selector;
-            var usuario = $("#<%=txtTipoPedido.ClientID %>").selector;
-            var status = $("#<%=ddlEstatus.ClientID %>").selector;
-            $("#<%=hdnSucursalId.ClientID %>").val(val1); $(sucursal).val(val2);
-            $("#<%=hdnAlmacenId.ClientID %>").val(val3); $(almacen).val(val4);
-            $("#<%=hdnTipoPedidoId.ClientID %>").val(val5); $(usuario).val(val6); $(status).val(val7);
-            if (disabled) {
-                AddClass(sucursal, $("#<%=ibtnBuscaSucursal.ClientID %>").selector);
-                AddClass(almacen, $("#<%=ibtnBuscaAlmacen.ClientID %>").selector);
-                AddClass(tipoPedido, $("#<%=ibtnBuscaTipoPedido.ClientID %>").selector);
-                $(status).attr("disabled", "true");
-            } else {
-                DelClass(sucursal, $("#<%=ibtnBuscaSucursal.ClientID %>").selector);
-                DelClass(almacen, $("#<%=ibtnBuscaAlmacen.ClientID %>").selector);
-                DelClass(tipoPedido, $("#<%=ibtnBuscaTipoPedido.ClientID %>").selector);
-                $(status).removeAttr("disabled", "true");
-            }
-        }
-        function AddClass(compont, btnImg) {
-            $(compont).attr("disabled", "true"); $(compont)._addClass("textBoxDisabled");
-            $(btnImg).attr("disabled", "true");
-        }
-        function DelClass(compont, btnImg) {
-            $(compont).removeAttr("disabled"); $(compont)._removeClass("textBoxDisabled");
-            $(btnImg).removeAttr("disabled");
-        }
         function BtnBuscar(guid, catalogo) {
             var width = "720px";
             if (catalogo.startsWith("EmpresaLider"))
                 width = '660px';
             else if (catalogo.startsWith("SucursalLider"))
                 width = '740px';
+            else if (catalogo.startsWith("TipoPedido"))
+                width = '600px';
             $.BuscadorWeb({
                 xml: catalogo,
                 guid: guid,
@@ -104,20 +26,47 @@
                 btnSender: $("#<%=btnResult.ClientID %>")
             });
         }
+        function GuardarEstado(boton) {
+            var Estado = SHDIVNotificaciones(boton);
+            $('#<%= hdnViewUI.ClientID %>').val(Estado);
+        }
+        function pageLoad() {
+            if ($('#<%= hdnViewUI.ClientID %>').val() == 'false') {
+                $('#DatosControles').hide();
+                var boton = $('#<%=hdnViewUI.ClientID %>');
+                boton.attr('title', 'Mostrar');
+                boton.parent().css({ 'backgroundColor': 'white', 'color': '#5c5e5d' });
+            }
+            EjecutarBotonBusqueda();
+            EventTxtBuscar();
+        }
         function EventTxtBuscar() {
             $("input[type='text']").change(function () {
                 switch (this.name) {
                     case $('#<%= txtEmpresa.ClientID %>')[0].name:
-                        ValidarTxt(this, $('#<%= hdnEmpresaId.ClientID %>'), $('#<%= ibtnBuscaEmpresa.ClientID %>'));
+                        if ($(this).val().length == 0) {
+                            $('#<%= hdnEmpresaId.ClientID %>').val("");
+                            $('#<%= hdnSucursalId.ClientID %>').val("");
+                            $('#<%= txtSucursal.ClientID %>').val("");
+                            $('#<%= hdnAlmacenId.ClientID %>').val("");
+                            $('#<%= txtAlmacen.ClientID %>').val("");
+                        } else {
+                            $('#<%= hdnBuscador.ClientID %>').val("1");
+                            $('#<%= ibtnBuscaEmpresa.ClientID %>').click();
+                        }
                         break;
                     case $('#<%= txtSucursal.ClientID %>')[0].name:
-                        ValidarTxt(this, $('#<%= hdnSucursalId.ClientID %>'), $('#<%= ibtnBuscaSucursal.ClientID %>'));
+                        if ($(this).val().length == 0) {
+                            $('#<%= hdnSucursalId.ClientID %>').val("");
+                            $('#<%= hdnAlmacenId.ClientID %>').val("");
+                            $('#<%= txtAlmacen.ClientID %>').val("");
+                        } else {
+                            $('#<%= hdnBuscador.ClientID %>').val("1");
+                            $('#<%= ibtnBuscaSucursal.ClientID %>').click();
+                        }
                         break;
                     case $('#<%= txtAlmacen.ClientID %>')[0].name:
                         ValidarTxt(this, $('#<%= hdnAlmacenId.ClientID %>'), $('#<%= ibtnBuscaAlmacen.ClientID %>'));
-                        break;
-                    case $('#<%= txtTipoPedido.ClientID %>')[0].name:
-                        ValidarTxt(this, $('#<%= hdnTipoPedidoId.ClientID %>'), $('#<%= ibtnBuscaTipoPedido.ClientID %>'));
                         break;
                 }
             });
@@ -129,6 +78,21 @@
                 $('#<%= hdnBuscador.ClientID %>').val("1");
                 $(btnAEjecutar).click();
             }
+        }
+        function ValidarCampo(tipo) {
+            var correcto = true;
+            if (tipo == 1) {
+                if ($('#<%= txtEmpresa.ClientID %>').val().length == 0) {
+                    MensajeGrowUI("Es necesario que primero seleccione una empresa.", "4");
+                    correcto = false;
+                }
+            } else {
+                if ($('#<%= txtSucursal.ClientID %>').val().length == 0) {
+                    MensajeGrowUI("Es necesario que primero seleccione una sucursal.", "4");
+                    correcto = false;
+                }
+            }
+            return correcto;
         }
     </script>
 </asp:Content>
@@ -159,11 +123,11 @@
                     class="btnSH" src="../Imagenes/Abajo.jpg" style="float: right; cursor: pointer;
                     width: 35px; height: 20px;" />
             </div>
-            <div>
+            <div id="DatosControles">
                 <table id="TablaBusqueda" class="trAlinearDerecha" style="width: 100%; margin-top: 10px;">
                     <tr>
                         <td style="width: 230px;">
-                            ID
+                            IDENTIFICADOR
                         </td>
                         <td style="width: .2em">
                         </td>
@@ -273,19 +237,19 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Sucursal" SortExpression="SUCURSAL">
-                            <ItemStyle HorizontalAlign="Left" Width="200px" Wrap="True" />
+                            <ItemStyle HorizontalAlign="Left" Width="150px" Wrap="True" />
                             <ItemTemplate>
                                 <asp:Label ID="lblSucursal" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Almacen" SortExpression="ALMACEN">
-                            <ItemStyle HorizontalAlign="Left" Width="200px" Wrap="True" />
+                            <ItemStyle HorizontalAlign="Left" Width="150px" Wrap="True" />
                             <ItemTemplate>
                                 <asp:Label ID="lblAlmacen" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Tipo" SortExpression="TIPOPEDIDO">
-                            <ItemStyle HorizontalAlign="Left" Width="200px" Wrap="True" />
+                            <ItemStyle HorizontalAlign="Left" Width="100px" Wrap="True" />
                             <ItemTemplate>
                                 <asp:Label ID="lblTipoPedido" runat="server" />
                             </ItemTemplate>

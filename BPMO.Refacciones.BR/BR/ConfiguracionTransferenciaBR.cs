@@ -117,7 +117,6 @@ namespace BPMO.Refacciones.BR {
             Guid miFirma = Guid.NewGuid();
             BPMO.Primitivos.Utilerias.ManejadorDataContext manejadorDctx = new BPMO.Primitivos.Utilerias.ManejadorDataContext(dataContext, "LIDER");
             try {
-                ConfiguracionTransferenciaConsultarDAO consultarDAO = new ConfiguracionTransferenciaConsultarDAO();
                 List<CatalogoBaseBO> lstNivelABCBO;
                 NivelABCBO nivelABCBO = new NivelABCBO();
                 NivelABCBR nivelABCBR = new NivelABCBR();
@@ -125,16 +124,27 @@ namespace BPMO.Refacciones.BR {
                 ConfiguracionCantidadTransferenciaBR ConfiguracionCantidadTransferenciaBR = new ConfiguracionCantidadTransferenciaBR();
                 ConfiguracionHoraTransferenciaBO configuracionHoraTransferenciaBO = new ConfiguracionHoraTransferenciaBO();
                 ConfiguracionHoraTransferenciaBR ConfiguracionHoraTransferenciaBR = new ConfiguracionHoraTransferenciaBR();
+                List<AuditoriaBaseBO> confTransferenciaBO = this.Consultar(dataContext, auditoriaBase);
+                if (confTransferenciaBO != null) {
+                    List<AuditoriaBaseBO> lstConfiguracionesCantidad = ConfiguracionCantidadTransferenciaBR.Consultar(dataContext, configuracionCantidadTransferenciaBO, confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0]);
+                    if (lstConfiguracionesCantidad.Count > 1)
+                        throw new Exception("Se encontraron mas de una configuración de cantidad de transferencias. Por favor verifique.");
+                    else if (lstConfiguracionesCantidad.Count <= 0)
+                        throw new Exception("No se encontró ninguna configuración de cantidad de transferencias. Por favor verifique.");
+                    else
+                        confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].ConfiguracionCantidadTransferencia = lstConfiguracionesCantidad.ConvertAll(item => (ConfiguracionCantidadTransferenciaBO)item)[0];
 
-                List<AuditoriaBaseBO> confTransferenciaBO = consultarDAO.Consultar(dataContext, auditoriaBase);
-                List<AuditoriaBaseBO> lstConfiguracionesCantidad = ConfiguracionCantidadTransferenciaBR.Consultar(dataContext, configuracionCantidadTransferenciaBO, confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0]);
-                List<AuditoriaBaseBO> lstConfiguracionesHora = ConfiguracionHoraTransferenciaBR.Consultar(dataContext, configuracionHoraTransferenciaBO, confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0]);
-                lstNivelABCBO = nivelABCBR.Consultar(dataContext, nivelABCBO);
-                if (lstConfiguracionesCantidad.Count <= 1 && lstConfiguracionesHora.Count <= 1) {
-                    confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].ConfiguracionCantidadTransferencia = lstConfiguracionesCantidad.ConvertAll(item => (ConfiguracionCantidadTransferenciaBO)item)[0];
-                    confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].ConfiguracionHoraTransferencia = lstConfiguracionesHora.ConvertAll(item => (ConfiguracionHoraTransferenciaBO)item)[0];
+                    List<AuditoriaBaseBO> lstConfiguracionesHora = ConfiguracionHoraTransferenciaBR.Consultar(dataContext, configuracionHoraTransferenciaBO, confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0]);
+                    if (lstConfiguracionesHora.Count > 1)
+                        throw new Exception("Se encontraron mas de una configuración de hora de transferencias. Por favor verifique.");
+                    else if (lstConfiguracionesHora.Count <= 0)
+                        throw new Exception("No se encontró ninguna configuración de hora de transferencias. Por favor verifique.");
+                    else
+                        confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].ConfiguracionHoraTransferencia = lstConfiguracionesHora.ConvertAll(item => (ConfiguracionHoraTransferenciaBO)item)[0];
+
+                    lstNivelABCBO = nivelABCBR.Consultar(dataContext, nivelABCBO);
+                    confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].NivelesABC = lstNivelABCBO.ConvertAll(x => (NivelABCBO)x);
                 }
-                confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].NivelesABC = lstNivelABCBO.ConvertAll(x => (NivelABCBO)x);
                 return confTransferenciaBO;
             } catch {
                 throw;

@@ -420,45 +420,53 @@ namespace BPMO.Refacciones.Procesos.PRE {
 
             return configuracion;
         }
-        public void AgregarConfiguracionABC(int indiceOrigen) {
+        public void AgregarConfiguracionABC(List<NivelABCBO> lstNivelesABC) {
             try {
-                List<NivelABCBO> lstConfABC;
-                List<NivelABCBO> lstABC;
-                if (this.vistaMantto.NivelABCBO == null)
-                    lstABC = new List<NivelABCBO>();
-                else
-                    lstABC = this.vistaMantto.NivelABCBO;
-                if (this.vistaMantto.ConfNivelABCBO == null)
-                    lstConfABC = new List<NivelABCBO>();
-                else
-                    lstConfABC = this.vistaMantto.ConfNivelABCBO;
-                lstConfABC.Add(vistaMantto.NivelABCBO[indiceOrigen]);
-                lstABC.Remove(vistaMantto.NivelABCBO[indiceOrigen]);
+                if (lstNivelesABC != null && lstNivelesABC.Count > 0) {
+                    List<NivelABCBO> lstConfABC;
+                    List<NivelABCBO> lstCatABC;
+                    if (this.vistaMantto.ConfNivelABCBO == null)
+                        lstConfABC = new List<NivelABCBO>();
+                    else
+                        lstConfABC = this.vistaMantto.ConfNivelABCBO;
+                    if (this.vistaMantto.NivelABCBO == null)
+                        lstCatABC = new List<NivelABCBO>();
+                    else
+                        lstCatABC = this.vistaMantto.NivelABCBO;
 
-                this.vistaMantto.NivelABCBO = lstABC;
-                this.vistaMantto.ConfNivelABCBO = lstConfABC;
+                    foreach (NivelABCBO abc in lstNivelesABC) {
+                        lstConfABC.Add(abc);
+                        lstCatABC.Remove(abc);
+                    }
+                    this.vistaMantto.ConfNivelABCBO = lstConfABC;
+                    this.vistaMantto.NivelABCBO = lstCatABC;
+                }
             } catch (Exception) {
                 
                 throw;
             }
         }
-        public void QuitarConfiguracionABC(int indiceOrigen) {
+        public void QuitarConfiguracionABC(List<NivelABCBO> lstNivelesABC) {
             try {
-                List<NivelABCBO> lstConfABC;
-                List<NivelABCBO> lstABC;
-                if (this.vistaMantto.NivelABCBO == null)
-                    lstABC = new List<NivelABCBO>();
-                else
-                    lstABC = this.vistaMantto.NivelABCBO;
-                if (this.vistaMantto.ConfNivelABCBO == null)
-                    lstConfABC = new List<NivelABCBO>();
-                else
-                    lstConfABC = this.vistaMantto.ConfNivelABCBO;
-                lstABC.Add(vistaMantto.ConfNivelABCBO[indiceOrigen]);
-                lstConfABC.Remove(vistaMantto.ConfNivelABCBO[indiceOrigen]);
+                if (lstNivelesABC != null && lstNivelesABC.Count > 0) {
+                    List<NivelABCBO> lstConfABC;
+                    List<NivelABCBO> lstCatABC;
+                    if (this.vistaMantto.ConfNivelABCBO == null)
+                        lstConfABC = new List<NivelABCBO>();
+                    else
+                        lstConfABC = this.vistaMantto.ConfNivelABCBO;
+                    if (this.vistaMantto.NivelABCBO == null)
+                        lstCatABC = new List<NivelABCBO>();
+                    else
+                        lstCatABC = this.vistaMantto.NivelABCBO;
 
-                this.vistaMantto.NivelABCBO = lstABC;
-                this.vistaMantto.ConfNivelABCBO = lstConfABC;
+                    foreach (NivelABCBO abc in lstNivelesABC) {
+                        lstCatABC.Add(abc);
+                        lstConfABC.Remove(abc);
+                    }
+                    this.vistaMantto.ConfNivelABCBO = lstConfABC;
+                    this.vistaMantto.NivelABCBO = lstCatABC;
+                }
             } catch (Exception) {
 
                 throw;
@@ -547,14 +555,14 @@ namespace BPMO.Refacciones.Procesos.PRE {
                         almacen.Activo = true;
                         nombreTaller = vMantto.NombreAlmacen;
                         if (vMantto.SucursalId == null) {
-                            vMantto.MostrarMensaje("Es necesario que primero seleccione un almacén.", ETipoMensajeIU.ADVERTENCIA);
+                            vMantto.MostrarMensaje("Es necesario que primero seleccione una sucursal.", ETipoMensajeIU.ADVERTENCIA);
                             return null;
                         }
                         _sucursalId = vistaMantto.SucursalId;
                     } else {
                         nombreTaller = vConsulta.NombreAlmacen;
                         if (vConsulta.SucursalId == null) {
-                            vConsulta.MostrarMensaje("Es necesario que primero seleccione un almacén.", ETipoMensajeIU.ADVERTENCIA);
+                            vConsulta.MostrarMensaje("Es necesario que primero seleccione una sucursal.", ETipoMensajeIU.ADVERTENCIA);
                             return null;
                         }
                         _sucursalId = vConsulta.SucursalId;

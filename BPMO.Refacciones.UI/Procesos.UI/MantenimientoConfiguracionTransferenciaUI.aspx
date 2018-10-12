@@ -155,7 +155,10 @@
             <div id="BarraHerramientasOS" style="width: 831px; float: right;">
                 <div style="float: left; margin-left: 0; width: 410px">
                     <ul id="MenuOpcionesCatalogos" class="MenuOpciones">
-                        <li id="BotonConfiguracion" class="MenuOpcionesli">CONFIGURACIÓN</li>
+                        <li id="BotonConfiguracion" class="MenuOpcionesli">
+                            <div style="font-size: x-small;">
+                                CONFIGURACIÓN</div>
+                        </li>
                         <li id="BotonEditar" class="MenuOpcionesli">EDITAR</li>
                     </ul>
                 </div>
@@ -302,7 +305,7 @@
                     </tr>
                     <tr>
                         <td>
-                            *maximoArticulosLinea
+                            *Articulos por item
                         </td>
                         <td>
                         </td>
@@ -318,7 +321,7 @@
                     </tr>
                     <tr>
                         <td>
-                            *MaximoLineas
+                            *Cantidad de items
                         </td>
                         <td>
                         </td>
@@ -348,6 +351,9 @@
                     <asp:Button ID="btnEditar" runat="server" OnClick="btnEditar_Click" Text="Editar"
                         CssClass="BotonEditar" Style="float: right; margin-right: 10px;" />
                 </div>
+                <div class="ContenedorMensajes">
+                    <span class="Requeridos"></span>
+                </div>
                 <div id="ContenidoDatosOrden" style="width: 940px; margin: 40px auto; background-color: White">
                     <ul id="ulTaps">
                         <li id="liCantidad" class="SubMenuOrden">
@@ -371,15 +377,20 @@
                     </ul>
                     <div id="detalleOS" class="GroupBody">
                         <fieldset style="margin-top: 0; border-top: none;">
-                            <div id="divCantidad" style="width: 100%;">
+                            <div id="divCantidad" style="width: 94%; margin: 15px; padding: 15px;">
                                 <asp:Panel ID="pnlCantidad" runat="server">
-                                    <table style="width: 98%; margin-top: 10px;" class="trAlinearDerecha">
+                                    <table style="width: 98%; margin-top: 10px;">
                                         <tr id="trCantidadActivolbl" runat="server">
-                                            <td>
-                                                Activo
+                                            <td colspan="6">
                                             </td>
-                                            <td>
-                                                <asp:CheckBox ID="chkCantidadActivo" runat="server" />
+                                            <td align="right">
+                                                Activo
+                                                <asp:CheckBox ID="chkCantidadActivo" runat="server" TextAlign="Left" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="7">
+                                                <br />
                                             </td>
                                         </tr>
                                         <tr id="trCantidadSemanalbl" runat="server">
@@ -473,15 +484,20 @@
                                     </table>
                                 </asp:Panel>
                             </div>
-                            <div id="divHora" style="padding: 0; font-size: 12px;">
+                            <div id="divHora" style="width: 94%; margin: 15px; padding: 15px;">
                                 <asp:Panel ID="pnlHora" runat="server">
-                                    <table style="width: 98%; margin-top: 10px;" class="trAlinearDerecha">
+                                    <table style="width: 98%; margin-top: 10px;">
                                         <tr id="trHoraActivolbl" runat="server">
-                                            <td>
-                                                Activo
+                                            <td colspan="6">
                                             </td>
-                                            <td>
-                                                <asp:CheckBox ID="chkHoraActivo" runat="server" />
+                                            <td align="right">
+                                                Activo
+                                                <asp:CheckBox ID="chkHoraActivo" runat="server" TextAlign="Left" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="7">
+                                                <br />
                                             </td>
                                         </tr>
                                         <tr id="trHoraSemanalbl" runat="server">
@@ -582,44 +598,23 @@
                                     </table>
                                 </asp:Panel>
                             </div>
-                            <div id="divNivelABC" style="padding: 0; font-size: 12px;">
+                            <div id="divNivelABC" style="width: 94%; margin: 15px; padding: 15px;">
                                 <asp:Panel ID="pnlNivelABC" runat="server">
-                                    <table style="width: 98%; margin-top: 10px;" class="">
+                                    <table style="width: 98%; margin-top: 10px;">
                                         <tr id="trNivelABCLabel" runat="server">
-                                            <td style="width: 40%; margin-top: 10px;">
-                                                Catálogo
-                                                <asp:ListBox ID="lbNivelABC" runat="server" Height="131px" Width="100%" SelectionMode="Multiple"
+                                            <td style="width: 40%; margin-top: 10px;" align="right">
+                                                <asp:ListBox ID="lbNivelABC" runat="server" Height="150px" Width="50%" SelectionMode="Multiple"
                                                     DataTextField="Nombre"></asp:ListBox>
                                             </td>
-                                            <td style="width: 20%; margin-top: 10px; text-align: center;">
-                                                <table style="width: 100%; height: 139px;">
-                                                    <tr>
-                                                        <td class="style5">
-                                                            <asp:ImageButton ID="imgBtnAgregar" runat="server" ImageUrl="~/Imagenes/imgSlideDerecha.png"
-                                                                OnClick="btnAgregar_Click" ImageAlign="Bottom" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="style5">
-                                                            <asp:ImageButton ID="imgBtnQuitar" runat="server" ImageUrl="~/Imagenes/imgSlideIzquierda.png"
-                                                                OnClick="btnQuitar_Click" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="style5">
-                                                            &nbsp;
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="style5">
-                                                            &nbsp;
-                                                        </td>
-                                                    </tr>
-                                                </table>
+                                            <td style="width: 5%; text-align: center; height: 100%; vertical-align:middle;">
+                                                <asp:ImageButton ID="imgBtnAgregar" runat="server" ImageUrl="~/Imagenes/imgSlideDerecha.png"
+                                                                OnClick="btnAgregar_Click" ImageAlign="Bottom" ToolTip="Agregar" />
+                                                <br /><br />
+                                                <asp:ImageButton ID="imgBtnQuitar" runat="server" ImageUrl="~/Imagenes/imgSlideIzquierda.png"
+                                                                OnClick="btnQuitar_Click" ToolTip="Quitar" />
                                             </td>
                                             <td style="width: 40%; margin-top: 10px;">
-                                                Seleccionados
-                                                <asp:ListBox ID="lbNivelABCRel" runat="server" Height="131px" Width="100%" SelectionMode="Multiple"
+                                                <asp:ListBox ID="lbNivelABCRel" runat="server" Height="150px" Width="50%" SelectionMode="Multiple"
                                                     DataTextField="Nombre"></asp:ListBox>
                                             </td>
                                         </tr>
@@ -628,9 +623,6 @@
                             </div>
                         </fieldset>
                     </div>
-                </div>
-                <div class="ContenedorMensajes">
-                    <span class="Requeridos"></span>
                 </div>
             </div>
         </div>
