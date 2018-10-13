@@ -161,7 +161,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 configuracionBr = new ConfiguracionTransferenciaBR();
                 configuracion = this.InterfazADatosMantto();
                 SeguridadBO seguridadBO = new SeguridadBO(Guid.Empty, this.vistaMantto.UsuarioSesion, this.vistaMantto.Adscripcion);
-                configuracionBr.InsertarCompleto(dataContext, configuracion, seguridadBO, vistaMantto.ConfNivelABCBO);
+                configuracionBr.InsertarCompleto(dataContext, configuracion, seguridadBO);
                 vistaMantto.Id = configuracion.Id = configuracionBr.UltimoIdGenerado;
                 this.DesplegarDetalleConfiguracionRegla(configuracion.Id);
                 vistaMantto.MostrarMensaje("Guardado Exitoso", ETipoMensajeIU.EXITO);
@@ -183,7 +183,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 
                 ConfiguracionTransferenciaBO configuracion = this.InterfazADatosEditar();
                 SeguridadBO seguridadBO = new SeguridadBO(Guid.Empty, this.vistaMantto.UsuarioSesion, this.vistaMantto.Adscripcion);
-                configuracionBr.ActualizarCompleto(dataContext, configuracion, seguridadBO, vistaMantto.ConfNivelABCBO);
+                configuracionBr.ActualizarCompleto(dataContext, configuracion, seguridadBO);
                 this.DesplegarDetalleConfiguracionRegla(vistaMantto.Id);
                 vistaMantto.MostrarMensaje("Guardado Exitoso", ETipoMensajeIU.EXITO);
             } catch (Exception ex) {
@@ -223,7 +223,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
             configuracion.ConfiguracionHoraTransferencia.Domingo = vistaMantto.confHoraDomingo;
             configuracion.ConfiguracionHoraTransferencia.Activo = vistaMantto.confHoraActivo;
 
-            configuracion.NivelesABC = vistaMantto.NivelABCBO;
+            configuracion.NivelesABC = vistaMantto.ConfNivelABCBO;
 
             return configuracion;
         }
@@ -376,6 +376,49 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 sError += " , Activo";
             if (vistaMantto.UsuarioSesion == null || !vistaMantto.UsuarioSesion.Id.HasValue)
                 sError += " , Usuario Auditoría";            
+            if(!vistaMantto.maximoArticulosLinea.HasValue)
+                sError += " , Artículos por itemm";
+            if (!vistaMantto.maximoLineas.HasValue)
+                sError += " , Cantidad de items";
+
+            string strDiasFaltantes = string.Empty;
+            #region Cantidades por día           
+            if (!vistaMantto.confCantidadLunes.HasValue)
+                strDiasFaltantes += " , Lunes";
+            if (!vistaMantto.confCantidadMartes.HasValue)
+                strDiasFaltantes += " , Martes";
+            if (!vistaMantto.confCantidadMiercoles.HasValue)
+                strDiasFaltantes += " , Miercoles";
+            if (!vistaMantto.confCantidadJueves.HasValue)
+                strDiasFaltantes += " , Jueves";
+            if (!vistaMantto.confCantidadViernes.HasValue)
+                strDiasFaltantes += " , Viernes";
+            if (!vistaMantto.confCantidadSabado.HasValue)
+                strDiasFaltantes += " , Sabado";
+            if (!vistaMantto.confCantidadDomingo.HasValue)
+                strDiasFaltantes += " , Domingo";
+            if (strDiasFaltantes.Length > 0)
+                sError += ", Cantidad por día: " + strDiasFaltantes;
+            #endregion Cantidades por día
+            strDiasFaltantes = string.Empty;
+            #region Horas por día
+            if (!vistaMantto.confHoraLunes.HasValue)
+                strDiasFaltantes += " , Lunes";
+            if (!vistaMantto.confHoraMartes.HasValue)
+                strDiasFaltantes += " , Martes";
+            if (!vistaMantto.confHoraMiercoles.HasValue)
+                strDiasFaltantes += " , Miercoles";
+            if (!vistaMantto.confHoraJueves.HasValue)
+                strDiasFaltantes += " , Jueves";
+            if (!vistaMantto.confHoraViernes.HasValue)
+                strDiasFaltantes += " , Viernes";
+            if (!vistaMantto.confHoraSabado.HasValue)
+                strDiasFaltantes += " , Sabado";
+            if (!vistaMantto.confHoraDomingo.HasValue)
+                strDiasFaltantes += " , Domingo";
+            if (strDiasFaltantes.Length > 0)
+                sError += ", Hora por día: " + strDiasFaltantes;
+            #endregion Horas por día
             if (sError.Length > 0)
                 sError = "Los siguientes campos son obligatorios: " + sError.Substring(2);
             return sError;
@@ -416,7 +459,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
             configuracion.ConfiguracionHoraTransferencia.Domingo = vistaMantto.confHoraDomingo;
             configuracion.ConfiguracionHoraTransferencia.Activo = vistaMantto.confHoraActivo;
 
-            configuracion.NivelesABC = vistaMantto.NivelABCBO;
+            configuracion.NivelesABC = vistaMantto.ConfNivelABCBO;
 
             return configuracion;
         }

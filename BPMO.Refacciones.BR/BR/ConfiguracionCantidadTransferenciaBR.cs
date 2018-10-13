@@ -66,9 +66,8 @@ namespace BPMO.Refacciones.BR {
                 //SecurityBR seguridadBR = new SecurityBR(firma);
                 //firma = seguridadBR.ConsultarPermisos(dataContext);
                 #endregion
-                ConfiguracionTransferenciaBO config= (ConfiguracionTransferenciaBO)auditoriaBase;
                 ConfiguracionCantidadTransferenciaActualizarDAO actualizarDAO = new ConfiguracionCantidadTransferenciaActualizarDAO();
-                bool esExito = actualizarDAO.Actualizar(dataContext, config.ConfiguracionCantidadTransferencia, objetoMaestro);
+                bool esExito = actualizarDAO.Actualizar(dataContext, auditoriaBase, objetoMaestro);
                 this.registrosAfectados = actualizarDAO.RegistrosAfectados;
                 return esExito;
             } catch {

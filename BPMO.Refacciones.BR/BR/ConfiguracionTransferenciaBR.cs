@@ -187,7 +187,7 @@ namespace BPMO.Refacciones.BR {
                 throw;
             }
         }
-        public bool InsertarCompleto(IDataContext dataContext, AuditoriaBaseBO auditoriaBase, SeguridadBO firma, List<NivelABCBO> confNivelABC) {
+        public bool InsertarCompleto(IDataContext dataContext, AuditoriaBaseBO auditoriaBase, SeguridadBO firma) {
             Guid miFirma = Guid.NewGuid();
             BPMO.Primitivos.Utilerias.ManejadorDataContext manejadorDctx = new BPMO.Primitivos.Utilerias.ManejadorDataContext(dataContext, "LIDER");
             try {
@@ -199,20 +199,19 @@ namespace BPMO.Refacciones.BR {
                 #endregion
                 dataContext.OpenConnection(miFirma);
                 dataContext.BeginTransaction(miFirma);
-                ConfiguracionTransferenciaInsertarDAO insertarDAO = new ConfiguracionTransferenciaInsertarDAO();
                 configuracionCantidadBr = new ConfiguracionCantidadTransferenciaBR();
                 configuracionHoraBr = new ConfiguracionHoraTransferenciaBR();
-                bool esExito = insertarDAO.Insertar(dataContext, auditoriaBase);
-                this.registrosAfectados = insertarDAO.RegistrosAfectados;
-                this.ultimoIdGenerado = insertarDAO.UltimoIdGenerado.Value;
+                bool esExito = this.Insertar(dataContext, auditoriaBase, firma);
                 int configuracionId = this.ultimoIdGenerado;
                 ConfiguracionTransferenciaBO configTransferencia = (ConfiguracionTransferenciaBO)auditoriaBase;
                 configTransferencia.Id = configuracionId;
-                configuracionCantidadBr.Insertar(dataContext, (ConfiguracionCantidadTransferenciaBO) configTransferencia.ConfiguracionCantidadTransferencia, configTransferencia, firma);
-                configuracionHoraBr.Insertar(dataContext, (ConfiguracionHoraTransferenciaBO) configTransferencia.ConfiguracionHoraTransferencia, configTransferencia, firma);
+                configuracionCantidadBr.Insertar(dataContext, (ConfiguracionCantidadTransferenciaBO)configTransferencia.ConfiguracionCantidadTransferencia, configTransferencia, firma);
+                configuracionHoraBr.Insertar(dataContext, (ConfiguracionHoraTransferenciaBO)configTransferencia.ConfiguracionHoraTransferencia, configTransferencia, firma);
                 ConfiguracionTransferenciaNivelABCInsertarDA confNivelABCDAInsertar = new ConfiguracionTransferenciaNivelABCInsertarDA();
-                foreach (NivelABCBO item in confNivelABC) {
-                    confNivelABCDAInsertar.Insertar(dataContext, configuracionId, item.Id);
+                if (configTransferencia.NivelesABC != null && configTransferencia.NivelesABC.Count > 0) {
+                    foreach (NivelABCBO item in configTransferencia.NivelesABC) {
+                        confNivelABCDAInsertar.Insertar(dataContext, configuracionId, item.Id);
+                    }
                 }
                 dataContext.CommitTransaction(miFirma);
                 return esExito;
@@ -222,9 +221,10 @@ namespace BPMO.Refacciones.BR {
             } finally {
                 if (dataContext.ConnectionState == ConnectionState.Open)
                     dataContext.CloseConnection(miFirma);
+                manejadorDctx.RegresaProveedorInicial(dataContext);
             }
         }
-        public bool ActualizarCompleto(IDataContext dataContext, AuditoriaBaseBO auditoriaBase, SeguridadBO firma, List<NivelABCBO> confNivelABC) {
+        public bool ActualizarCompleto(IDataContext dataContext, AuditoriaBaseBO auditoriaBase, SeguridadBO firma) {
             Guid miFirma = Guid.NewGuid();
             BPMO.Primitivos.Utilerias.ManejadorDataContext manejadorDctx = new BPMO.Primitivos.Utilerias.ManejadorDataContext(dataContext, "LIDER");
             try {
@@ -239,16 +239,17 @@ namespace BPMO.Refacciones.BR {
                 ConfiguracionCantidadTransferenciaBR configuracionCantidadBr = new ConfiguracionCantidadTransferenciaBR();
                 ConfiguracionHoraTransferenciaBR configuracionHoraBr = new ConfiguracionHoraTransferenciaBR();
                 ConfiguracionTransferenciaNivelABCBorrarDA confNivelABCDABorrar = new ConfiguracionTransferenciaNivelABCBorrarDA();
-                ConfiguracionTransferenciaNivelABCConsultarDA confNivelABCDAConsultar= new ConfiguracionTransferenciaNivelABCConsultarDA();
                 ConfiguracionTransferenciaNivelABCInsertarDA confNivelABCDAInsertar = new ConfiguracionTransferenciaNivelABCInsertarDA();
-                bool esExito = actualizarDAO.Actualizar(dataContext, auditoriaBase);
+                ConfiguracionTransferenciaBO configuracion = (ConfiguracionTransferenciaBO)auditoriaBase;
+                bool esExito = actualizarDAO.Actualizar(dataContext, configuracion);
                 this.registrosAfectados = actualizarDAO.RegistrosAfectados;
-                ConfiguracionTransferenciaBO configuracion=(ConfiguracionTransferenciaBO)auditoriaBase;
-                configuracionCantidadBr.Actualizar(dataContext, auditoriaBase, auditoriaBase, firma);
-                configuracionHoraBr.Actualizar(dataContext, auditoriaBase, auditoriaBase, firma);
-                confNivelABCDABorrar.Borrar(dataContext,configuracion.Id);
-                foreach (NivelABCBO item in confNivelABC) {
-                    confNivelABCDAInsertar.Insertar(dataContext, configuracion.Id, item.Id);
+                configuracionCantidadBr.Actualizar(dataContext, configuracion.ConfiguracionCantidadTransferencia, configuracion, firma);
+                configuracionHoraBr.Actualizar(dataContext, configuracion.ConfiguracionHoraTransferencia, configuracion, firma);
+                confNivelABCDABorrar.Borrar(dataContext, configuracion.Id);
+                if (configuracion.NivelesABC != null && configuracion.NivelesABC.Count > 0) {
+                    foreach (NivelABCBO item in configuracion.NivelesABC) {
+                        confNivelABCDAInsertar.Insertar(dataContext, configuracion.Id, item.Id);
+                    }
                 }
                 dataContext.CommitTransaction(miFirma);
                 return esExito;
@@ -258,6 +259,7 @@ namespace BPMO.Refacciones.BR {
             } finally {
                 if (dataContext.ConnectionState == ConnectionState.Open)
                     dataContext.CloseConnection(miFirma);
+                manejadorDctx.RegresaProveedorInicial(dataContext);
             }
         }
         #endregion /Métodos
