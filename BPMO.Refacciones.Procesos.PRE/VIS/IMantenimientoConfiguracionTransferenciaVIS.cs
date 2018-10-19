@@ -166,7 +166,7 @@ namespace BPMO.Refacciones.Procesos.VIS {
         /// <summary>
         /// Objeto base de Configuración
         /// </summary>
-        object ConfiguracionReglaBase { get; set; }
+        object ConfiguracionTransferenciaBase { get; set; }
         #endregion
 
         #region Métodos

@@ -609,7 +609,7 @@
                                         <tr id="trNivelABCLabel" runat="server">
                                             <td style="width: 40%; margin-top: 10px;" align="right">
                                                 <asp:ListBox ID="lbNivelABC" runat="server" Height="150px" Width="50%" 
-                                                    SelectionMode="Multiple" DataTextField="Nombre"></asp:ListBox>
+                                                    SelectionMode="Multiple" DataTextField="Descripcion"></asp:ListBox>
                                             </td>
                                             <td style="width: 5%; text-align: center; height: 100%; vertical-align:middle;">
                                                 <asp:ImageButton ID="imgBtnAgregar" runat="server" ImageUrl="~/Imagenes/imgSlideDerecha.png"
@@ -620,7 +620,7 @@
                                             </td>
                                             <td style="width: 40%; margin-top: 10px;">
                                                 <asp:ListBox ID="lbNivelABCRel" runat="server" Height="150px" Width="50%" SelectionMode="Multiple"
-                                                    DataTextField="NombreCorto"></asp:ListBox>
+                                                    DataTextField="Descripcion"></asp:ListBox>
                                             </td>
                                         </tr>
                                     </table>

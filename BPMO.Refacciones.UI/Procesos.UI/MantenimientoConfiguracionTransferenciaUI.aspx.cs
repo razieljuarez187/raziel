@@ -380,7 +380,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraLunes {
             get {
                 TimeSpan _confHoraLunes;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
                 if (!checartiempo.IsMatch(this.txtHoraLunes.Text)) {
                     return null;
                 } else {
@@ -395,7 +395,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraMartes {
             get {
                 TimeSpan _confHoraMartes;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
                 if (!checartiempo.IsMatch(this.txtHoraMartes.Text)) {
                     return null;
                 } else {
@@ -410,7 +410,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraMiercoles {
             get {
                 TimeSpan _confHoraMiercoles;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
                 if (!checartiempo.IsMatch(this.txtHoraMiercoles.Text)) {
                     return null;
                 } else {
@@ -470,7 +470,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraDomingo {
             get {
                 TimeSpan _confHoraDomingo;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
                 if (!checartiempo.IsMatch(this.txtHoraDomingo.Text)) {
                     return null;
                 } else {
@@ -522,15 +522,15 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 this.lbNivelABCRel.DataBind();
             }
         }
-        public object ConfiguracionReglaBase {
+        public object ConfiguracionTransferenciaBase {
             get {
-                return this.Session["CONFIGREGLABASE"] ?? null;
+                return this.Session["CONFIGTRANSBASE"] ?? null;
             }
             set {
                 if (value != null)
-                    this.Session.Add("CONFIGREGLABASE", value);
+                    this.Session.Add("CONFIGTRANSBASE", value);
                 else
-                    this.Session.Remove("CONFIGREGLABASE");
+                    this.Session.Remove("CONFIGTRANSBASE");
             }
         }
         #endregion
@@ -546,19 +546,17 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 if (!IsPostBack) {
                     #region Código de seguridad para las UI
                     //Verifica que el proceso actual exista en la lista de procesos permitidos para el usuario actual
-                    //TODO:
-                    //SiteMaster miMaster = (SiteMaster)this.Master;
-                    //Security.BR.SecurityBR securityBR = new Security.BR.SecurityBR(new SeguridadBO(Guid.Empty, miMaster.Usuario, miMaster.Adscripcion));
-                    //miMaster.VerificarProcesoActual(securityBR.ProcesoActual);
+                    SiteMaster miMaster = (SiteMaster)this.Master;
+                    Security.BR.SecurityBR securityBR = new Security.BR.SecurityBR(new SeguridadBO(Guid.Empty, miMaster.Usuario, miMaster.Adscripcion));
+                    miMaster.VerificarProcesoActual(securityBR.ProcesoActual);
                     #endregion
-                    //this.Session.Remove("CONFIGREGLABASE");
-                    presentador.DesplearcatalogoNivelABC();
+                    presentador.DesplegarcatalogoNivelABC();
                     if (this.Session["ConfiguracionId"] != null) {
                         int id = 0;
                         bool esNumero = int.TryParse(this.Session["ConfiguracionId"].ToString(), out id);
                         if (esNumero) {
                             Id = (id > 0) ? (int?)id : null;
-                            presentador.DesplegarDetalleConfiguracionRegla(Id);
+                            presentador.DesplegarDetalleConfiguracionTransferencia(Id);
                             string tipoUI = Request.QueryString["ui"];
                             if (tipoUI != null && tipoUI.Equals("e"))
                                 presentador.PreparaUIEdicion();
@@ -615,7 +613,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.btnEditar.Enabled = false;
             this.btnGuardar.Enabled = true;
             this.btnGuardar.CommandName = "INSERTAR";
-            this.ConfiguracionReglaBase = null;
+            this.ConfiguracionTransferenciaBase = null;
             this.ibtnBuscaEmpresa.Visible = true;
             this.ibtnBuscaSucursal.Visible = true;
             this.ibtnBuscaAlmacen.Visible = true;
@@ -830,7 +828,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             }
         }
         /// <summary>
-        /// Buscar Usuario
+        /// Buscar Tipo de Pedido
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
