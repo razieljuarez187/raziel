@@ -45,15 +45,6 @@ namespace BPMO.Refacciones.Procesos.PRE {
             this.vistaMantto = vistaMantenimiento;
             AgregarProviderDataContext(listadoCnx);
         }
-        /// <summary>
-        /// Constructor para el reporte de Configuraciones
-        /// </summary>
-        /// <param name="vistaReporte"></param>
-        /// <param name="listadoCnx"></param>
-        //public ConfiguracionReglaUsuarioPRE(IReporteConfiguracionReglaVIS vistaDocRPT, List<DatosConexionBO> listadoCnx) {
-        //    this.vistaDocRPT = vistaDocRPT;
-        //    AgregarProviderDataContext(listadoCnx);
-        //}
 
         /// <summary>
         /// Agrega provider al DataContext actual
@@ -136,14 +127,14 @@ namespace BPMO.Refacciones.Procesos.PRE {
             return configuracion;
         }
         /// <summary>
-        /// Consultar Configuraciones Reglas
+        /// Consultar Configuraciones Transferencias
         /// </summary>
         /// <param name="configuracionBO">Objeto que provee el criterio de selección para realizar la consulta</param>
         /// <returns>Lista de objetos que contiene la información que coincide con la consulta</returns>
         private List<ConfiguracionTransferenciaBO> Consultar(ConfiguracionTransferenciaBO configuracionBO) {
             configuracionBr = new ConfiguracionTransferenciaBR();
-            List<AuditoriaBaseBO> lstReglas = configuracionBr.Consultar(dataContext, configuracionBO);
-            return lstReglas.ConvertAll(item => (ConfiguracionTransferenciaBO)item);
+            List<AuditoriaBaseBO> lstTransferencias = configuracionBr.Consultar(dataContext, configuracionBO);
+            return lstTransferencias.ConvertAll(item => (ConfiguracionTransferenciaBO)item);
         }
         #endregion
 
@@ -163,7 +154,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 SeguridadBO seguridadBO = new SeguridadBO(Guid.Empty, this.vistaMantto.UsuarioSesion, this.vistaMantto.Adscripcion);
                 configuracionBr.InsertarCompleto(dataContext, configuracion, seguridadBO);
                 vistaMantto.Id = configuracion.Id = configuracionBr.UltimoIdGenerado;
-                this.DesplegarDetalleConfiguracionRegla(configuracion.Id);
+                this.DesplegarDetalleConfiguracionTransferencia(configuracion.Id);
                 vistaMantto.MostrarMensaje("Guardado Exitoso", ETipoMensajeIU.EXITO);
             } catch (Exception ex) {
                 vistaMantto.MostrarMensaje("Guardado no exitoso", ETipoMensajeIU.ERROR, ex.Message);
@@ -184,7 +175,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 ConfiguracionTransferenciaBO configuracion = this.InterfazADatosEditar();
                 SeguridadBO seguridadBO = new SeguridadBO(Guid.Empty, this.vistaMantto.UsuarioSesion, this.vistaMantto.Adscripcion);
                 configuracionBr.ActualizarCompleto(dataContext, configuracion, seguridadBO);
-                this.DesplegarDetalleConfiguracionRegla(vistaMantto.Id);
+                this.DesplegarDetalleConfiguracionTransferencia(vistaMantto.Id);
                 vistaMantto.MostrarMensaje("Guardado Exitoso", ETipoMensajeIU.EXITO);
             } catch (Exception ex) {
                 vistaMantto.MostrarMensaje("Guardado no exitoso", ETipoMensajeIU.ERROR, ex.Message);
@@ -195,7 +186,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// </summary>
         /// <returns>Objeto que contiene los datos obtenidos de la interfaz</returns>
         private ConfiguracionTransferenciaBO InterfazADatosEditar() {
-            ConfiguracionTransferenciaBO configuracion = (ConfiguracionTransferenciaBO)vistaMantto.ConfiguracionReglaBase;
+            ConfiguracionTransferenciaBO configuracion = (ConfiguracionTransferenciaBO)vistaMantto.ConfiguracionTransferenciaBase;
             configuracion.Empresa = new EmpresaLiderBO() { Id = vistaMantto.EmpresaId, Nombre = vistaMantto.NombreEmpresa };
             configuracion.Sucursal = new SucursalLiderBO() { Id = vistaMantto.SucursalId, Nombre = vistaMantto.NombreSucursal };
             configuracion.Almacen = new AlmacenBO() { Id = vistaMantto.AlmacenId, Nombre = vistaMantto.NombreAlmacen };
@@ -259,7 +250,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// Cancela la edición
         /// </summary>
         public void CancelarEdicion() {
-            this.DatosAInterfaz((ConfiguracionTransferenciaBO)this.vistaMantto.ConfiguracionReglaBase);
+            this.DatosAInterfaz((ConfiguracionTransferenciaBO)this.vistaMantto.ConfiguracionTransferenciaBase);
             vistaMantto.PreparaUIDetalle();
         }
         /// <summary>
@@ -275,7 +266,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// <summary>
         /// Despliega el Detalle de la Configuración Ragla
         /// </summary>
-        public void DesplegarDetalleConfiguracionRegla(int? configId) {
+        public void DesplegarDetalleConfiguracionTransferencia(int? configId) {
             this.DatosAInterfaz(ConsultarConfiguracion(new ConfiguracionTransferenciaBO { Id = configId }));
             List<NivelABCBO> confLstNivelABC;
             confLstNivelABC = configuracionBr.ConsultarDataSet(dataContext, configId);
@@ -288,7 +279,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
             vistaMantto.NivelABCBO = NoExisten;
             vistaMantto.PreparaUIDetalle();
         }
-        public void DesplearcatalogoNivelABC() {
+        public void DesplegarcatalogoNivelABC() {
             List<CatalogoBaseBO> confLstNivelABC;
             NivelABCBR nivelABCBR =new NivelABCBR();
             NivelABCBO nivelABCBO = new NivelABCBO();
@@ -300,7 +291,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// </summary>
         /// <param name="configuracion">Objeto con la información a desplegar </param>
         private void DatosAInterfaz(ConfiguracionTransferenciaBO configuracion) {
-            vistaMantto.ConfiguracionReglaBase = configuracion;
+            vistaMantto.ConfiguracionTransferenciaBase = configuracion;
             vistaMantto.Id = configuracion.Id;
             vistaMantto.EmpresaId = configuracion.Empresa.Id;
             vistaMantto.NombreEmpresa = configuracion.Empresa.Nombre;

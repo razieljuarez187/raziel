@@ -30,7 +30,7 @@ namespace BPMO.Refacciones.BR {
 
         #region Métodos
         /// <summary>
-        /// Inserta un refgistro ConfiguracionReglaUsuario en la base de datos
+        /// Inserta un refgistro AuditoriaBaseBO en la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -39,10 +39,9 @@ namespace BPMO.Refacciones.BR {
         public bool Insertar(IDataContext dataContext, AuditoriaBaseBO auditoriaBase, AuditoriaBaseBO objetoMaestro, SeguridadBO firma) {
             try {
                 #region Código de seguridad
-                //TODO:
                 //Verifica si el usuario tiene permisos para ejecutar la siguiente operación
-                //SecurityBR seguridadBR = new SecurityBR(firma);
-                //firma = seguridadBR.ConsultarPermisos(dataContext);
+                SecurityBR seguridadBR = new SecurityBR(firma);
+                firma = seguridadBR.ConsultarPermisos(dataContext);
                 #endregion
                 ConfiguracionHoraTransferenciaInsertarDAO insertarDAO = new ConfiguracionHoraTransferenciaInsertarDAO();
                 bool esExito = insertarDAO.Insertar(dataContext, auditoriaBase, objetoMaestro);
@@ -54,7 +53,7 @@ namespace BPMO.Refacciones.BR {
             }
         }
         /// <summary>
-        /// Actualiza un registro ConfiguracionReglaUsuario de la base de datos
+        /// Actualiza un registro AuditoriaBaseBO de la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -64,9 +63,8 @@ namespace BPMO.Refacciones.BR {
             try {
                 #region Código de seguridad
                 //Verifica si el usuario tiene permisos para ejecutar la siguiente operación
-                //TODO:
-                //SecurityBR seguridadBR = new SecurityBR(firma);
-                //firma = seguridadBR.ConsultarPermisos(dataContext);
+                SecurityBR seguridadBR = new SecurityBR(firma);
+                firma = seguridadBR.ConsultarPermisos(dataContext);
                 #endregion
                 ConfiguracionHoraTransferenciaActualizarDAO actualizarDAO = new ConfiguracionHoraTransferenciaActualizarDAO();
                 bool esExito = actualizarDAO.Actualizar(dataContext, auditoriaBase, objetoMaestro);
@@ -77,7 +75,7 @@ namespace BPMO.Refacciones.BR {
             }
         }
         /// <summary>
-        /// Elimina un registro ConfiguracionReglaUsuario de la base de datos
+        /// Elimina un registro ConfiguracionTransferencia de la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -87,7 +85,7 @@ namespace BPMO.Refacciones.BR {
             throw new NotImplementedException();
         }
         /// <summary>
-        /// Obtiene una lista de ConfiguracionReglaUsuario
+        /// Obtiene una lista de ConfiguracionTransferencia
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -101,7 +99,7 @@ namespace BPMO.Refacciones.BR {
             }
         }
         /// <summary>
-        /// Obtiene una lista de ConfiguracionReglaUsuario
+        /// Obtiene una lista de ConfiguracionTransferencia
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -110,12 +108,12 @@ namespace BPMO.Refacciones.BR {
             throw new NotImplementedException();
         }
         /// <summary>
-        /// Obtiene las ConfiguracionReglaUsuario asignadas
+        /// Obtiene las ConfiguracionTransferencia asignadas
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="configuracionFiltro">Objeto que contiene los parámetros a buscar</param>
         /// <returns>Registros que coinciden con la búsqueda</returns>
-        public DataSet ConsultarFiltro(IDataContext dataContext, ConfiguracionReglaUsuarioFiltroBO configuracionFiltro) {
+        public DataSet ConsultarFiltro(IDataContext dataContext, AuditoriaBaseBO configuracionFiltro) {
             throw new NotImplementedException();
         }
         #endregion /Métodos

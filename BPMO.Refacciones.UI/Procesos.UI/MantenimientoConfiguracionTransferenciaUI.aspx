@@ -305,22 +305,6 @@
                     </tr>
                     <tr>
                         <td>
-                            *Articulos por item
-                        </td>
-                        <td>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txtMaximoArticulosLinea" runat="server" Width="140px" CssClass="TextoAlto"
-                                ValidationGroup="requerido" CausesValidation="true" MaxLength="50"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="revMaximoArticulosLinea" runat="server" ErrorMessage="**"
-                                ControlToValidate="txtMaximoArticulosLinea" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
-                                ValidationGroup="requeridos" Display="Dynamic" />
-                            <asp:RequiredFieldValidator ID="rfvMaximoArticulosLinea" runat="server" ControlToValidate="txtMaximoArticulosLinea"
-                                ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             *Cantidad de items
                         </td>
                         <td>
@@ -332,6 +316,22 @@
                                 ControlToValidate="txtMaximoLineas" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
                                 ValidationGroup="requeridos" Display="Dynamic" />
                             <asp:RequiredFieldValidator ID="rfvMaximoLineas" runat="server" ControlToValidate="txtMaximoLineas"
+                                ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            *Articulos por item
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="txtMaximoArticulosLinea" runat="server" Width="140px" CssClass="TextoAlto"
+                                ValidationGroup="requerido" CausesValidation="true" MaxLength="50"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="revMaximoArticulosLinea" runat="server" ErrorMessage="**"
+                                ControlToValidate="txtMaximoArticulosLinea" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
+                                ValidationGroup="requeridos" Display="Dynamic" />
+                            <asp:RequiredFieldValidator ID="rfvMaximoArticulosLinea" runat="server" ControlToValidate="txtMaximoArticulosLinea"
                                 ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
@@ -487,6 +487,11 @@
                             <div id="divHora" style="width: 94%; margin: 15px; padding: 15px;">
                                 <asp:Panel ID="pnlHora" runat="server">
                                     <table style="width: 98%; margin-top: 10px;">
+                                        <tr id="tr1" runat="server" style="width: 100%;">
+                                            <td colspan="6">
+                                                <asp:Label ID="txtFormatoHora" runat="server" style="color: red;"/>
+                                            </td>
+                                        </tr>
                                         <tr id="trHoraActivolbl" runat="server">
                                             <td colspan="6">
                                             </td>
@@ -529,7 +534,7 @@
                                                     ValidationGroup="requerido" CausesValidation="true" MaxLength="50" TextMode="Time"
                                                     format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraLunes" runat="server" ErrorMessage="**"
-                                                    ControlToValidate="txtHoraLunes" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
+                                                    ControlToValidate="txtHoraLunes" CssClass="ColorValidator" ValidationExpression="^(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$"
                                                     ValidationGroup="requeridos" Display="Dynamic" />
                                                 <asp:RequiredFieldValidator ID="rfvCHoraLunes" runat="server" ControlToValidate="txtHoraLunes"
                                                     ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
@@ -539,7 +544,7 @@
                                                     ValidationGroup="requerido" CausesValidation="true" MaxLength="50" TextMode="Time"
                                                     format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraMartes" runat="server" ErrorMessage="**"
-                                                    ControlToValidate="txtHoraMartes" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
+                                                    ControlToValidate="txtHoraMartes" CssClass="ColorValidator" ValidationExpression="^(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$"
                                                     ValidationGroup="requeridos" Display="Dynamic" />
                                                 <asp:RequiredFieldValidator ID="rfvCHoraMartes" runat="server" ControlToValidate="txtHoraMartes"
                                                     ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
@@ -549,7 +554,7 @@
                                                     ValidationGroup="requerido" CausesValidation="true" MaxLength="50" TextMode="Time"
                                                     format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraMiercoles" runat="server" ErrorMessage="**"
-                                                    ControlToValidate="txtHoraMiercoles" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
+                                                    ControlToValidate="txtHoraMiercoles" CssClass="ColorValidator" ValidationExpression="^(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$"
                                                     ValidationGroup="requeridos" Display="Dynamic" />
                                                 <asp:RequiredFieldValidator ID="rfvCHoraMiercoles" runat="server" ControlToValidate="txtHoraMiercoles"
                                                     ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
@@ -559,7 +564,7 @@
                                                     ValidationGroup="requerido" CausesValidation="true" MaxLength="50" TextMode="Time"
                                                     format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraJueves" runat="server" ErrorMessage="**"
-                                                    ControlToValidate="txtHoraJueves" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
+                                                    ControlToValidate="txtHoraJueves" CssClass="ColorValidator" ValidationExpression="^(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$"
                                                     ValidationGroup="requeridos" Display="Dynamic" />
                                                 <asp:RequiredFieldValidator ID="rfvCHoraJueves" runat="server" ControlToValidate="txtHoraJueves"
                                                     ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
@@ -569,7 +574,7 @@
                                                     ValidationGroup="requerido" CausesValidation="true" MaxLength="50" TextMode="Time"
                                                     format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraViernes" runat="server" ErrorMessage="**"
-                                                    ControlToValidate="txtHoraViernes" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
+                                                    ControlToValidate="txtHoraViernes" CssClass="ColorValidator" ValidationExpression="^(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$"
                                                     ValidationGroup="requeridos" Display="Dynamic" />
                                                 <asp:RequiredFieldValidator ID="rfvCHoraViernes" runat="server" ControlToValidate="txtHoraViernes"
                                                     ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
@@ -579,7 +584,7 @@
                                                     ValidationGroup="requerido" CausesValidation="true" MaxLength="50" TextMode="Time"
                                                     format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraSabado" runat="server" ErrorMessage="**"
-                                                    ControlToValidate="txtHoraSabado" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
+                                                    ControlToValidate="txtHoraSabado" CssClass="ColorValidator" ValidationExpression="^(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$"
                                                     ValidationGroup="requeridos" Display="Dynamic" />
                                                 <asp:RequiredFieldValidator ID="rfvCHoraSabado" runat="server" ControlToValidate="txtHoraSabado"
                                                     ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
@@ -589,7 +594,7 @@
                                                     ValidationGroup="requerido" CausesValidation="true" MaxLength="50" TextMode="Time"
                                                     format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraDomingo" runat="server" ErrorMessage="**"
-                                                    ControlToValidate="txtHoraDomingo" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
+                                                    ControlToValidate="txtHoraDomingo" CssClass="ColorValidator" ValidationExpression="^(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$"
                                                     ValidationGroup="requeridos" Display="Dynamic" />
                                                 <asp:RequiredFieldValidator ID="rfvCHoraDomingo" runat="server" ControlToValidate="txtHoraDomingo"
                                                     ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
@@ -603,8 +608,8 @@
                                     <table style="width: 98%; margin-top: 10px;">
                                         <tr id="trNivelABCLabel" runat="server">
                                             <td style="width: 40%; margin-top: 10px;" align="right">
-                                                <asp:ListBox ID="lbNivelABC" runat="server" Height="150px" Width="50%" SelectionMode="Multiple"
-                                                    DataTextField="Nombre"></asp:ListBox>
+                                                <asp:ListBox ID="lbNivelABC" runat="server" Height="150px" Width="50%" 
+                                                    SelectionMode="Multiple" DataTextField="Descripcion"></asp:ListBox>
                                             </td>
                                             <td style="width: 5%; text-align: center; height: 100%; vertical-align:middle;">
                                                 <asp:ImageButton ID="imgBtnAgregar" runat="server" ImageUrl="~/Imagenes/imgSlideDerecha.png"
@@ -615,7 +620,7 @@
                                             </td>
                                             <td style="width: 40%; margin-top: 10px;">
                                                 <asp:ListBox ID="lbNivelABCRel" runat="server" Height="150px" Width="50%" SelectionMode="Multiple"
-                                                    DataTextField="Nombre"></asp:ListBox>
+                                                    DataTextField="Descripcion"></asp:ListBox>
                                             </td>
                                         </tr>
                                     </table>

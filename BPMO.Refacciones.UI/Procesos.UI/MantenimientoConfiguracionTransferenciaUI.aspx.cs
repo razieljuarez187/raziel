@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using System.ComponentModel;
 using BPMO.Refacciones.BO;
 using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace BPMO.Refacciones.UI.Procesos.UI {
     public partial class MantenimientoConfiguracionTransferenciaUI : Page, IMantenimientoConfiguracionTransferenciaVIS {
@@ -379,8 +380,11 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraLunes {
             get {
                 TimeSpan _confHoraLunes;
-                if (!TimeSpan.TryParse(this.txtHoraLunes.Text, out _confHoraLunes)) {
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
+                if (!checartiempo.IsMatch(this.txtHoraLunes.Text)) {
                     return null;
+                } else {
+                    _confHoraLunes = TimeSpan.Parse(this.txtHoraLunes.Text);
                 }
                 return _confHoraLunes;
             }
@@ -391,8 +395,11 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraMartes {
             get {
                 TimeSpan _confHoraMartes;
-                if (!TimeSpan.TryParse(this.txtHoraMartes.Text, out _confHoraMartes)) {
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
+                if (!checartiempo.IsMatch(this.txtHoraMartes.Text)) {
                     return null;
+                } else {
+                    _confHoraMartes = TimeSpan.Parse(this.txtHoraMartes.Text);
                 }
                 return _confHoraMartes;
             }
@@ -403,8 +410,11 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraMiercoles {
             get {
                 TimeSpan _confHoraMiercoles;
-                if (!TimeSpan.TryParse(this.txtHoraMiercoles.Text, out _confHoraMiercoles)) {
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
+                if (!checartiempo.IsMatch(this.txtHoraMiercoles.Text)) {
                     return null;
+                } else {
+                    _confHoraMiercoles = TimeSpan.Parse(this.txtHoraMiercoles.Text);
                 }
                 return _confHoraMiercoles;
             }
@@ -415,8 +425,11 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraJueves {
             get {
                 TimeSpan _confHoraJueves;
-                if (!TimeSpan.TryParse(this.txtHoraJueves.Text, out _confHoraJueves)) {
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
+                if (!checartiempo.IsMatch(this.txtHoraJueves.Text)) {
                     return null;
+                } else {
+                    _confHoraJueves = TimeSpan.Parse(this.txtHoraJueves.Text);
                 }
                 return _confHoraJueves;
             }
@@ -427,8 +440,11 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraViernes {
             get {
                 TimeSpan _confHoraViernes;
-                if (!TimeSpan.TryParse(this.txtHoraViernes.Text, out _confHoraViernes)) {
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
+                if (!checartiempo.IsMatch(this.txtHoraViernes.Text)) {
                     return null;
+                } else {
+                    _confHoraViernes = TimeSpan.Parse(this.txtHoraViernes.Text);
                 }
                 return _confHoraViernes;
             }
@@ -439,8 +455,11 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraSabado {
             get {
                 TimeSpan _confHoraSabado;
-                if (!TimeSpan.TryParse(this.txtHoraSabado.Text, out _confHoraSabado)) {
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
+                if (!checartiempo.IsMatch(this.txtHoraSabado.Text)) {
                     return null;
+                } else {
+                    _confHoraSabado = TimeSpan.Parse(this.txtHoraSabado.Text);
                 }
                 return _confHoraSabado;
             }
@@ -451,8 +470,11 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraDomingo {
             get {
                 TimeSpan _confHoraDomingo;
-                if (!TimeSpan.TryParse(this.txtHoraDomingo.Text, out _confHoraDomingo)) {
+                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
+                if (!checartiempo.IsMatch(this.txtHoraDomingo.Text)) {
                     return null;
+                } else {
+                    _confHoraDomingo = TimeSpan.Parse(this.txtHoraDomingo.Text);
                 }
                 return _confHoraDomingo;
             }
@@ -483,7 +505,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                     this.Session.Add("NivelABC", value);
                 else
                     this.Session.Remove("NivelABC");
-                this.lbNivelABC.DataSource = value;
+                this.lbNivelABC.DataSource = value;                
                 this.lbNivelABC.DataBind();
             }
         }
@@ -500,15 +522,15 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 this.lbNivelABCRel.DataBind();
             }
         }
-        public object ConfiguracionReglaBase {
+        public object ConfiguracionTransferenciaBase {
             get {
-                return this.Session["CONFIGREGLABASE"] ?? null;
+                return this.Session["CONFIGTRANSBASE"] ?? null;
             }
             set {
                 if (value != null)
-                    this.Session.Add("CONFIGREGLABASE", value);
+                    this.Session.Add("CONFIGTRANSBASE", value);
                 else
-                    this.Session.Remove("CONFIGREGLABASE");
+                    this.Session.Remove("CONFIGTRANSBASE");
             }
         }
         #endregion
@@ -524,27 +546,46 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 if (!IsPostBack) {
                     #region Código de seguridad para las UI
                     //Verifica que el proceso actual exista en la lista de procesos permitidos para el usuario actual
-                    //TODO:
-                    //SiteMaster miMaster = (SiteMaster)this.Master;
-                    //Security.BR.SecurityBR securityBR = new Security.BR.SecurityBR(new SeguridadBO(Guid.Empty, miMaster.Usuario, miMaster.Adscripcion));
-                    //miMaster.VerificarProcesoActual(securityBR.ProcesoActual);
+                    SiteMaster miMaster = (SiteMaster)this.Master;
+                    Security.BR.SecurityBR securityBR = new Security.BR.SecurityBR(new SeguridadBO(Guid.Empty, miMaster.Usuario, miMaster.Adscripcion));
+                    miMaster.VerificarProcesoActual(securityBR.ProcesoActual);
                     #endregion
-                    //this.Session.Remove("CONFIGREGLABASE");
-                    presentador.DesplearcatalogoNivelABC();
+                    presentador.DesplegarcatalogoNivelABC();
                     if (this.Session["ConfiguracionId"] != null) {
                         int id = 0;
                         bool esNumero = int.TryParse(this.Session["ConfiguracionId"].ToString(), out id);
                         if (esNumero) {
                             Id = (id > 0) ? (int?)id : null;
-                            presentador.DesplegarDetalleConfiguracionRegla(Id);
+                            presentador.DesplegarDetalleConfiguracionTransferencia(Id);
                             string tipoUI = Request.QueryString["ui"];
                             if (tipoUI != null && tipoUI.Equals("e"))
                                 presentador.PreparaUIEdicion();
                         }
                         this.Session.Remove("ConfiguracionId");
                     } else {
+                        this.Session.Remove("NivelABCconf");
                         PreparaUIInsertar();
                     }
+                    System.Web.HttpBrowserCapabilities browser = Request.Browser;
+                    string stringFormatoHora ="El formato de hora para cada campo es: ";
+                    switch (browser.Browser) {
+                        case "Chrome":
+                            stringFormatoHora += " HH:mm a.m.|p.m.  (12 hrs)";
+                            break;
+                        case "InternetExplorer":
+                            stringFormatoHora += " HH:mm:ss (24 hrs)";
+                            break;
+                        case "Firefox":
+                            stringFormatoHora += " HH:mm (24 hrs)";
+                            break;
+                        case "Safari":
+                            stringFormatoHora += " HH:mm (24 hrs)";
+                            break;
+                        default:
+                            stringFormatoHora +=" Desconocido";
+                            break;
+                    }
+                    txtFormatoHora.Text = stringFormatoHora;
                 }
             } catch (Exception ex) {
                 PreparaUIInsertar();
@@ -572,7 +613,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.btnEditar.Enabled = false;
             this.btnGuardar.Enabled = true;
             this.btnGuardar.CommandName = "INSERTAR";
-            this.ConfiguracionReglaBase = null;
+            this.ConfiguracionTransferenciaBase = null;
             this.ibtnBuscaEmpresa.Visible = true;
             this.ibtnBuscaSucursal.Visible = true;
             this.ibtnBuscaAlmacen.Visible = true;
@@ -787,7 +828,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             }
         }
         /// <summary>
-        /// Buscar Usuario
+        /// Buscar Tipo de Pedido
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -937,6 +978,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             }
         }
         #endregion
+
         #endregion
+
     }
 }

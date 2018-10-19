@@ -33,7 +33,7 @@ namespace BPMO.Refacciones.BR {
 
         #region Métodos
         /// <summary>
-        /// Inserta un refgistro ConfiguracionReglaUsuario en la base de datos
+        /// Inserta un refgistro ConfiguracionTransferencia en la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -45,9 +45,8 @@ namespace BPMO.Refacciones.BR {
             try {
                 #region Código de seguridad
                 //Verifica si el usuario tiene permisos para ejecutar la siguiente operación
-                //TODO:
-                //SecurityBR seguridadBR = new SecurityBR(firma);
-                //firma = seguridadBR.ConsultarPermisos(dataContext);
+                SecurityBR seguridadBR = new SecurityBR(firma);
+                firma = seguridadBR.ConsultarPermisos(dataContext);
                 #endregion
                 ConfiguracionTransferenciaInsertarDAO insertarDAO = new ConfiguracionTransferenciaInsertarDAO();
                 bool esExito = insertarDAO.Insertar(dataContext, auditoriaBase);
@@ -59,7 +58,7 @@ namespace BPMO.Refacciones.BR {
             }
         }
         /// <summary>
-        /// Actualiza un registro ConfiguracionReglaUsuario de la base de datos
+        /// Actualiza un registro ConfiguracionTransferencia de la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -69,8 +68,8 @@ namespace BPMO.Refacciones.BR {
             try {
                 #region Código de seguridad
                 //Verifica si el usuario tiene permisos para ejecutar la siguiente operación
-                //TODO: SecurityBR seguridadBR = new SecurityBR(firma);
-                //firma = seguridadBR.ConsultarPermisos(dataContext);
+                SecurityBR seguridadBR = new SecurityBR(firma);
+                firma = seguridadBR.ConsultarPermisos(dataContext);
                 #endregion
                 ConfiguracionTransferenciaActualizarDAO actualizarDAO = new ConfiguracionTransferenciaActualizarDAO();
                 bool esExito = actualizarDAO.Actualizar(dataContext, auditoriaBase);
@@ -82,7 +81,7 @@ namespace BPMO.Refacciones.BR {
             }
         }
         /// <summary>
-        /// Elimina un registro ConfiguracionReglaUsuario de la base de datos
+        /// Elimina un registro ConfiguracionTransferencia de la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -92,7 +91,7 @@ namespace BPMO.Refacciones.BR {
             throw new NotImplementedException();
         }
         /// <summary>
-        /// Obtiene una lista de ConfiguracionReglaUsuario
+        /// Obtiene una lista de ConfiguracionTransferencia
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -108,7 +107,7 @@ namespace BPMO.Refacciones.BR {
             }
         }
         /// <summary>
-        /// Obtiene una lista de ConfiguracionReglaUsuario
+        /// Obtiene una lista de ConfiguracionTransferencia
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que contiene los parámetros a buscar</param>
@@ -151,12 +150,12 @@ namespace BPMO.Refacciones.BR {
             }
         }
         /// <summary>
-        /// Obtiene las ConfiguracionReglaUsuario asignadas
+        /// Obtiene las ConfiguracionTransferencia asignadas
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="configuracionFiltro">Objeto que contiene los parámetros a buscar</param>
         /// <returns>Registros que coinciden con la búsqueda</returns>
-        public DataSet ConsultarFiltro(IDataContext dataContext, ConfiguracionReglaUsuarioFiltroBO configuracionFiltro) {
+        public DataSet ConsultarFiltro(IDataContext dataContext, AuditoriaBaseBO configuracionFiltro) {
             throw new NotImplementedException();
         }
         public List<NivelABCBO> ConsultarDataSet(IDataContext dataContext, int? configuracionId) {
@@ -171,14 +170,14 @@ namespace BPMO.Refacciones.BR {
                     configuracionNivelABC.Auditoria = new AuditoriaBO();
                     #endregion /Inicializar BO
 
-                    #region ConfiguracionesReglas
+                    #region ConfiguracionTransferencia
                     if (!row.IsNull("NivelABCId"))
                         configuracionNivelABC.Id = (Int32)Convert.ChangeType(row["NivelABCId"], typeof(Int32));
                     if (!row.IsNull("ClaveABC"))
                         configuracionNivelABC.NombreCorto = (String)Convert.ChangeType(row["ClaveABC"], typeof(String));
                     if (!row.IsNull("Descripcion"))
                         configuracionNivelABC.Nombre = (String)Convert.ChangeType(row["Descripcion"], typeof(String));
-                    #endregion /ConfiguracionesReglas
+                    #endregion /ConfiguracionTransferencia
 
                     lstNivelABC.Add(configuracionNivelABC);
                 }
@@ -193,9 +192,8 @@ namespace BPMO.Refacciones.BR {
             try {
                 #region Código de seguridad
                 //Verifica si el usuario tiene permisos para ejecutar la siguiente operación
-                //TODO:
-                //SecurityBR seguridadBR = new SecurityBR(firma);
-                //firma = seguridadBR.ConsultarPermisos(dataContext);
+                SecurityBR seguridadBR = new SecurityBR(firma);
+                firma = seguridadBR.ConsultarPermisos(dataContext);
                 #endregion
                 dataContext.OpenConnection(miFirma);
                 dataContext.BeginTransaction(miFirma);
@@ -230,8 +228,8 @@ namespace BPMO.Refacciones.BR {
             try {
                 #region Código de seguridad
                 //Verifica si el usuario tiene permisos para ejecutar la siguiente operación
-                //TODO: SecurityBR seguridadBR = new SecurityBR(firma);
-                //firma = seguridadBR.ConsultarPermisos(dataContext);
+                SecurityBR seguridadBR = new SecurityBR(firma);
+                firma = seguridadBR.ConsultarPermisos(dataContext);
                 #endregion
                 dataContext.OpenConnection(miFirma);
                 dataContext.BeginTransaction(miFirma);
