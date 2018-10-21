@@ -380,8 +380,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraLunes {
             get {
                 TimeSpan _confHoraLunes;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
-                if (!checartiempo.IsMatch(this.txtHoraLunes.Text)) {
+                if (!TimeSpan.TryParse(this.txtHoraLunes.Text, out _confHoraLunes)) {
                     return null;
                 } else {
                     _confHoraLunes = TimeSpan.Parse(this.txtHoraLunes.Text);
@@ -395,8 +394,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraMartes {
             get {
                 TimeSpan _confHoraMartes;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
-                if (!checartiempo.IsMatch(this.txtHoraMartes.Text)) {
+                if (!TimeSpan.TryParse(this.txtHoraMartes.Text, out _confHoraMartes)) {
                     return null;
                 } else {
                     _confHoraMartes = TimeSpan.Parse(this.txtHoraMartes.Text);
@@ -410,8 +408,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraMiercoles {
             get {
                 TimeSpan _confHoraMiercoles;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
-                if (!checartiempo.IsMatch(this.txtHoraMiercoles.Text)) {
+                if (!TimeSpan.TryParse(this.txtHoraMiercoles.Text, out _confHoraMiercoles)) {
                     return null;
                 } else {
                     _confHoraMiercoles = TimeSpan.Parse(this.txtHoraMiercoles.Text);
@@ -425,8 +422,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraJueves {
             get {
                 TimeSpan _confHoraJueves;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
-                if (!checartiempo.IsMatch(this.txtHoraJueves.Text)) {
+                if (!TimeSpan.TryParse(this.txtHoraJueves.Text, out _confHoraJueves)) {
                     return null;
                 } else {
                     _confHoraJueves = TimeSpan.Parse(this.txtHoraJueves.Text);
@@ -440,8 +436,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraViernes {
             get {
                 TimeSpan _confHoraViernes;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
-                if (!checartiempo.IsMatch(this.txtHoraViernes.Text)) {
+                if (!TimeSpan.TryParse(this.txtHoraViernes.Text, out _confHoraViernes)) {
                     return null;
                 } else {
                     _confHoraViernes = TimeSpan.Parse(this.txtHoraViernes.Text);
@@ -455,8 +450,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraSabado {
             get {
                 TimeSpan _confHoraSabado;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
-                if (!checartiempo.IsMatch(this.txtHoraSabado.Text)) {
+                if (!TimeSpan.TryParse(this.txtHoraSabado.Text, out _confHoraSabado)) {
                     return null;
                 } else {
                     _confHoraSabado = TimeSpan.Parse(this.txtHoraSabado.Text);
@@ -470,8 +464,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         public TimeSpan? confHoraDomingo {
             get {
                 TimeSpan _confHoraDomingo;
-                Regex checartiempo = new Regex("^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]|:[0-5][0-9]$");
-                if (!checartiempo.IsMatch(this.txtHoraDomingo.Text)) {
+                if (!TimeSpan.TryParse(this.txtHoraDomingo.Text, out _confHoraDomingo)) {
                     return null;
                 } else {
                     _confHoraDomingo = TimeSpan.Parse(this.txtHoraDomingo.Text);
@@ -585,7 +578,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                             stringFormatoHora +=" Desconocido";
                             break;
                     }
-                    txtFormatoHora.Text = stringFormatoHora;
+                    lblFormatoHora.Text = stringFormatoHora;
                 }
             } catch (Exception ex) {
                 PreparaUIInsertar();

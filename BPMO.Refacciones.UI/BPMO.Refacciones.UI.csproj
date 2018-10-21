@@ -299,6 +299,7 @@
     <Content Include="Script\jquery-ui-1.8.10.custom.min.js" />
     <Content Include="Script\jquery.blockUI.js" />
     <Content Include="Script\jquery.jlabel-1.3.min.js" />
+    <Content Include="Script\jquery.mask.js" />
     <Content Include="Script\jquery.ui.datepicker-es.js" />
     <Content Include="Script\jServicio.BlockUI.js" />
     <Content Include="Web.config">
