@@ -235,12 +235,12 @@ namespace BPMO.Refacciones.UI {
                 if (!IsPostBack) {
                     #region Código de seguridad para las UI
                     //Verifica que el proceso actual exista en la lista de procesos permitidos para el usuario actual
-                    //SiteMaster miMaster = (SiteMaster)this.Master;
-                    //Security.BR.SecurityBR securityBR = new Security.BR.SecurityBR(new SeguridadBO(Guid.Empty, miMaster.Usuario, miMaster.Adscripcion));
-                    //miMaster.VerificarProcesoActual(securityBR.ProcesoActual);
+                    SiteMaster miMaster = (SiteMaster)this.Master;
+                    Security.BR.SecurityBR securityBR = new Security.BR.SecurityBR(new SeguridadBO(Guid.Empty, miMaster.Usuario, miMaster.Adscripcion));
+                    miMaster.VerificarProcesoActual(securityBR.ProcesoActual);
                     #endregion
                     #region Aplicar el número de filas al grid
-                    //this.grvConfiguracionId.PageSize = (int)miMaster.NumeroFilas;
+                    this.grvConfiguracionesTransferencia.PageSize = (int)miMaster.NumeroFilas;
                     #endregion
 
                     this.Session.Remove("ConfiguracionesTransferencias");

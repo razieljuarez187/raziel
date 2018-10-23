@@ -108,6 +108,8 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionTransferencia.OrderBy(order => order.MaximoLineas).ToList() : vistaConsulta.ListadoConfiguracionTransferencia.OrderByDescending(order => order.MaximoLineas).ToList();
             if (campo.ToUpper().Equals("NIVELESABC"))
                 listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionTransferencia.OrderBy(order => order.NivelesABC).ToList() : vistaConsulta.ListadoConfiguracionTransferencia.OrderByDescending(order => order.NivelesABC).ToList();
+            if (campo.ToUpper().Equals("NATURALEZAS"))
+                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionTransferencia.OrderBy(order => order.Naturalezas).ToList() : vistaConsulta.ListadoConfiguracionTransferencia.OrderByDescending(order => order.Naturalezas).ToList();
             if (campo.ToUpper().Equals("ACTIVO"))
                 listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionTransferencia.OrderBy(order => order.Activo).ToList() : vistaConsulta.ListadoConfiguracionTransferencia.OrderByDescending(order => order.Activo).ToList();
             vistaConsulta.ListadoConfiguracionTransferencia = listaOrdenada;

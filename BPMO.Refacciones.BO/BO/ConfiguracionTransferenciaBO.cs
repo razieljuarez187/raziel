@@ -21,6 +21,7 @@ namespace BPMO.Refacciones.BO {
         private ConfiguracionHoraTransferenciaBO configuracionHoraTransferencia;
         private TipoPedidoBO tipoPedido;
         private List<NivelABCBO> nivelesABC;
+        private List<NaturalezasBO> naturalezas;
         #endregion
         #region Constructores
         #endregion
@@ -68,6 +69,10 @@ namespace BPMO.Refacciones.BO {
         public List<NivelABCBO> NivelesABC {
             get { return this.nivelesABC; }
             set { this.nivelesABC = value; }
+        }
+        public List<NaturalezasBO> Naturalezas {
+            get { return this.naturalezas; }
+            set { this.naturalezas = value; }
         }
         #endregion
         #region Métodos

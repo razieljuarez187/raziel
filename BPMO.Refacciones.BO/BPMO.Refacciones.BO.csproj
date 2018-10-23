@@ -70,6 +70,7 @@
     <Compile Include="BO\ExistenciaAlmacenRefaccionesBO.cs" />
     <Compile Include="BO\MovimientoCoreBO.cs" />
     <Compile Include="BO\MovimientoRefaccionBO.cs" />
+    <Compile Include="BO\NaturalezasBO.cs" />
     <Compile Include="BO\NivelABCBO.cs" />
     <Compile Include="BO\NotaTallerBO.cs" />
     <Compile Include="BO\NotaTallerMovimientoRefaccionBO.cs" />

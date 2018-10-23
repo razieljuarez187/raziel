@@ -116,9 +116,12 @@ namespace BPMO.Refacciones.BR {
             Guid miFirma = Guid.NewGuid();
             BPMO.Primitivos.Utilerias.ManejadorDataContext manejadorDctx = new BPMO.Primitivos.Utilerias.ManejadorDataContext(dataContext, "LIDER");
             try {
-                List<CatalogoBaseBO> lstNivelABCBO;
+                List<CatalogoBaseBO> lstNivelABC;
+                List<CatalogoBaseBO> lstNaturalezas;
                 NivelABCBO nivelABCBO = new NivelABCBO();
                 NivelABCBR nivelABCBR = new NivelABCBR();
+                NaturalezasBO naturalezasBO = new NaturalezasBO();
+                NaturalezaBR naturalezasBR = new NaturalezaBR();
                 ConfiguracionCantidadTransferenciaBO configuracionCantidadTransferenciaBO = new ConfiguracionCantidadTransferenciaBO();
                 ConfiguracionCantidadTransferenciaBR ConfiguracionCantidadTransferenciaBR = new ConfiguracionCantidadTransferenciaBR();
                 ConfiguracionHoraTransferenciaBO configuracionHoraTransferenciaBO = new ConfiguracionHoraTransferenciaBO();
@@ -141,8 +144,10 @@ namespace BPMO.Refacciones.BR {
                     else
                         confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].ConfiguracionHoraTransferencia = lstConfiguracionesHora.ConvertAll(item => (ConfiguracionHoraTransferenciaBO)item)[0];
 
-                    lstNivelABCBO = nivelABCBR.Consultar(dataContext, nivelABCBO);
-                    confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].NivelesABC = lstNivelABCBO.ConvertAll(x => (NivelABCBO)x);
+                    lstNivelABC = nivelABCBR.Consultar(dataContext, nivelABCBO);
+                    confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].NivelesABC = lstNivelABC.ConvertAll(x => (NivelABCBO)x);
+                    lstNaturalezas = naturalezasBR.Consultar(dataContext, nivelABCBO);
+                    confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].Naturalezas = lstNaturalezas.ConvertAll(x => (NaturalezasBO)x);
                 }
                 return confTransferenciaBO;
             } catch {
@@ -182,6 +187,34 @@ namespace BPMO.Refacciones.BR {
                     lstNivelABC.Add(configuracionNivelABC);
                 }
                 return lstNivelABC;
+            } catch {
+                throw;
+            }
+        }
+        public List<NaturalezasBO> ConsultarConfNaturalezas(IDataContext dataContext, int? configuracionId) {
+            try {
+                ConfiguracionTransferenciaNaturalezaConsultarDA consultarDA = new ConfiguracionTransferenciaNaturalezaConsultarDA();
+                List<NaturalezasBO> lstNaturalezas = new List<NaturalezasBO>();
+                NaturalezasBO configuracionlstNaturalezas = null;
+                DataSet ds = consultarDA.Consultar(dataContext, configuracionId);
+                foreach (DataRow row in ds.Tables[0].Rows) {
+                    #region Inicializar BO
+                    configuracionlstNaturalezas = new NaturalezasBO();
+                    configuracionlstNaturalezas.Auditoria = new AuditoriaBO();
+                    #endregion /Inicializar BO
+
+                    #region ConfiguracionTransferencia
+                    if (!row.IsNull("NaturalezaMovId"))
+                        configuracionlstNaturalezas.Id = (Int32)Convert.ChangeType(row["NaturalezaMovId"], typeof(Int32));
+                    if (!row.IsNull("Clave"))
+                        configuracionlstNaturalezas.NombreCorto = (String)Convert.ChangeType(row["Clave"], typeof(String));
+                    if (!row.IsNull("Nombre"))
+                        configuracionlstNaturalezas.Nombre = (String)Convert.ChangeType(row["Nombre"], typeof(String));
+                    #endregion /ConfiguracionTransferencia
+
+                    lstNaturalezas.Add(configuracionlstNaturalezas);
+                }
+                return lstNaturalezas;
             } catch {
                 throw;
             }

@@ -82,6 +82,7 @@
     <Compile Include="BR\ExistenciaAlmacenRefaccionesBR.cs" />
     <Compile Include="BR\MovimientoCoreBR.cs" />
     <Compile Include="BR\MovimientoRefaccionBR.cs" />
+    <Compile Include="BR\NaturalezaBR.cs" />
     <Compile Include="BR\NivelABCBR.cs" />
     <Compile Include="BR\NotaTallerBR.cs" />
     <Compile Include="BR\NotaTallerMovimientoRefaccionBR.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="DAO\ExistenciaAlmacenRefaccionesConsultarDAO.cs" />
     <Compile Include="DAO\MovimientoCoreInsertarDAO.cs" />
     <Compile Include="DAO\MovimientoRefaccionInsertarDAO.cs" />
+    <Compile Include="DAO\NaturalezasConsultarDAO.cs" />
     <Compile Include="DAO\NivelABCConsultarDAO.cs" />
     <Compile Include="DAO\NotaTallerActualizarDAO.cs" />
     <Compile Include="DAO\NotaTallerConsultarDAO.cs" />
@@ -129,6 +131,9 @@
     <Compile Include="DAO\TipoPedidoConsultarDAO.cs" />
     <Compile Include="DAO\UsuarioLiderConsultarDAO.cs" />
     <Compile Include="DAO\Utileria.cs" />
+    <Compile Include="DA\ConfiguracionTransferenciaNaturalezaBorrarDA.cs" />
+    <Compile Include="DA\ConfiguracionTransferenciaNaturalezaConsultarDA.cs" />
+    <Compile Include="DA\ConfiguracionTransferenciaNaturalezaInsertarDA.cs" />
     <Compile Include="DA\ConfiguracionTransferenciaNivelABCBorrarDA.cs" />
     <Compile Include="DA\ConfiguracionTransferenciaNivelABCConsultarDA.cs" />
     <Compile Include="DA\ConfiguracionTransferenciaNivelABCInsertarDA.cs" />

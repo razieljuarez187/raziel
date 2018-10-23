@@ -263,7 +263,7 @@
                             <asp:TextBox ID="txtEmpresa" runat="server" Width="300px" CssClass="TextoAlto" ValidationGroup="Requeridos"
                                 CausesValidation="true" MaxLength="100"></asp:TextBox>
                             <asp:ImageButton ID="ibtnBuscaEmpresa" runat="server" ImageUrl="~/Imagenes/Detalle.png"
-                                OnClick="ibtnBuscaEmpresa_Click" ValidationGroup="Requeridos" />
+                                OnClick="ibtnBuscaEmpresa_Click" />
                             <asp:RequiredFieldValidator ID="rfvUnidad" runat="server" ControlToValidate="txtEmpresa"
                                 ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
                         </td>
@@ -278,7 +278,7 @@
                             <asp:TextBox ID="txtSucursal" runat="server" Width="300px" CssClass="TextoAlto" ValidationGroup="Requeridos"
                                 CausesValidation="true" MaxLength="100"></asp:TextBox>
                             <asp:ImageButton ID="ibtnBuscaSucursal" runat="server" ImageUrl="~/Imagenes/Detalle.png"
-                                OnClick="ibtnBuscaSucursal_Click" ValidationGroup="Requeridos" />
+                                OnClick="ibtnBuscaSucursal_Click" />
                             <asp:RequiredFieldValidator ID="rfvSucursal" runat="server" ControlToValidate="txtSucursal"
                                 ErrorMessage="*" ValidationGroup="Requeridos" CssClass="ColorValidator"></asp:RequiredFieldValidator>
                         </td>

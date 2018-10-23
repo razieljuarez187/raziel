@@ -566,7 +566,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                             stringFormatoHora += " HH:mm a.m.|p.m.  (12 hrs)";
                             break;
                         case "InternetExplorer":
-                            stringFormatoHora += " HH:mm:ss (24 hrs)";
+                            stringFormatoHora += " HH:mm (24 hrs)";
                             break;
                         case "Firefox":
                             stringFormatoHora += " HH:mm (24 hrs)";
