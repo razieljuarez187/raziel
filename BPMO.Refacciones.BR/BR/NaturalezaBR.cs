@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using BPMO.Basicos.BO;
 using BPMO.Patterns.Creational.DataContext;
 using BPMO.Refacciones.DAO;
-using BPMO.Refacciones.BR.DA;
-using System.Data;
 
 namespace BPMO.Refacciones.BR {
     /// <summary>

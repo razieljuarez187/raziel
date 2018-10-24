@@ -51,13 +51,46 @@ namespace BPMO.Refacciones.DAO {
 
             #region Armado de Sentencia SQL
             StringBuilder sCmd = new StringBuilder();
-            sCmd.Append(" SELECT Clave, Nombre, NaturalezaMovId ");
+            sCmd.Append(" SELECT NaturalezaMovId, Clave, Nombre, UC, FC, UUA, FUA ");
             sCmd.Append(" FROM grl_catNaturalezasMov");
             StringBuilder sWhere = new StringBuilder();
             #region Valores
+
+            naturalezaMov.Auditoria = new AuditoriaBO();
+            naturalezaMov.Auditoria.UC = -1;
+            naturalezaMov.Auditoria.UUA = -1;
+            naturalezaMov.Auditoria.FC = DateTime.Parse("2015-08-22 18:38:25.870");
+            naturalezaMov.Auditoria.FUA = DateTime.Parse("2015-08-22 18:38:25.870");
+
             if (naturalezaMov.Id.HasValue) {
                 sWhere.Append(" AND NaturalezaMovId = @valor_NaturalezaMovId");
                 Utileria.AgregarParametro(sqlCmd, "valor_NaturalezaMovId", naturalezaMov.Id, System.Data.DbType.Int32);
+            }
+            if (!string.IsNullOrWhiteSpace(naturalezaMov.NombreCorto)) {
+                sWhere.Append(" AND Clave LIKE @valor_Clave");
+                Utileria.AgregarParametro(sqlCmd, "valor_Clave", naturalezaMov.NombreCorto, System.Data.DbType.String);
+            }
+            if (!string.IsNullOrWhiteSpace(naturalezaMov.Nombre)) {
+                sWhere.Append(" AND Nombre LIKE @valor_Nombre");
+                Utileria.AgregarParametro(sqlCmd, "valor_Nombre", naturalezaMov.Nombre, System.Data.DbType.String);
+            }
+            if (naturalezaMov.Auditoria != null) {
+                if (naturalezaMov.Auditoria.UC.HasValue) {
+                    sWhere.Append(" AND UC = @valor_UC");
+                    Utileria.AgregarParametro(sqlCmd, "valor_UC", naturalezaMov.Auditoria.UC, System.Data.DbType.Int32);
+                }
+                if (naturalezaMov.Auditoria.FC.HasValue) {
+                    sWhere.Append(" AND FC = @valor_FC");
+                    Utileria.AgregarParametro(sqlCmd, "valor_FC", naturalezaMov.Auditoria.FC, System.Data.DbType.DateTime);
+                }
+                if (naturalezaMov.Auditoria.UUA.HasValue) {
+                    sWhere.Append(" AND UUA = @valor_UUA");
+                    Utileria.AgregarParametro(sqlCmd, "valor_UUA", naturalezaMov.Auditoria.UUA, System.Data.DbType.Int32);
+                }
+                if (naturalezaMov.Auditoria.FUA.HasValue) {
+                    sWhere.Append(" AND FUA = @valor_FUA");
+                    Utileria.AgregarParametro(sqlCmd, "valor_FUA", naturalezaMov.Auditoria.FUA, System.Data.DbType.DateTime);
+                }
             }
             #endregion Valores
 
@@ -91,16 +124,25 @@ namespace BPMO.Refacciones.DAO {
             foreach (DataRow row in ds.Tables[0].Rows) {
                 #region Inicializar BO
                 naturalezas = new NaturalezasBO();
+                naturalezas.Auditoria = new AuditoriaBO();
                 #endregion /Inicializar BO
 
-                #region ConfiguracionesReglas
+                #region Naturalezas
                 if (!row.IsNull("NaturalezaMovId"))
                     naturalezas.Id = (Int32)Convert.ChangeType(row["NaturalezaMovId"], typeof(Int32));
                 if (!row.IsNull("Nombre"))
                     naturalezas.Nombre = (string)Convert.ChangeType(row["Nombre"], typeof(string));
                 if (!row.IsNull("Clave"))
                     naturalezas.NombreCorto = (string)Convert.ChangeType(row["Clave"], typeof(string));
-                #endregion /ConfiguracionesReglas
+                if (!row.IsNull("UC"))
+                    naturalezas.Auditoria.UC = (Int32)Convert.ChangeType(row["UC"], typeof(Int32));
+                if (!row.IsNull("FC"))
+                    naturalezas.Auditoria.FC = (DateTime)Convert.ChangeType(row["FC"], typeof(DateTime));
+                if (!row.IsNull("UUA"))
+                    naturalezas.Auditoria.UUA = (Int32)Convert.ChangeType(row["UUA"], typeof(Int32));
+                if (!row.IsNull("FUA"))
+                    naturalezas.Auditoria.FUA = (DateTime)Convert.ChangeType(row["FUA"], typeof(DateTime));
+                #endregion /Naturalezas
 
                 lstNaturalezas.Add(naturalezas);
             }

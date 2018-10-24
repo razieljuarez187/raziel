@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using BPMO.Basicos.BO;
 using BPMO.Patterns.Creational.DataContext;
+using BPMO.Refacciones.BO;
+using BPMO.Refacciones.DA;
 using BPMO.Refacciones.DAO;
 using BPMO.Security.BR;
-using System.Data;
-using BPMO.Refacciones.DA;
-using BPMO.Refacciones.BO;
-using BPMO.Refacciones.BR.DAO;
-using System;
-using BPMO.Refacciones.BR.DA;
 
 namespace BPMO.Refacciones.BR {
     /// <summary>
@@ -116,19 +114,16 @@ namespace BPMO.Refacciones.BR {
             Guid miFirma = Guid.NewGuid();
             BPMO.Primitivos.Utilerias.ManejadorDataContext manejadorDctx = new BPMO.Primitivos.Utilerias.ManejadorDataContext(dataContext, "LIDER");
             try {
-                List<CatalogoBaseBO> lstNivelABC;
-                List<CatalogoBaseBO> lstNaturalezas;
-                NivelABCBO nivelABCBO = new NivelABCBO();
-                NivelABCBR nivelABCBR = new NivelABCBR();
-                NaturalezasBO naturalezasBO = new NaturalezasBO();
-                NaturalezaBR naturalezasBR = new NaturalezaBR();
+                List<NivelABCBO> lstNivelABC;
+                List<NaturalezasBO> lstNaturalezas;
                 ConfiguracionCantidadTransferenciaBO configuracionCantidadTransferenciaBO = new ConfiguracionCantidadTransferenciaBO();
                 ConfiguracionCantidadTransferenciaBR ConfiguracionCantidadTransferenciaBR = new ConfiguracionCantidadTransferenciaBR();
                 ConfiguracionHoraTransferenciaBO configuracionHoraTransferenciaBO = new ConfiguracionHoraTransferenciaBO();
                 ConfiguracionHoraTransferenciaBR ConfiguracionHoraTransferenciaBR = new ConfiguracionHoraTransferenciaBR();
                 List<AuditoriaBaseBO> confTransferenciaBO = this.Consultar(dataContext, auditoriaBase);
                 if (confTransferenciaBO != null) {
-                    List<AuditoriaBaseBO> lstConfiguracionesCantidad = ConfiguracionCantidadTransferenciaBR.Consultar(dataContext, configuracionCantidadTransferenciaBO, confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0]);
+                    ConfiguracionTransferenciaBO confBO = (ConfiguracionTransferenciaBO)confTransferenciaBO[0];
+                    List<AuditoriaBaseBO> lstConfiguracionesCantidad = ConfiguracionCantidadTransferenciaBR.Consultar(dataContext, configuracionCantidadTransferenciaBO, confBO);
                     if (lstConfiguracionesCantidad.Count > 1)
                         throw new Exception("Se encontraron mas de una configuración de cantidad de transferencias. Por favor verifique.");
                     else if (lstConfiguracionesCantidad.Count <= 0)
@@ -136,7 +131,7 @@ namespace BPMO.Refacciones.BR {
                     else
                         confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].ConfiguracionCantidadTransferencia = lstConfiguracionesCantidad.ConvertAll(item => (ConfiguracionCantidadTransferenciaBO)item)[0];
 
-                    List<AuditoriaBaseBO> lstConfiguracionesHora = ConfiguracionHoraTransferenciaBR.Consultar(dataContext, configuracionHoraTransferenciaBO, confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0]);
+                    List<AuditoriaBaseBO> lstConfiguracionesHora = ConfiguracionHoraTransferenciaBR.Consultar(dataContext, configuracionHoraTransferenciaBO, confBO);
                     if (lstConfiguracionesHora.Count > 1)
                         throw new Exception("Se encontraron mas de una configuración de hora de transferencias. Por favor verifique.");
                     else if (lstConfiguracionesHora.Count <= 0)
@@ -144,9 +139,9 @@ namespace BPMO.Refacciones.BR {
                     else
                         confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].ConfiguracionHoraTransferencia = lstConfiguracionesHora.ConvertAll(item => (ConfiguracionHoraTransferenciaBO)item)[0];
 
-                    lstNivelABC = nivelABCBR.Consultar(dataContext, nivelABCBO);
+                    lstNivelABC = ConsultarConfNivelABC(dataContext, confBO.Id);
                     confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].NivelesABC = lstNivelABC.ConvertAll(x => (NivelABCBO)x);
-                    lstNaturalezas = naturalezasBR.Consultar(dataContext, naturalezasBO);
+                    lstNaturalezas = ConsultarConfNaturalezas(dataContext, confBO.Id);
                     confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].Naturalezas = lstNaturalezas.ConvertAll(x => (NaturalezasBO)x);
                 }
                 return confTransferenciaBO;
@@ -163,7 +158,7 @@ namespace BPMO.Refacciones.BR {
         public DataSet ConsultarFiltro(IDataContext dataContext, AuditoriaBaseBO configuracionFiltro) {
             throw new NotImplementedException();
         }
-        public List<NivelABCBO> ConsultarDataSet(IDataContext dataContext, int? configuracionId) {
+        public List<NivelABCBO> ConsultarConfNivelABC(IDataContext dataContext, int? configuracionId) {
             try {
                 ConfiguracionTransferenciaNivelABCConsultarDA consultarDA = new ConfiguracionTransferenciaNivelABCConsultarDA();
                 List<NivelABCBO> lstNivelABC = new List<NivelABCBO>();

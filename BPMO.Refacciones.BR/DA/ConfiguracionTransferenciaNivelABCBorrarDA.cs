@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.Common;
-using System.Data;
+using System.Text;
 using BPMO.Patterns.Creational.DataContext;
-using BPMO.Refacciones.BO;
-using BPMO.Primitivos.Utilerias;
-using BPMO.Basicos.BO;
 using BPMO.Refacciones.DAO;
 
-namespace BPMO.Refacciones.BR.DA {
+namespace BPMO.Refacciones.DA {
     /// <summary>
     /// Acceso a datos para borrado de Configuraciones de nivel ABC
     /// </summary>

@@ -8,7 +8,6 @@ using BPMO.Primitivos.Enumeradores;
 using BPMO.Refacciones.BO;
 using BPMO.Refacciones.BR;
 using BPMO.Refacciones.Procesos.VIS;
-using System.Data;
 
 namespace BPMO.Refacciones.Procesos.PRE {
     public class ConfiguracionTransferenciaPRE {
@@ -35,7 +34,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         public ConfiguracionTransferenciaPRE(IBuscadorConfiguracionTransferenciasVIS vistaConsulta, List<DatosConexionBO> listadoCnx) {
             this.vistaConsulta = vistaConsulta;
             AgregarProviderDataContext(listadoCnx);
-        }        
+        }
         /// <summary>
         /// Constructor para mantenimiento de Configuración
         /// </summary>
@@ -123,7 +122,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
             configuracion.Id = vistaConsulta.Id;
             configuracion.Empresa = new EmpresaLiderBO() { Id = vistaConsulta.EmpresaId };
             configuracion.Sucursal = new SucursalLiderBO() { Id = vistaConsulta.SucursalId };
-            configuracion.Almacen = new AlmacenBO(){ Id = vistaConsulta.AlmacenId };
+            configuracion.Almacen = new AlmacenBO() { Id = vistaConsulta.AlmacenId };
             configuracion.TipoPedido = new TipoPedidoBO() { Id = vistaConsulta.TipoPedidoId };
             configuracion.Activo = vistaConsulta.Activo;
             return configuracion;
@@ -173,7 +172,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
                     return;
                 }
                 configuracionBr = new ConfiguracionTransferenciaBR();
-                
+
                 ConfiguracionTransferenciaBO configuracion = this.InterfazADatosEditar();
                 SeguridadBO seguridadBO = new SeguridadBO(Guid.Empty, this.vistaMantto.UsuarioSesion, this.vistaMantto.Adscripcion);
                 configuracionBr.ActualizarCompleto(dataContext, configuracion, seguridadBO);
@@ -217,22 +216,8 @@ namespace BPMO.Refacciones.Procesos.PRE {
             configuracion.ConfiguracionHoraTransferencia.Activo = vistaMantto.confHoraActivo;
 
             configuracion.NivelesABC = vistaMantto.ConfNivelABC;
-            configuracion.Naturalezas= vistaMantto.ConfNaturalezas;
+            configuracion.Naturalezas = vistaMantto.ConfNaturalezas;
             return configuracion;
-        }
-        /// <summary>
-        /// Obtiene el nombre del usuario que tiene relación con la auditoria del proceso actual
-        /// </summary>
-        /// <param name="usuarioId">identificador del usuario a buscar</param>
-        /// <returns>Retorna una cadena con el nombre del usuario, si no se encontró el usuario retorna null</returns>
-        private string ObtenerNombreTipoPedido(int tipoPedidoId) {
-            TipoPedidoBR transferenciaBR = new TipoPedidoBR();
-            string nombreTipoPedido = null;
-            CatalogoBaseBO tipoPedidoBO = transferenciaBR.Consultar(this.dataContext, new TipoPedidoBO { Id = tipoPedidoId }).FirstOrDefault();
-            if (tipoPedidoBO != null) {
-                nombreTipoPedido = (tipoPedidoBO as TipoPedidoBO).Nombre;
-            }
-            return nombreTipoPedido;
         }
         /// <summary>
         /// Obtiene el nombre del usuario que tiene relación con la auditoria del proceso actual
@@ -270,31 +255,11 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// </summary>
         public void DesplegarDetalleConfiguracionTransferencia(int? configId) {
             this.DatosAInterfaz(ConsultarConfiguracion(new ConfiguracionTransferenciaBO { Id = configId }));
-            List<NivelABCBO> confLstNivelABC;
-            confLstNivelABC = configuracionBr.ConsultarDataSet(dataContext, configId);
-            List<NivelABCBO> NoExisten = (from p in vistaMantto.NivelABC
-                                          where !(from ex in confLstNivelABC
-                                 select ex.Id)
-                                 .Contains(p.Id)
-                         select p).ToList();
-            vistaMantto.ConfNivelABC = confLstNivelABC;
-            vistaMantto.NivelABC = NoExisten;
-
-            List<NaturalezasBO> confLstNaturalezas;
-            confLstNaturalezas = configuracionBr.ConsultarConfNaturalezas(dataContext, configId);
-            List<NaturalezasBO> NoExistenNaturalezas = (from p in vistaMantto.Naturalezas
-                                              where !(from ex in confLstNaturalezas
-                                                  select ex.Id)
-                                 .Contains(p.Id)
-                                          select p).ToList();
-            vistaMantto.ConfNaturalezas = confLstNaturalezas;
-            vistaMantto.Naturalezas = NoExistenNaturalezas;
-
             vistaMantto.PreparaUIDetalle();
         }
         public void DesplegarcatalogoNivelABC() {
             List<CatalogoBaseBO> confLstNivelABC;
-            NivelABCBR nivelABCBR =new NivelABCBR();
+            NivelABCBR nivelABCBR = new NivelABCBR();
             NivelABCBO nivelABCBO = new NivelABCBO();
             confLstNivelABC = nivelABCBR.Consultar(dataContext, nivelABCBO);
             vistaMantto.NivelABC = confLstNivelABC.ConvertAll(x => (NivelABCBO)x);
@@ -324,7 +289,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
             vistaMantto.maximoArticulosLinea = configuracion.MaximoArticulosLinea;
             vistaMantto.maximoLineas = configuracion.MaximoLineas;
             vistaMantto.Activo = configuracion.Activo;
-
+            #region Cantidades
             vistaMantto.confCantidadLunes = configuracion.ConfiguracionCantidadTransferencia.Lunes;
             vistaMantto.confCantidadMartes = configuracion.ConfiguracionCantidadTransferencia.Martes;
             vistaMantto.confCantidadMiercoles = configuracion.ConfiguracionCantidadTransferencia.Miercoles;
@@ -333,7 +298,8 @@ namespace BPMO.Refacciones.Procesos.PRE {
             vistaMantto.confCantidadSabado = configuracion.ConfiguracionCantidadTransferencia.Sabado;
             vistaMantto.confCantidadDomingo = configuracion.ConfiguracionCantidadTransferencia.Domingo;
             vistaMantto.confCantidadActivo = configuracion.ConfiguracionCantidadTransferencia.Activo;
-
+            #endregion Cantidades
+            #region Horas
             vistaMantto.confHoraLunes = configuracion.ConfiguracionHoraTransferencia.Lunes;
             vistaMantto.confHoraMartes = configuracion.ConfiguracionHoraTransferencia.Martes;
             vistaMantto.confHoraMiercoles = configuracion.ConfiguracionHoraTransferencia.Miercoles;
@@ -342,10 +308,25 @@ namespace BPMO.Refacciones.Procesos.PRE {
             vistaMantto.confHoraSabado = configuracion.ConfiguracionHoraTransferencia.Sabado;
             vistaMantto.confHoraDomingo = configuracion.ConfiguracionHoraTransferencia.Domingo;
             vistaMantto.confHoraActivo = configuracion.ConfiguracionHoraTransferencia.Activo;
-
-            vistaMantto.NivelABC = configuracion.NivelesABC;
-            vistaMantto.Naturalezas = configuracion.Naturalezas;
-
+            #endregion Horas
+            #region Niveles ABC
+            List<NivelABCBO> NoExisten = (from p in vistaMantto.NivelABC
+                                          where !(from ex in configuracion.NivelesABC
+                                                  select ex.Id)
+                                 .Contains(p.Id)
+                                          select p).ToList();
+            vistaMantto.ConfNivelABC = configuracion.NivelesABC;
+            vistaMantto.NivelABC = NoExisten;
+            #endregion Niveles ABC
+            #region Naturalezas
+            List<NaturalezasBO> NoExistenNaturalezas = (from p in vistaMantto.Naturalezas
+                                                        where !(from ex in configuracion.Naturalezas
+                                                                select ex.Id)
+                                           .Contains(p.Id)
+                                                        select p).ToList();
+            vistaMantto.ConfNaturalezas = configuracion.Naturalezas;
+            vistaMantto.Naturalezas = NoExistenNaturalezas;
+            #endregion Naturalezas
             #region Información de la bitácora
             string nombreUsuarioCreacion = this.ObtenerNombreUsuario(configuracion.Auditoria.UC.Value);
             this.vistaMantto.UsuarioCreacionBitacora = nombreUsuarioCreacion;
@@ -357,7 +338,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
             }
             this.vistaMantto.FechaActualizacionBitacora = configuracion.Auditoria.FUA;
             #endregion
-        }        
+        }
         /// <summary>
         /// Consulta una Configuración específica, de acuerdo a un objeto seleccionado
         /// </summary>
@@ -387,14 +368,15 @@ namespace BPMO.Refacciones.Procesos.PRE {
             if (vistaMantto.Activo == null)
                 sError += " , Activo";
             if (vistaMantto.UsuarioSesion == null || !vistaMantto.UsuarioSesion.Id.HasValue)
-                sError += " , Usuario Auditoría";            
-            if(!vistaMantto.maximoArticulosLinea.HasValue)
+                sError += " , Usuario Auditoría";
+            if (!vistaMantto.maximoArticulosLinea.HasValue)
                 sError += " , Artículos por itemm";
             if (!vistaMantto.maximoLineas.HasValue)
                 sError += " , Cantidad de items";
-
+            if (vistaMantto.ConfNaturalezas == null || vistaMantto.ConfNaturalezas.Count <= 0)
+                sError += " , Naturalezas";
             string strDiasFaltantes = string.Empty;
-            #region Cantidades por día           
+            #region Cantidades por día
             if (!vistaMantto.confCantidadLunes.HasValue)
                 strDiasFaltantes += " , Lunes";
             if (!vistaMantto.confCantidadMartes.HasValue)
@@ -445,7 +427,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
             configuracion.Sucursal = new SucursalLiderBO() { Id = vistaMantto.SucursalId, Nombre = vistaMantto.NombreSucursal };
             configuracion.Almacen = new AlmacenBO() { Id = vistaMantto.AlmacenId, Nombre = vistaMantto.NombreAlmacen };
             configuracion.TipoPedido = new TipoPedidoBO() { Id = vistaMantto.TipoPedidoId, Nombre = vistaMantto.NombreTipoPedido };
-            configuracion.ConfiguracionCantidadTransferencia = new ConfiguracionCantidadTransferenciaBO() {};
+            configuracion.ConfiguracionCantidadTransferencia = new ConfiguracionCantidadTransferenciaBO() { };
             configuracion.ConfiguracionHoraTransferencia = new ConfiguracionHoraTransferenciaBO() { };
             configuracion.MaximoArticulosLinea = vistaMantto.maximoArticulosLinea;
             configuracion.MaximoLineas = vistaMantto.maximoLineas;
@@ -498,7 +480,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
                     this.vistaMantto.NivelABC = lstCatABC;
                 }
             } catch (Exception) {
-                
+
                 throw;
             }
         }
@@ -694,6 +676,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
                     } else {
                         nombreTipoPedido = vConsulta.NombreTipoPedido;
                     }
+                    tipoPedido.AplicaTransferencia = true;
                     esNumero = int.TryParse(nombreTipoPedido, out id);
                     if (esNumero)
                         tipoPedido.Id = id;
@@ -724,7 +707,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
                         EmpresaLiderBO empresa = (EmpresaLiderBO)objeto;
                         if (esMantenimiento) {
                             vistaMantto.EmpresaId = empresa.Id;
-                            vistaMantto.NombreEmpresa = empresa.Nombre;                            
+                            vistaMantto.NombreEmpresa = empresa.Nombre;
                             vistaMantto.SucursalId = null;
                             vistaMantto.NombreSucursal = null;
                             vistaMantto.AlmacenId = null;

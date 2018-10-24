@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Text;
-using BPMO.Basicos.BO;
 using BPMO.Patterns.Creational.DataContext;
 using BPMO.Primitivos.Utilerias;
-using BPMO.Refacciones.BO;
-using BPMO.Refacciones.Enumeradores;
-using BPMO.Refacciones.DAO;
 
-namespace BPMO.Refacciones.BR.DA {
+namespace BPMO.Refacciones.DA {
     class ConfiguracionTransferenciaNaturalezaInsertarDA {
         #region Métodos
         /// <summary>
