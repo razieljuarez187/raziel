@@ -47,7 +47,7 @@ namespace BPMO.Refacciones.BR.DA {
 
             #region Armado de Sentencia SQL
             StringBuilder sCmd = new StringBuilder();
-            sCmd.Append(" SELECT conf.ConfiguracionId, conf.NaturalezaMovId ,catNivABC.Clave,catNivABC.Nombre");
+            sCmd.Append(" SELECT conf.ConfiguracionId, conf.NaturalezaMovId ,catNaturalezasMov.Clave,catNaturalezasMov.Nombre");
             sCmd.Append(" FROM eRef_confTransferenciaNaturalezaMovimiento conf ");
             sCmd.Append("   INNER JOIN grl_catNaturalezasMov catNaturalezasMov ON (catNaturalezasMov.NaturalezaMovId = conf.NaturalezaMovId) ");
             StringBuilder sWhere = new StringBuilder();

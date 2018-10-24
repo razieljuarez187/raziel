@@ -559,11 +559,11 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 if (lstNaturalezas != null && lstNaturalezas.Count > 0) {
                     List<NaturalezasBO> lstConfNaturalezas;
                     List<NaturalezasBO> lstCatNaturalezas;
-                    if (this.vistaMantto.ConfNivelABC == null)
+                    if (this.vistaMantto.ConfNaturalezas == null)
                         lstConfNaturalezas = new List<NaturalezasBO>();
                     else
                         lstConfNaturalezas = this.vistaMantto.ConfNaturalezas;
-                    if (this.vistaMantto.NivelABC == null)
+                    if (this.vistaMantto.Naturalezas == null)
                         lstCatNaturalezas = new List<NaturalezasBO>();
                     else
                         lstCatNaturalezas = this.vistaMantto.Naturalezas;

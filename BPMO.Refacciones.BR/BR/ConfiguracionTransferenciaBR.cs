@@ -146,7 +146,7 @@ namespace BPMO.Refacciones.BR {
 
                     lstNivelABC = nivelABCBR.Consultar(dataContext, nivelABCBO);
                     confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].NivelesABC = lstNivelABC.ConvertAll(x => (NivelABCBO)x);
-                    lstNaturalezas = naturalezasBR.Consultar(dataContext, nivelABCBO);
+                    lstNaturalezas = naturalezasBR.Consultar(dataContext, naturalezasBO);
                     confTransferenciaBO.ConvertAll(x => (ConfiguracionTransferenciaBO)x)[0].Naturalezas = lstNaturalezas.ConvertAll(x => (NaturalezasBO)x);
                 }
                 return confTransferenciaBO;
@@ -239,9 +239,15 @@ namespace BPMO.Refacciones.BR {
                 configuracionCantidadBr.Insertar(dataContext, (ConfiguracionCantidadTransferenciaBO)configTransferencia.ConfiguracionCantidadTransferencia, configTransferencia, firma);
                 configuracionHoraBr.Insertar(dataContext, (ConfiguracionHoraTransferenciaBO)configTransferencia.ConfiguracionHoraTransferencia, configTransferencia, firma);
                 ConfiguracionTransferenciaNivelABCInsertarDA confNivelABCDAInsertar = new ConfiguracionTransferenciaNivelABCInsertarDA();
+                ConfiguracionTransferenciaNaturalezaInsertarDA confNaturalezasInsertar = new ConfiguracionTransferenciaNaturalezaInsertarDA();
                 if (configTransferencia.NivelesABC != null && configTransferencia.NivelesABC.Count > 0) {
                     foreach (NivelABCBO item in configTransferencia.NivelesABC) {
                         confNivelABCDAInsertar.Insertar(dataContext, configuracionId, item.Id);
+                    }
+                }
+                if (configTransferencia.Naturalezas != null && configTransferencia.Naturalezas.Count > 0) {
+                    foreach (NaturalezasBO item in configTransferencia.Naturalezas) {
+                        confNaturalezasInsertar.Insertar(dataContext, configuracionId, item.Id);
                     }
                 }
                 dataContext.CommitTransaction(miFirma);
@@ -271,6 +277,8 @@ namespace BPMO.Refacciones.BR {
                 ConfiguracionHoraTransferenciaBR configuracionHoraBr = new ConfiguracionHoraTransferenciaBR();
                 ConfiguracionTransferenciaNivelABCBorrarDA confNivelABCDABorrar = new ConfiguracionTransferenciaNivelABCBorrarDA();
                 ConfiguracionTransferenciaNivelABCInsertarDA confNivelABCDAInsertar = new ConfiguracionTransferenciaNivelABCInsertarDA();
+                ConfiguracionTransferenciaNaturalezaBorrarDA confNaturalezasDABorrar = new ConfiguracionTransferenciaNaturalezaBorrarDA();
+                ConfiguracionTransferenciaNaturalezaInsertarDA confNaturalezasInsertar = new ConfiguracionTransferenciaNaturalezaInsertarDA();
                 ConfiguracionTransferenciaBO configuracion = (ConfiguracionTransferenciaBO)auditoriaBase;
                 bool esExito = actualizarDAO.Actualizar(dataContext, configuracion);
                 this.registrosAfectados = actualizarDAO.RegistrosAfectados;
@@ -280,6 +288,12 @@ namespace BPMO.Refacciones.BR {
                 if (configuracion.NivelesABC != null && configuracion.NivelesABC.Count > 0) {
                     foreach (NivelABCBO item in configuracion.NivelesABC) {
                         confNivelABCDAInsertar.Insertar(dataContext, configuracion.Id, item.Id);
+                    }
+                }
+                confNaturalezasDABorrar.Borrar(dataContext, configuracion.Id);
+                if (configuracion.Naturalezas != null && configuracion.Naturalezas.Count > 0) {
+                    foreach (NaturalezasBO item in configuracion.Naturalezas) {
+                        confNaturalezasInsertar.Insertar(dataContext, configuracion.Id, item.Id);
                     }
                 }
                 dataContext.CommitTransaction(miFirma);

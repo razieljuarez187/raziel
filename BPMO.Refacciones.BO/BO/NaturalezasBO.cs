@@ -13,10 +13,7 @@ namespace BPMO.Refacciones.BO {
         #endregion
         #region Constructores
         #endregion
-        #region Propiedades
-        public string Descripcion {
-            get { return string.Format("{0} ({1})", this.Nombre, this.NombreCorto); }
-        }
+        #region Propiedadess
         #endregion
     }
 }

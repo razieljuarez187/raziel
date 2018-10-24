@@ -385,13 +385,13 @@
                         <li id="liNivelABC" class="SubMenuOrden">
                             <asp:LinkButton ID="lbtnNivelABC" runat="server" Font-Size="Small" Font-Underline="False"
                                 OnClick="lbtnNivelABC_Click">
-                            Configuración de Nivel ABC
+                            Nivel ABC
                             </asp:LinkButton>
                         </li>
                         <li id="liNaturalezas" class="SubMenuOrden">
                             <asp:LinkButton ID="lbtnNaturalezas" runat="server" Font-Size="Small" Font-Underline="False"
                                 OnClick="lbtnNaturalezas_Click">
-                            Configuración de Naturalezas
+                            Naturalezas
                             </asp:LinkButton>
                         </li>
                     </ul>
@@ -507,9 +507,14 @@
                             <div id="divHora" style="width: 94%; margin: 15px; padding: 15px;">
                                 <asp:Panel ID="pnlHora" runat="server">
                                     <table style="width: 98%; margin-top: 10px;">
-                                        <tr id="trHoraActivolbl" runat="server">
+                                        <tr>
                                             <td colspan="6">
                                                 <asp:Label ID="lblFormatoHora" runat="server" style="color: red;"/>
+                                            </td>
+                                        </tr>
+                                        <tr id="trHoraActivolbl" runat="server">
+                                            <td colspan="6">
+                                                
                                             </td>
                                             <td align="right">
                                                 Activo
@@ -647,7 +652,7 @@
                                         <tr id="trNaturalezasLabel" runat="server">
                                             <td style="width: 40%; margin-top: 10px;" align="right">
                                                 <asp:ListBox ID="lbNaturalezas" runat="server" Height="150px" Width="50%" 
-                                                    SelectionMode="Multiple" DataTextField="Descripcion"></asp:ListBox>
+                                                    SelectionMode="Multiple" DataTextField="Nombre"></asp:ListBox>
                                             </td>
                                             <td style="width: 5%; text-align: center; height: 100%; vertical-align:middle;">
                                                 <asp:ImageButton ID="imgBtnAgregarNaturalezas" runat="server" ImageUrl="~/Imagenes/imgSlideDerecha.png"
@@ -658,7 +663,7 @@
                                             </td>
                                             <td style="width: 40%; margin-top: 10px;">
                                                 <asp:ListBox ID="lbNaturalezasRel" runat="server" Height="150px" Width="50%" SelectionMode="Multiple"
-                                                    DataTextField="Descripcion"></asp:ListBox>
+                                                    DataTextField="Nombre"></asp:ListBox>
                                             </td>
                                         </tr>
                                     </table>

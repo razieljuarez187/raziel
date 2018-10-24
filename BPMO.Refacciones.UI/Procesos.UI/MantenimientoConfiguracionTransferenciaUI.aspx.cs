@@ -629,6 +629,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.chkCantidadActivo.Checked = true;
             this.chkHoraActivo.Checked = true;
             this.trEstatus.Visible = false;
+            this.trCantidadActivolbl.Visible = false;
+            this.trHoraActivolbl.Visible = false;
             this.btnEditar.Enabled = false;
             this.btnGuardar.Enabled = true;
             this.btnGuardar.CommandName = "INSERTAR";
@@ -657,6 +659,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.chkHoraActivo.Enabled = true;
             this.rbtnInactivo.Enabled = true;
             this.trEstatus.Visible = true;
+            this.trCantidadActivolbl.Visible = true;
+            this.trHoraActivolbl.Visible = true;
             this.btnGuardar.Enabled = true;
             this.btnEditar.Enabled = false;
             this.btnGuardar.CommandName = "EDITAR";
@@ -684,6 +688,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.chkHoraActivo.Enabled = false;
             this.rbtnInactivo.Enabled = false;
             this.trEstatus.Visible = true;
+            this.trCantidadActivolbl.Visible = true;
+            this.trHoraActivolbl.Visible = true;
             this.btnGuardar.Enabled = false;
             this.btnEditar.Enabled = true;
             this.DesactivarTexts(true);
@@ -771,6 +777,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.chkHoraActivo.CssClass =
             this.lbNivelABC.CssClass =
             this.lbNivelABCRel.CssClass =
+            this.lbNaturalezas.CssClass =
+            this.lbNaturalezasRel.CssClass =
             this.imgBtnAgregar.CssClass =
             this.imgBtnQuitar.CssClass =
             this.imgBtnAgregarNaturalezas.CssClass =

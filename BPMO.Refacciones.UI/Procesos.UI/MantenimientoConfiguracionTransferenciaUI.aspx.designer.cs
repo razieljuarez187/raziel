@@ -607,15 +607,6 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         protected global::System.Web.UI.WebControls.Panel pnlHora;
         
         /// <summary>
-        /// Control trHoraActivolbl.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trHoraActivolbl;
-        
-        /// <summary>
         /// Control lblFormatoHora.
         /// </summary>
         /// <remarks>
@@ -623,6 +614,15 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFormatoHora;
+        
+        /// <summary>
+        /// Control trHoraActivolbl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trHoraActivolbl;
         
         /// <summary>
         /// Control chkHoraActivo.
