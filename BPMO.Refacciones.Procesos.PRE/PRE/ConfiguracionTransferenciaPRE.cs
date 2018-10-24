@@ -216,8 +216,8 @@ namespace BPMO.Refacciones.Procesos.PRE {
             configuracion.ConfiguracionHoraTransferencia.Domingo = vistaMantto.confHoraDomingo;
             configuracion.ConfiguracionHoraTransferencia.Activo = vistaMantto.confHoraActivo;
 
-            configuracion.NivelesABC = vistaMantto.ConfNivelABCBO;
-
+            configuracion.NivelesABC = vistaMantto.ConfNivelABC;
+            configuracion.Naturalezas= vistaMantto.ConfNaturalezas;
             return configuracion;
         }
         /// <summary>
@@ -272,13 +272,24 @@ namespace BPMO.Refacciones.Procesos.PRE {
             this.DatosAInterfaz(ConsultarConfiguracion(new ConfiguracionTransferenciaBO { Id = configId }));
             List<NivelABCBO> confLstNivelABC;
             confLstNivelABC = configuracionBr.ConsultarDataSet(dataContext, configId);
-            List<NivelABCBO> NoExisten = (from p in vistaMantto.NivelABCBO
+            List<NivelABCBO> NoExisten = (from p in vistaMantto.NivelABC
                                           where !(from ex in confLstNivelABC
                                  select ex.Id)
                                  .Contains(p.Id)
                          select p).ToList();
-            vistaMantto.ConfNivelABCBO = confLstNivelABC;
-            vistaMantto.NivelABCBO = NoExisten;
+            vistaMantto.ConfNivelABC = confLstNivelABC;
+            vistaMantto.NivelABC = NoExisten;
+
+            List<NaturalezasBO> confLstNaturalezas;
+            confLstNaturalezas = configuracionBr.ConsultarConfNaturalezas(dataContext, configId);
+            List<NaturalezasBO> NoExistenNaturalezas = (from p in vistaMantto.Naturalezas
+                                              where !(from ex in confLstNaturalezas
+                                                  select ex.Id)
+                                 .Contains(p.Id)
+                                          select p).ToList();
+            vistaMantto.ConfNaturalezas = confLstNaturalezas;
+            vistaMantto.Naturalezas = NoExistenNaturalezas;
+
             vistaMantto.PreparaUIDetalle();
         }
         public void DesplegarcatalogoNivelABC() {
@@ -286,7 +297,14 @@ namespace BPMO.Refacciones.Procesos.PRE {
             NivelABCBR nivelABCBR =new NivelABCBR();
             NivelABCBO nivelABCBO = new NivelABCBO();
             confLstNivelABC = nivelABCBR.Consultar(dataContext, nivelABCBO);
-            vistaMantto.NivelABCBO = confLstNivelABC.ConvertAll(x => (NivelABCBO)x);
+            vistaMantto.NivelABC = confLstNivelABC.ConvertAll(x => (NivelABCBO)x);
+        }
+        public void DesplegarcatalogoNaturalezas() {
+            List<CatalogoBaseBO> confLstNaturalezas;
+            NaturalezaBR naturalezasBR = new NaturalezaBR();
+            NaturalezasBO naturalezasBO = new NaturalezasBO();
+            confLstNaturalezas = naturalezasBR.Consultar(dataContext, naturalezasBO);
+            vistaMantto.Naturalezas = confLstNaturalezas.ConvertAll(x => (NaturalezasBO)x);
         }
         /// <summary>
         /// Asocia los datos a la Interfaz
@@ -325,7 +343,8 @@ namespace BPMO.Refacciones.Procesos.PRE {
             vistaMantto.confHoraDomingo = configuracion.ConfiguracionHoraTransferencia.Domingo;
             vistaMantto.confHoraActivo = configuracion.ConfiguracionHoraTransferencia.Activo;
 
-            vistaMantto.NivelABCBO = configuracion.NivelesABC;
+            vistaMantto.NivelABC = configuracion.NivelesABC;
+            vistaMantto.Naturalezas = configuracion.Naturalezas;
 
             #region Información de la bitácora
             string nombreUsuarioCreacion = this.ObtenerNombreUsuario(configuracion.Auditoria.UC.Value);
@@ -452,7 +471,8 @@ namespace BPMO.Refacciones.Procesos.PRE {
             configuracion.ConfiguracionHoraTransferencia.Domingo = vistaMantto.confHoraDomingo;
             configuracion.ConfiguracionHoraTransferencia.Activo = vistaMantto.confHoraActivo;
 
-            configuracion.NivelesABC = vistaMantto.ConfNivelABCBO;
+            configuracion.NivelesABC = vistaMantto.ConfNivelABC;
+            configuracion.Naturalezas = vistaMantto.ConfNaturalezas;
 
             return configuracion;
         }
@@ -461,21 +481,21 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 if (lstNivelesABC != null && lstNivelesABC.Count > 0) {
                     List<NivelABCBO> lstConfABC;
                     List<NivelABCBO> lstCatABC;
-                    if (this.vistaMantto.ConfNivelABCBO == null)
+                    if (this.vistaMantto.ConfNivelABC == null)
                         lstConfABC = new List<NivelABCBO>();
                     else
-                        lstConfABC = this.vistaMantto.ConfNivelABCBO;
-                    if (this.vistaMantto.NivelABCBO == null)
+                        lstConfABC = this.vistaMantto.ConfNivelABC;
+                    if (this.vistaMantto.NivelABC == null)
                         lstCatABC = new List<NivelABCBO>();
                     else
-                        lstCatABC = this.vistaMantto.NivelABCBO;
+                        lstCatABC = this.vistaMantto.NivelABC;
 
                     foreach (NivelABCBO abc in lstNivelesABC) {
                         lstConfABC.Add(abc);
                         lstCatABC.Remove(abc);
                     }
-                    this.vistaMantto.ConfNivelABCBO = lstConfABC;
-                    this.vistaMantto.NivelABCBO = lstCatABC;
+                    this.vistaMantto.ConfNivelABC = lstConfABC;
+                    this.vistaMantto.NivelABC = lstCatABC;
                 }
             } catch (Exception) {
                 
@@ -487,21 +507,73 @@ namespace BPMO.Refacciones.Procesos.PRE {
                 if (lstNivelesABC != null && lstNivelesABC.Count > 0) {
                     List<NivelABCBO> lstConfABC;
                     List<NivelABCBO> lstCatABC;
-                    if (this.vistaMantto.ConfNivelABCBO == null)
+                    if (this.vistaMantto.ConfNivelABC == null)
                         lstConfABC = new List<NivelABCBO>();
                     else
-                        lstConfABC = this.vistaMantto.ConfNivelABCBO;
-                    if (this.vistaMantto.NivelABCBO == null)
+                        lstConfABC = this.vistaMantto.ConfNivelABC;
+                    if (this.vistaMantto.NivelABC == null)
                         lstCatABC = new List<NivelABCBO>();
                     else
-                        lstCatABC = this.vistaMantto.NivelABCBO;
+                        lstCatABC = this.vistaMantto.NivelABC;
 
                     foreach (NivelABCBO abc in lstNivelesABC) {
                         lstCatABC.Add(abc);
                         lstConfABC.Remove(abc);
                     }
-                    this.vistaMantto.ConfNivelABCBO = lstConfABC;
-                    this.vistaMantto.NivelABCBO = lstCatABC;
+                    this.vistaMantto.ConfNivelABC = lstConfABC;
+                    this.vistaMantto.NivelABC = lstCatABC;
+                }
+            } catch (Exception) {
+
+                throw;
+            }
+        }
+        public void AgregarConfiguracionNaturalezas(List<NaturalezasBO> lstNaturalezas) {
+            try {
+                if (lstNaturalezas != null && lstNaturalezas.Count > 0) {
+                    List<NaturalezasBO> lstConfNaturalezas;
+                    List<NaturalezasBO> lstCatNaturalezas;
+                    if (this.vistaMantto.ConfNaturalezas == null)
+                        lstConfNaturalezas = new List<NaturalezasBO>();
+                    else
+                        lstConfNaturalezas = this.vistaMantto.ConfNaturalezas;
+                    if (this.vistaMantto.Naturalezas == null)
+                        lstCatNaturalezas = new List<NaturalezasBO>();
+                    else
+                        lstCatNaturalezas = this.vistaMantto.Naturalezas;
+
+                    foreach (NaturalezasBO abc in lstNaturalezas) {
+                        lstConfNaturalezas.Add(abc);
+                        lstCatNaturalezas.Remove(abc);
+                    }
+                    this.vistaMantto.ConfNaturalezas = lstConfNaturalezas;
+                    this.vistaMantto.Naturalezas = lstCatNaturalezas;
+                }
+            } catch (Exception) {
+
+                throw;
+            }
+        }
+        public void QuitarConfiguracionNaturalezas(List<NaturalezasBO> lstNaturalezas) {
+            try {
+                if (lstNaturalezas != null && lstNaturalezas.Count > 0) {
+                    List<NaturalezasBO> lstConfNaturalezas;
+                    List<NaturalezasBO> lstCatNaturalezas;
+                    if (this.vistaMantto.ConfNivelABC == null)
+                        lstConfNaturalezas = new List<NaturalezasBO>();
+                    else
+                        lstConfNaturalezas = this.vistaMantto.ConfNaturalezas;
+                    if (this.vistaMantto.NivelABC == null)
+                        lstCatNaturalezas = new List<NaturalezasBO>();
+                    else
+                        lstCatNaturalezas = this.vistaMantto.Naturalezas;
+
+                    foreach (NaturalezasBO abc in lstNaturalezas) {
+                        lstCatNaturalezas.Add(abc);
+                        lstConfNaturalezas.Remove(abc);
+                    }
+                    this.vistaMantto.ConfNaturalezas = lstConfNaturalezas;
+                    this.vistaMantto.Naturalezas = lstCatNaturalezas;
                 }
             } catch (Exception) {
 

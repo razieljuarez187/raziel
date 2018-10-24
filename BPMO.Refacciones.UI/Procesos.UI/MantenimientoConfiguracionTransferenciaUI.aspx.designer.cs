@@ -355,6 +355,15 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         protected global::System.Web.UI.WebControls.LinkButton lbtnNivelABC;
         
         /// <summary>
+        /// Control lbtnNaturalezas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnNaturalezas;
+        
+        /// <summary>
         /// Control pnlCantidad.
         /// </summary>
         /// <remarks>
@@ -884,6 +893,60 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox lbNivelABCRel;
+        
+        /// <summary>
+        /// Control pnlNaturalezas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlNaturalezas;
+        
+        /// <summary>
+        /// Control trNaturalezasLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trNaturalezasLabel;
+        
+        /// <summary>
+        /// Control lbNaturalezas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbNaturalezas;
+        
+        /// <summary>
+        /// Control imgBtnAgregarNaturalezas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBtnAgregarNaturalezas;
+        
+        /// <summary>
+        /// Control imgBtnQuitarNaturalezas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBtnQuitarNaturalezas;
+        
+        /// <summary>
+        /// Control lbNaturalezasRel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbNaturalezasRel;
         
         /// <summary>
         /// Control hdnMenuTaps.

@@ -90,11 +90,19 @@ namespace BPMO.Refacciones.Procesos.VIS {
         /// <summary>
         /// Obtiene la adscripción actual
         /// </summary>
-        List<NivelABCBO> NivelABCBO { get; set; }
+        List<NivelABCBO> NivelABC { get; set; }
         /// <summary>
         /// Obtiene la adscripción actual
         /// </summary>
-        List<NivelABCBO> ConfNivelABCBO { get; set; }
+        List<NivelABCBO> ConfNivelABC { get; set; }
+        /// <summary>
+        /// Obtiene la adscripción actual
+        /// </summary>
+        List<NaturalezasBO> Naturalezas { get; set; }
+        /// <summary>
+        /// Obtiene la adscripción actual
+        /// </summary>
+        List<NaturalezasBO> ConfNaturalezas { get; set; }
         /// <summary>
         /// Obtiene o establece el identificador de la Configuración
         /// </summary>

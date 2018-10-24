@@ -10,7 +10,7 @@ namespace BPMO.Refacciones.BR {
     /// <summary>
     /// Reglas de negocio para Naturaleza
     /// </summary>
-    class NaturalezaBR : IBRBaseCatalogo {
+    public class NaturalezaBR : IBRBaseCatalogo {
         #region Atributos
         private int registrosAfectados;
         private int? ultimoIdGenerado;

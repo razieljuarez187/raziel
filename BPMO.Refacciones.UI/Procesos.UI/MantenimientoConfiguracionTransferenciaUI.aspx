@@ -136,6 +136,9 @@
             } else if (tapSelect == "NivelABC") {
                 $("#liNivelABC").addClass("MenuOrdenSeleccionado");
                 $("#divNivelABC").show();
+            } else if (tapSelect == "Naturalezas") {
+                $("#liNaturalezas").addClass("MenuOrdenSeleccionado");
+                $("#divNaturalezas").show();
             }
         }
     </script>
@@ -385,6 +388,12 @@
                             Configuración de Nivel ABC
                             </asp:LinkButton>
                         </li>
+                        <li id="liNaturalezas" class="SubMenuOrden">
+                            <asp:LinkButton ID="lbtnNaturalezas" runat="server" Font-Size="Small" Font-Underline="False"
+                                OnClick="lbtnNaturalezas_Click">
+                            Configuración de Naturalezas
+                            </asp:LinkButton>
+                        </li>
                     </ul>
                     <div id="detalleOS" class="GroupBody">
                         <fieldset style="margin-top: 0; border-top: none;">
@@ -626,6 +635,29 @@
                                             </td>
                                             <td style="width: 40%; margin-top: 10px;">
                                                 <asp:ListBox ID="lbNivelABCRel" runat="server" Height="150px" Width="50%" SelectionMode="Multiple"
+                                                    DataTextField="Descripcion"></asp:ListBox>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </asp:Panel>
+                            </div>
+                            <div id="divNaturalezas" style="width: 94%; margin: 15px; padding: 15px;">
+                                <asp:Panel ID="pnlNaturalezas" runat="server">
+                                    <table style="width: 98%; margin-top: 10px;">
+                                        <tr id="trNaturalezasLabel" runat="server">
+                                            <td style="width: 40%; margin-top: 10px;" align="right">
+                                                <asp:ListBox ID="lbNaturalezas" runat="server" Height="150px" Width="50%" 
+                                                    SelectionMode="Multiple" DataTextField="Descripcion"></asp:ListBox>
+                                            </td>
+                                            <td style="width: 5%; text-align: center; height: 100%; vertical-align:middle;">
+                                                <asp:ImageButton ID="imgBtnAgregarNaturalezas" runat="server" ImageUrl="~/Imagenes/imgSlideDerecha.png"
+                                                                OnClick="btnAgregarNaturalezas_Click" ImageAlign="Bottom" ToolTip="Agregar" />
+                                                <br /><br />
+                                                <asp:ImageButton ID="imgBtnQuitarNaturalezas" runat="server" ImageUrl="~/Imagenes/imgSlideIzquierda.png"
+                                                                OnClick="btnQuitarNaturalezas_Click" ToolTip="Quitar" />
+                                            </td>
+                                            <td style="width: 40%; margin-top: 10px;">
+                                                <asp:ListBox ID="lbNaturalezasRel" runat="server" Height="150px" Width="50%" SelectionMode="Multiple"
                                                     DataTextField="Descripcion"></asp:ListBox>
                                             </td>
                                         </tr>

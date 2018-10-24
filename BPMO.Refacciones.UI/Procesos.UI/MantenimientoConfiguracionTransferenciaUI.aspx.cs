@@ -18,9 +18,6 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
     public partial class MantenimientoConfiguracionTransferenciaUI : Page, IMantenimientoConfiguracionTransferenciaVIS {
         #region Atributos
         ConfiguracionTransferenciaPRE presentador = null;
-
-        public ArrayList listaNivelABCRelacion = new ArrayList();
-        public ArrayList listaNivelABCCatalogo = new ArrayList();
         #endregion
         #region Propiedades
         #region Variables de Session
@@ -475,6 +472,59 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 this.txtHoraDomingo.Text = value != null ? value.ToString() : null;
             }
         }
+        public List<NivelABCBO> NivelABC {
+            get {
+                return (Session["NivelABC"] != null) ? (List<NivelABCBO>)Session["NivelABC"] : null;
+            }
+            set {
+                if (value != null)
+                    this.Session.Add("NivelABC", value);
+                else
+                    this.Session.Remove("NivelABC");
+                this.lbNivelABC.DataSource = value;
+                this.lbNivelABC.DataBind();
+            }
+        }
+        public List<NivelABCBO> ConfNivelABC {
+            get {
+                return (Session["NivelABCconf"] != null) ? (List<NivelABCBO>)Session["NivelABCconf"] : null;
+            }
+            set {
+                if (value != null)
+                    this.Session.Add("NivelABCconf", value);
+                else
+                    this.Session.Remove("NivelABCconf");
+                this.lbNivelABCRel.DataSource = value;
+                this.lbNivelABCRel.DataBind();
+            }
+        }
+        public List<NaturalezasBO> Naturalezas {
+            get {
+                return (Session["Naturalezas"] != null) ? (List<NaturalezasBO>)Session["Naturalezas"] : null;
+            }
+            set {
+                if (value != null)
+                    this.Session.Add("Naturalezas", value);
+                else
+                    this.Session.Remove("Naturalezas");
+                this.lbNaturalezas.DataSource = value;
+                this.lbNaturalezas.DataBind();
+            }
+        }
+
+        public List<NaturalezasBO> ConfNaturalezas {
+            get {
+                return (Session["Naturalezasconf"] != null) ? (List<NaturalezasBO>)Session["Naturalezasconf"] : null;
+            }
+            set {
+                if (value != null)
+                    this.Session.Add("Naturalezasconf", value);
+                else
+                    this.Session.Remove("Naturalezasconf");
+                this.lbNaturalezasRel.DataSource = value;
+                this.lbNaturalezasRel.DataBind();
+            }
+        }
         #region DatosBitacora
         public string UsuarioCreacionBitacora {
             set { this.txtCreadoBitacora.Text = value ?? string.Empty; }
@@ -489,32 +539,6 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             set { this.txtFechaActualizacionBitacora.Text = value != null ? String.Format("{0} {1}", value.Value.ToShortDateString(), value.Value.ToLongTimeString()) : string.Empty; }
         }
         #endregion
-        public List<NivelABCBO> NivelABCBO {
-            get {
-                return (Session["NivelABC"] != null) ? (List<NivelABCBO>)Session["NivelABC"] : null;
-            }
-            set {
-                if (value != null)
-                    this.Session.Add("NivelABC", value);
-                else
-                    this.Session.Remove("NivelABC");
-                this.lbNivelABC.DataSource = value;                
-                this.lbNivelABC.DataBind();
-            }
-        }
-        public List<NivelABCBO> ConfNivelABCBO {
-            get {
-                return (Session["NivelABCconf"] != null) ? (List<NivelABCBO>)Session["NivelABCconf"] : null;
-            }
-            set {
-                if (value != null)
-                    this.Session.Add("NivelABCconf", value);
-                else
-                    this.Session.Remove("NivelABCconf");
-                this.lbNivelABCRel.DataSource = value;
-                this.lbNivelABCRel.DataBind();
-            }
-        }
         public object ConfiguracionTransferenciaBase {
             get {
                 return this.Session["CONFIGTRANSBASE"] ?? null;
@@ -544,6 +568,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                     miMaster.VerificarProcesoActual(securityBR.ProcesoActual);
                     #endregion
                     presentador.DesplegarcatalogoNivelABC();
+                    presentador.DesplegarcatalogoNaturalezas();
                     if (this.Session["ConfiguracionId"] != null) {
                         int id = 0;
                         bool esNumero = int.TryParse(this.Session["ConfiguracionId"].ToString(), out id);
@@ -557,6 +582,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                         this.Session.Remove("ConfiguracionId");
                     } else {
                         this.Session.Remove("NivelABCconf");
+                        this.Session.Remove("Naturalezasconf");
                         PreparaUIInsertar();
                     }
                     System.Web.HttpBrowserCapabilities browser = Request.Browser;
@@ -615,6 +641,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.btnCancelar.Enabled = true;
             this.lbNivelABC.Enabled = true;
             this.lbNivelABCRel.Enabled = true;
+            this.lbNaturalezas.Enabled = true;
+            this.lbNaturalezasRel.Enabled = true;
             this.hdnTipoAccion.Value = "INSERTAR";
             this.lblEncabezadoLeyenda.Text = "CATÁLOGOS - REGISTRAR CONFIGURACIÓN";
             this.AsignarClaseCss();
@@ -640,6 +668,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.btnCancelar.Enabled = true;
             this.lbNivelABC.Enabled = true;
             this.lbNivelABCRel.Enabled = true;
+            this.lbNaturalezas.Enabled = true;
+            this.lbNaturalezasRel.Enabled = true;
             this.hdnTipoAccion.Value = "EDITAR";
             this.lblEncabezadoLeyenda.Text = "CATÁLOGOS - EDITAR CONFIGURACIÓN";
             this.AsignarClaseCss();
@@ -664,6 +694,8 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.btnCancelar.Enabled = false;
             this.lbNivelABC.Enabled = false;
             this.lbNivelABCRel.Enabled = false;
+            this.lbNaturalezas.Enabled = false;
+            this.lbNaturalezasRel.Enabled = false;
             this.hdnTipoAccion.Value = "EDITAR";
             this.lblEncabezadoLeyenda.Text = "CATÁLOGOS - CONSULTAR CONFIGURACIÓN";
             this.AsignarClaseCss(false, false, true);
@@ -707,8 +739,12 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.txtHoraDomingo.ReadOnly = readOnly;
             this.lbNivelABC.Enabled = !readOnly;
             this.lbNivelABCRel.Enabled = !readOnly;
+            this.lbNaturalezas.Enabled = !readOnly;
+            this.lbNaturalezasRel.Enabled = !readOnly;
             this.imgBtnAgregar.Enabled = !readOnly;
             this.imgBtnQuitar.Enabled = !readOnly;
+            this.imgBtnAgregarNaturalezas.Enabled = !readOnly;
+            this.imgBtnQuitarNaturalezas.Enabled = !readOnly;
             this.chkCantidadActivo.Enabled = !readOnly;
             this.chkHoraActivo.Enabled = !readOnly;
             this.txtEmpresa.CssClass =
@@ -736,7 +772,9 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
             this.lbNivelABC.CssClass =
             this.lbNivelABCRel.CssClass =
             this.imgBtnAgregar.CssClass =
-            this.imgBtnQuitar.CssClass = (readOnly) ? "textBoxDisabled" : null;
+            this.imgBtnQuitar.CssClass =
+            this.imgBtnAgregarNaturalezas.CssClass =
+            this.imgBtnQuitarNaturalezas.CssClass = (readOnly) ? "textBoxDisabled" : null;
         }
         #region Uso del Buscador
         /// <summary>
@@ -921,7 +959,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 List<NivelABCBO> lstAux = new List<NivelABCBO>();
                 for (int i = 0; i < lbNivelABC.Items.Count; i++) {
                     if (lbNivelABC.Items[i].Selected)
-                        lstAux.Add(this.NivelABCBO[i]);
+                        lstAux.Add(this.NivelABC[i]);
                 }
                 this.presentador.AgregarConfiguracionABC(lstAux);
             } catch (Exception ex) {
@@ -933,9 +971,33 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 List<NivelABCBO> lstAux = new List<NivelABCBO>();
                 for (int i = 0; i < lbNivelABCRel.Items.Count; i++) {
                     if (lbNivelABCRel.Items[i].Selected)
-                        lstAux.Add(this.ConfNivelABCBO[i]);                        
+                        lstAux.Add(this.ConfNivelABC[i]);                        
                 }
                 this.presentador.QuitarConfiguracionABC(lstAux);
+            } catch (Exception ex) {
+                MostrarMensaje("Error con la configuración", ETipoMensajeIU.ERROR, ex.Message);
+            }
+        }
+        protected void btnAgregarNaturalezas_Click(object sender, ImageClickEventArgs e) {
+            try {
+                List<NaturalezasBO> lstAux = new List<NaturalezasBO>();
+                for (int i = 0; i < lbNaturalezas.Items.Count; i++) {
+                    if (lbNaturalezas.Items[i].Selected)
+                        lstAux.Add(this.Naturalezas[i]);
+                }
+                this.presentador.AgregarConfiguracionNaturalezas(lstAux);
+            } catch (Exception ex) {
+                MostrarMensaje("Error con la configuración", ETipoMensajeIU.ERROR, ex.Message);
+            }
+        }
+        protected void btnQuitarNaturalezas_Click(object sender, ImageClickEventArgs e) {
+            try {
+                List<NaturalezasBO> lstAux = new List<NaturalezasBO>();
+                for (int i = 0; i < lbNaturalezasRel.Items.Count; i++) {
+                    if (lbNaturalezasRel.Items[i].Selected)
+                        lstAux.Add(this.ConfNaturalezas[i]);
+                }
+                this.presentador.QuitarConfiguracionNaturalezas(lstAux);
             } catch (Exception ex) {
                 MostrarMensaje("Error con la configuración", ETipoMensajeIU.ERROR, ex.Message);
             }
@@ -970,9 +1032,19 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                 MostrarMensaje("Inconsistencias al desplegar las posiciones de trabajo.", ETipoMensajeIU.ERROR, ex.Message);
             }
         }
+        protected void lbtnNaturalezas_Click(object sender, EventArgs e) {
+            try {
+                this.pnlCantidad.Visible = false;
+                this.pnlHora.Visible = false;
+                this.pnlNivelABC.Visible = false;
+                this.pnlNaturalezas.Visible = true;
+                this.hdnMenuTaps.Value = "Naturalezas";
+            } catch (Exception ex) {
+                MostrarMensaje("Inconsistencias al desplegar las posiciones de trabajo.", ETipoMensajeIU.ERROR, ex.Message);
+            }
+        }
         #endregion
 
         #endregion
-
     }
 }
