@@ -622,7 +622,7 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow trHoraActivolbl;
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell trHoraActivolbl;
         
         /// <summary>
         /// Control chkHoraActivo.

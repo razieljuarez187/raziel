@@ -507,16 +507,11 @@
                             <div id="divHora" style="width: 94%; margin: 15px; padding: 15px;">
                                 <asp:Panel ID="pnlHora" runat="server">
                                     <table style="width: 98%; margin-top: 10px;">
-                                        <tr>
+                                        <tr  runat="server">
                                             <td colspan="6">
                                                 <asp:Label ID="lblFormatoHora" runat="server" style="color: red;"/>
                                             </td>
-                                        </tr>
-                                        <tr id="trHoraActivolbl" runat="server">
-                                            <td colspan="6">
-                                                
-                                            </td>
-                                            <td align="right">
+                                            <td id="trHoraActivolbl" align="right">
                                                 Activo
                                                 <asp:CheckBox ID="chkHoraActivo" runat="server" TextAlign="Left" />
                                             </td>

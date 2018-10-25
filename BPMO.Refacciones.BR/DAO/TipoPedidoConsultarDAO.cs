@@ -25,11 +25,11 @@ namespace BPMO.Refacciones.DAO {
         /// <returns>Lista de Configuraciones de Reglas</returns>
         public List<CatalogoBaseBO> Consultar(IDataContext dataContext, CatalogoBaseBO catalogoBase) {
             #region Validar parámetos
-            TipoPedidoBO configRegla = null;
+            TipoPedidoBO tipoPedido = null;
             if (catalogoBase is TipoPedidoBO)
-                configRegla = (TipoPedidoBO)catalogoBase;
+                tipoPedido = (TipoPedidoBO)catalogoBase;
             string mensajeError = String.Empty;
-            if (configRegla == null)
+            if (tipoPedido == null)
                 mensajeError += " , TipoPedido";
             if (dataContext == null)
                 mensajeError += " , DataContext";
@@ -51,12 +51,26 @@ namespace BPMO.Refacciones.DAO {
 
             #region Armado de Sentencia SQL
             StringBuilder sCmd = new StringBuilder();
-            sCmd.Append(" SELECT transferencia, TipoPedidoID, TipoPedido");
+            sCmd.Append(" SELECT transferencia, TipoPedidoID, TipoPedido, Clave");
             sCmd.Append(" FROM ref_TiposPedido ");
             StringBuilder sWhere = new StringBuilder();
             #region Valores
-            sWhere.Append(" AND transferencia = @tp_transferencia");
-            Utileria.AgregarParametro(sqlCmd, "tp_transferencia", 1, System.Data.DbType.Int32);
+            if (tipoPedido.Id.HasValue) {
+                sWhere.Append(" AND TipoPedidoID = @TipoPedido_ID");
+                Utileria.AgregarParametro(sqlCmd, "TipoPedido_ID", tipoPedido.Id, System.Data.DbType.Int32);
+            }
+            if (!String.IsNullOrWhiteSpace(tipoPedido.Nombre)) {
+                sWhere.Append(" AND TipoPedido LIKE @Tipo_Pedido");
+                Utileria.AgregarParametro(sqlCmd, "Tipo_Pedido", tipoPedido.Nombre, System.Data.DbType.String);
+            }
+            if (!String.IsNullOrWhiteSpace(tipoPedido.NombreCorto)) {
+                sWhere.Append(" AND Clave LIKE @_Clave");
+                Utileria.AgregarParametro(sqlCmd, "_Clave", tipoPedido.Nombre, System.Data.DbType.String);
+            }
+            if (tipoPedido.AplicaTransferencia.HasValue) {
+                sWhere.Append(" AND transferencia = @_Transferencia");
+                Utileria.AgregarParametro(sqlCmd, "_Transferencia", tipoPedido.AplicaTransferencia, System.Data.DbType.Boolean);
+            }
             #endregion Valores
 
             string where = sWhere.ToString().Trim();
@@ -84,23 +98,25 @@ namespace BPMO.Refacciones.DAO {
 
             #region Mapeo DataSet a BO
             List<CatalogoBaseBO> lstConfiguraciones = new List<CatalogoBaseBO>();
-            TipoPedidoBO tipoPedido = null;
+            TipoPedidoBO tipo_Pedido = null;
 
             foreach (DataRow row in ds.Tables[0].Rows) {
                 #region Inicializar BO
-                tipoPedido = new TipoPedidoBO();
+                tipo_Pedido = new TipoPedidoBO();
                 #endregion /Inicializar BO
 
                 #region ConfiguracionesReglas
                 if (!row.IsNull("TipoPedidoID"))
-                    tipoPedido.Id = (Int32)Convert.ChangeType(row["TipoPedidoID"], typeof(Int32));
+                    tipo_Pedido.Id = (Int32)Convert.ChangeType(row["TipoPedidoID"], typeof(Int32));
                 if (!row.IsNull("transferencia"))
-                    tipoPedido.AplicaTransferencia = (bool)Convert.ChangeType(row["transferencia"], typeof(bool));
+                    tipo_Pedido.AplicaTransferencia = (bool)Convert.ChangeType(row["transferencia"], typeof(bool));
                 if (!row.IsNull("TipoPedido"))
-                    tipoPedido.Nombre = (string)Convert.ChangeType(row["TipoPedido"], typeof(string));
+                    tipo_Pedido.Nombre = (string)Convert.ChangeType(row["TipoPedido"], typeof(string));
+                if (!row.IsNull("Clave"))
+                    tipo_Pedido.NombreCorto = (string)Convert.ChangeType(row["Clave"], typeof(string));
                 #endregion /ConfiguracionesReglas
 
-                lstConfiguraciones.Add(tipoPedido);
+                lstConfiguraciones.Add(tipo_Pedido);
             }
             return lstConfiguraciones;
             #endregion Mapeo DataSet a BO
