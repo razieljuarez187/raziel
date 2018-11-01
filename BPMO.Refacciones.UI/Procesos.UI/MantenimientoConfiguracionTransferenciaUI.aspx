@@ -547,7 +547,7 @@
                                         <tr id="trHoraSemana" runat="server">
                                             <td>
                                                 <asp:TextBox ID="txtHoraLunes" runat="server" Width="100px" CssClass="TextoAlto"
-                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" TextMode="Time" format="HH:mm"></asp:TextBox>
+                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" type="Time" format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraLunes" runat="server" ErrorMessage="**"
                                                     ControlToValidate="txtHoraLunes" CssClass="ColorValidator" ValidationExpression="([0-1]?[0-9]|2[0-3]):([0-5][0-9])"
                                                     ValidationGroup="Requeridos" Display="Dynamic" />
@@ -556,8 +556,7 @@
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtHoraMartes" runat="server" Width="100px" CssClass="TextoAlto"
-                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" TextMode="Time"
-                                                    format="HH:mm"></asp:TextBox>
+                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" type="Time" format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraMartes" runat="server" ErrorMessage="**"
                                                     ControlToValidate="txtHoraMartes" CssClass="ColorValidator" ValidationExpression="([0-1]?[0-9]|2[0-3]):([0-5][0-9])"
                                                     ValidationGroup="Requeridos" Display="Dynamic" />
@@ -566,8 +565,7 @@
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtHoraMiercoles" runat="server" Width="100px" CssClass="TextoAlto"
-                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" TextMode="Time"
-                                                    format="HH:mm"></asp:TextBox>
+                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" type="Time" format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraMiercoles" runat="server" ErrorMessage="**"
                                                     ControlToValidate="txtHoraMiercoles" CssClass="ColorValidator" ValidationExpression="([0-1]?[0-9]|2[0-3]):([0-5][0-9])"
                                                     ValidationGroup="Requeridos" Display="Dynamic" />
@@ -576,8 +574,7 @@
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtHoraJueves" runat="server" Width="100px" CssClass="TextoAlto"
-                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" TextMode="Time"
-                                                    format="HH:mm"></asp:TextBox>
+                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" type="Time" format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraJueves" runat="server" ErrorMessage="**"
                                                     ControlToValidate="txtHoraJueves" CssClass="ColorValidator" ValidationExpression="([0-1]?[0-9]|2[0-3]):([0-5][0-9])"
                                                     ValidationGroup="Requeridos" Display="Dynamic" />
@@ -586,8 +583,7 @@
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtHoraViernes" runat="server" Width="100px" CssClass="TextoAlto"
-                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" TextMode="Time"
-                                                    format="HH:mm"></asp:TextBox>
+                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" Type="Time" format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraViernes" runat="server" ErrorMessage="**"
                                                     ControlToValidate="txtHoraViernes" CssClass="ColorValidator" ValidationExpression="([0-1]?[0-9]|2[0-3]):([0-5][0-9])"
                                                     ValidationGroup="Requeridos" Display="Dynamic" />
@@ -596,8 +592,7 @@
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtHoraSabado" runat="server" Width="100px" CssClass="TextoAlto"
-                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" TextMode="Time"
-                                                    format="HH:mm"></asp:TextBox>
+                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" Type="Time" format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraSabado" runat="server" ErrorMessage="**"
                                                     ControlToValidate="txtHoraSabado" CssClass="ColorValidator" ValidationExpression="([0-1]?[0-9]|2[0-3]):([0-5][0-9])"
                                                     ValidationGroup="Requeridos" Display="Dynamic" />
@@ -606,8 +601,7 @@
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtHoraDomingo" runat="server" Width="100px" CssClass="TextoAlto"
-                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" TextMode="Time"
-                                                    format="HH:mm"></asp:TextBox>
+                                                    ValidationGroup="Requeridos" CausesValidation="true" MaxLength="5" Type="Time" format="HH:mm"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="revHoraDomingo" runat="server" ErrorMessage="**"
                                                     ControlToValidate="txtHoraDomingo" CssClass="ColorValidator" ValidationExpression="([0-1]?[0-9]|2[0-3]):([0-5][0-9])"
                                                     ValidationGroup="Requeridos" Display="Dynamic" />
