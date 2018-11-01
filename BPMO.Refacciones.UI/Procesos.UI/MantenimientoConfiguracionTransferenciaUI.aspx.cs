@@ -587,21 +587,24 @@ namespace BPMO.Refacciones.UI.Procesos.UI {
                     }
                     System.Web.HttpBrowserCapabilities browser = Request.Browser;
                     string stringFormatoHora ="El formato de hora para cada campo es: ";
-                    switch (browser.Browser) {
-                        case "Chrome":
+                    switch (browser.Browser.ToUpper()) {
+                        case "CHROME":
+                        case "EDGE":
                             stringFormatoHora += " HH:mm a.m.|p.m.  (12 hrs)";
                             break;
-                        case "InternetExplorer":
+                        case "INTERNETEXPLORER":
+                        case "IE":
                             stringFormatoHora += " HH:mm (24 hrs)";
                             break;
-                        case "Firefox":
+                        case "FIREFOX":
                             stringFormatoHora += " HH:mm (24 hrs)";
                             break;
-                        case "Safari":
+                        case "SAFARI":
                             stringFormatoHora += " HH:mm (24 hrs)";
                             break;
                         default:
-                            stringFormatoHora +=" Desconocido";
+                            stringFormatoHora += " HH:mm (24 hrs)";
+                            stringFormatoHora += " Desconocido (" + browser.Browser + ")";
                             break;
                     }
                     lblFormatoHora.Text = stringFormatoHora;
