@@ -2,18 +2,20 @@
 <!--TipoProveedor Sqlserver = 1; Oracle = 2-->
 <Ambientes>
   <Ambiente id="1" Tipo="Produccion" Estilo ="EstiloProduccion">
-    <Conexion Nombre="ORACLE" BaseDatos="BEPPRD1" UsuarioDB="" Servidor="" LinkedServer="" TipoProveedor="2"></Conexion>
-    <Conexion Nombre="LIDER" BaseDatos="Lider1" UsuarioDB="" Servidor="" LinkedServer="" TipoProveedor="1"></Conexion>
+    <Conexion Nombre="ORACLE" BaseDatos="BEPCRP1" UsuarioDB="@Desarrollo" Servidor="" LinkedServer="DBEPEI" TipoProveedor="2"></Conexion>
+    <Conexion Nombre="LIDER" BaseDatos="Desarrollo" UsuarioDB="@Desarrollo" Servidor="" LinkedServer="VM00SVRBIDEV.DW" TipoProveedor="1"></Conexion>
   </Ambiente>
   <!--Pruebas-->
-  <Ambiente id="2" Tipo="Pruebas" Estilo = "EstiloPruebas">
-    <Conexion Nombre="ORACLE" BaseDatos="BEPTST" UsuarioDB="BOLINF" Servidor="bepdb01.dibos02.di-cloud.com" LinkedServer="" TipoProveedor="2"></Conexion>
-    <Conexion Nombre="LIDER" BaseDatos="LiderPruebas" UsuarioDB="usr_pruebas" Servidor="VM00SVRDEV" LinkedServer="BEPTST" TipoProveedor="1"></Conexion>
-  </Ambiente>
+	<Ambiente id="2" Tipo="Pruebas" Estilo = "EstiloPruebas">
+		<Conexion Nombre="ORACLE" BaseDatos="BEPUAT" UsuarioDB="BOLINF" Servidor="bepdb211.dibos02.di-cloud.com" LinkedServer="" TipoProveedor="2"></Conexion>
+		<!-- Conexion TipoProveedor="2" LinkedServer="" Servidor="" UsuarioDB="@Desarrollo" BaseDatos="BEPCRP1" Nombre="ORACLE"/ -->
+		<Conexion Nombre="LIDER" BaseDatos="LiderPruebas" UsuarioDB="usr_pruebas" Servidor="VM00SVRDEV" LinkedServer="vm00svrbidev.DW" TipoProveedor="1"></Conexion>
+		<!--Conexion Nombre="Outsourcing" BaseDatos="OutsourcingPruebas" UsuarioDB="usr_outsourcing" Servidor="VM00SVRDEVx" LinkedServer="BEPTST" TipoProveedor="1"></Conexion-->
+		<Conexion Nombre="BIS" BaseDatos="BIS_TEST" UsuarioDB="usr_bis" Servidor="VM00SVRDEV" LinkedServer="" TipoProveedor="1"></Conexion>
+	</Ambiente>
   <!--Desarrollo-->
   <Ambiente id="3" Tipo="Desarrollo" Estilo ="EstiloDesarrollo">
     <Conexion Nombre="ORACLE" BaseDatos="BEPCRP1" UsuarioDB="@Desarrollo" Servidor="" LinkedServer="DBEPEI" TipoProveedor="2"></Conexion>
-    <!--Conexion Nombre="ORACLE" BaseDatos="BEPTST" UsuarioDB="BOLINF" Servidor="bepdb01.dibos02.di-cloud.com" LinkedServer="" TipoProveedor="2"></Conexion-->
     <Conexion Nombre="LIDER" BaseDatos="Desarrollo" UsuarioDB="@Desarrollo" Servidor="" LinkedServer="VM00SVRBIDEV.DW" TipoProveedor="1"></Conexion>
   </Ambiente>
 </Ambientes>

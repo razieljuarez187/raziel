@@ -167,8 +167,9 @@ namespace BPMO.Refacciones.Master.UI {
             try {
                 if (!IsPostBack) {
                     this.AsignaMenuSeleccionado();
-                    //HACK: SE ESTABLECE DATOS DE SEGURIDAD
-                    if(Request.QueryString["WDN"] != null)
+                    //TODO: QUITAR ESTA LINEA DE CODIGO
+                    //if (Request.UrlReferrer == null)
+                    if (Request.QueryString["WDN"] != null)
                         this.InicializarConfiguracionPrueba();
                     else//ELIMINAR HASTA AQUÍ
                         this.InicializarConfiguracion();
@@ -209,17 +210,6 @@ namespace BPMO.Refacciones.Master.UI {
 
             this.hdnMensaje.Value = mensaje;
             this.hdnTipoMensaje.Value = ((int)tipoMensaje).ToString();
-        }
-        //HACK: Método de prueba borrar al final: InicializarConfiguracionPrueba()
-        public void InicializarConfiguracionPrueba() {
-            this.Usuario = new UsuarioBO { Id = 9329, Usuario = "ARIVERO" };
-            if (this.ListadoDatosConexion == null) {
-                XDocument xmlDocumento = XDocument.Load(this.Request.PhysicalApplicationPath + "/Conexiones.xml");
-                this.presentador = new MDIPRE(this);
-                this.presentador.ObtenerDatosDeConexion(xmlDocumento, "3");
-            }
-            this.lblNombre.Text = this.Usuario.Usuario;
-            CargaHojaEstilo();
         }
         /// <summary>
         /// Carga la hoja de estilo de acuerdo al ambiente
@@ -276,6 +266,17 @@ namespace BPMO.Refacciones.Master.UI {
             } catch (Exception ex) {
                 this.MostrarMensaje("No se pudo inicializar la configuración correctamente", ETipoMensajeIU.ERROR, ex.Message);
             }
+        }
+        //HACK: Método de prueba borrar al final: InicializarConfiguracionPrueba()
+        public void InicializarConfiguracionPrueba() {
+            this.Usuario = new UsuarioBO { Id = 9329, Usuario = "" };//6604, 7270, 
+            if (this.ListadoDatosConexion == null) {
+                XDocument xmlDocumento = XDocument.Load(this.Request.PhysicalApplicationPath + "/Conexiones.xml");
+                this.presentador = new MDIPRE(this);
+                this.presentador.ObtenerDatosDeConexion(xmlDocumento, "3");
+            }
+            this.lblNombre.Text = this.Usuario.Usuario;
+            CargaHojaEstilo();
         }
         /// <summary>
         /// Carga los procesos a los que el usuario tiene acceso

@@ -27,10 +27,7 @@ namespace BPMO.Refacciones.BO {
             set { this.esConsigna = value; }
             get { return this.esConsigna; }
         }
-
         public SucursalLiderBO Sucursal { get; set; }
-        public bool? InterEmpresas { get; set; }
-        public bool? AlmacenAlterno { get; set; }
         #endregion Propiedades
 
         #region Metodos

@@ -284,16 +284,16 @@
                             <asp:TextBox ID="txtValorInicial" runat="server" Width="140px" CssClass="TextoAlto" ValidationGroup="requerido"
                                 CausesValidation="true" MaxLength="50"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="revValorInicial" runat="server" ErrorMessage="**"
-                                ControlToValidate="txtValorInicial" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
-                                ValidationGroup="requeridos" Display="Dynamic" />
+                                ControlToValidate="txtValorInicial" CssClass="ColorValidator" ValidationExpression="^-?[0-9]\d*(\.\d+)?$"
+                                ValidationGroup="Requeridos" Display="Dynamic" />
                             <asp:Label ID="lblValoresSeparador" runat="server" Text=" A " CssClass="ValFinal" />
                             <asp:TextBox ID="txtValorFinal" runat="server" Width="140px" CssClass="TextoAlto ValFinal" ValidationGroup="requerido"
                                 CausesValidation="true" MaxLength="50"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="revValorFinal" runat="server" ErrorMessage="**"
-                                ControlToValidate="txtValorFinal" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
-                                ValidationGroup="requeridos" Display="Dynamic" />
+                                ControlToValidate="txtValorFinal" CssClass="ColorValidator" ValidationExpression="^-?[0-9]\d*(\.\d+)?$"
+                                ValidationGroup="Requeridos" Display="Dynamic" />
                             <asp:CompareValidator ID="cvValores" runat="server" ControlToValidate="txtValorInicial" ControlToCompare="txtValorFinal"
-                                Operator="LessThanEqual" type="Double" ErrorMessage="***" />
+                                Operator="LessThanEqual" type="Double" ErrorMessage="***" ValidationGroup="Requeridos" />
                         </td>
                     </tr>
                     <tr id="trEstatus" runat="server">

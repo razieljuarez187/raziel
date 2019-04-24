@@ -157,16 +157,16 @@
                             <asp:TextBox ID="txtValorInicialA" runat="server" Width="140px" CssClass="TextoAlto" ValidationGroup="requerido"
                                 CausesValidation="true" MaxLength="50"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="revValorInicialA" runat="server" ErrorMessage="**"
-                                ControlToValidate="txtValorInicialA" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
-                                ValidationGroup="requeridos" Display="Dynamic" />
+                                ControlToValidate="txtValorInicialA" CssClass="ColorValidator" ValidationExpression="^-?[0-9]\d*(\.\d+)?$"
+                                ValidationGroup="FormatoValido" Display="Dynamic" />
                             <asp:Label ID="lblValoresIniSeparador" runat="server" Text=" A " />
                             <asp:TextBox ID="txtValorInicialB" runat="server" Width="140px" CssClass="TextoAlto ValFinal" ValidationGroup="requerido"
                                 CausesValidation="true" MaxLength="50"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="revValorInicialB" runat="server" ErrorMessage="**"
-                                ControlToValidate="txtValorInicialB" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
-                                ValidationGroup="requeridos" Display="Dynamic" />
+                                ControlToValidate="txtValorInicialB" CssClass="ColorValidator" ValidationExpression="^-?[0-9]\d*(\.\d+)?$"
+                                ValidationGroup="FormatoValido" Display="Dynamic" />
                             <asp:CompareValidator ID="cvValoresIni" runat="server" ControlToValidate="txtValorInicialA" ControlToCompare="txtValorInicialB"
-                                Operator="LessThanEqual" type="Double" CssClass="ColorValidator" Display="Dynamic" ErrorMessage="***" />
+                                Operator="LessThanEqual" type="Double" CssClass="ColorValidator" Display="Dynamic" ErrorMessage="***" ValidationGroup="FormatoValido" />
                         </td>
                     </tr>
                     <tr>
@@ -176,16 +176,16 @@
                             <asp:TextBox ID="txtValorFinalA" runat="server" Width="140px" CssClass="TextoAlto" ValidationGroup="requerido"
                                 CausesValidation="true" MaxLength="50"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="revValorFinalA" runat="server" ErrorMessage="**"
-                                ControlToValidate="txtValorFinalA" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
-                                ValidationGroup="requeridos" Display="Dynamic" />
+                                ControlToValidate="txtValorFinalA" CssClass="ColorValidator" ValidationExpression="^-?[0-9]\d*(\.\d+)?$"
+                                ValidationGroup="FormatoValido" Display="Dynamic" />
                             <asp:Label ID="lblValoresFinSeparador" runat="server" Text=" A " />
                             <asp:TextBox ID="txtValorFinalB" runat="server" Width="140px" CssClass="TextoAlto" ValidationGroup="requerido"
                                 CausesValidation="true" MaxLength="50"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="revValorFinalB" runat="server" ErrorMessage="**"
-                                ControlToValidate="txtValorFinalB" CssClass="ColorValidator" ValidationExpression="^\d*\.?\d+$"
-                                ValidationGroup="requeridos" Display="Dynamic" />
+                                ControlToValidate="txtValorFinalB" CssClass="ColorValidator" ValidationExpression="^-?[0-9]\d*(\.\d+)?$"
+                                ValidationGroup="FormatoValido" Display="Dynamic" />
                             <asp:CompareValidator ID="cvValoresFin" runat="server" ControlToValidate="txtValorFinalA" ControlToCompare="txtValorFinalB"
-                                Operator="LessThanEqual" type="Double" ErrorMessage="***" />
+                                Operator="LessThanEqual" type="Double" ErrorMessage="***" ValidationGroup="FormatoValido" />
                         </td>
                     </tr>
                     <tr>

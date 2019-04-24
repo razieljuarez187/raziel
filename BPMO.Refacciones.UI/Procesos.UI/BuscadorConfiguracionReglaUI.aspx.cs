@@ -252,6 +252,7 @@ namespace BPMO.Refacciones.UI {
                     this.grvConfiguracionesReglas.PageSize = (int)miMaster.NumeroFilas;
                     #endregion
 
+                    this.Session.Remove("ConfiguracionesReglas");
                     CargarTiposRegla();
                 }
             } catch (Exception ex) {

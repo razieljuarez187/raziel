@@ -12,14 +12,10 @@
     <AssemblyName>BPMO.Refacciones.BR</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,27 +35,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BPMO.Basicos">
+    <Reference Include="BPMO.Basicos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BPMO.Librerias\BPMO.Basicos.dll</HintPath>
     </Reference>
-    <Reference Include="BPMO.CatalogosLider">
+    <Reference Include="BPMO.CatalogosLider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BPMO.Librerias\BPMO.CatalogosLider.dll</HintPath>
     </Reference>
-    <Reference Include="BPMO.Generales.BR">
+    <Reference Include="BPMO.Generales.BR, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BPMO.Librerias\BPMO.Generales.BR.dll</HintPath>
     </Reference>
-    <Reference Include="BPMO.Patterns">
+    <Reference Include="BPMO.Patterns, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BPMO.Librerias\BPMO.Patterns.dll</HintPath>
     </Reference>
-    <Reference Include="BPMO.Primitivos">
+    <Reference Include="BPMO.Primitivos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\BPMO.Librerias\BPMO.Primitivos.dll</HintPath>
     </Reference>
-    <Reference Include="BPMO.Security, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="BPMO.Security">
       <HintPath>..\..\BPMO.Librerias\BPMO.Security.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -147,7 +146,6 @@
       <Name>BPMO.Refacciones.BO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -156,7 +156,7 @@ namespace BPMO.Refacciones.BR {
                     #endregion Registro de relacion de Notas de Taller
 
                     #endregion Registro de Movimientos de Refacciones
-
+                    /*
                     #region Registro de Movimientos de Cores
 
                     #region Insercion de Movimiento Cores
@@ -190,6 +190,7 @@ namespace BPMO.Refacciones.BR {
                     #endregion Insercion de Movimiento Cores
 
                     #endregion Registro de Movimientos de Cores
+                    */
                 }
                 #endregion Registro de devolucion
 

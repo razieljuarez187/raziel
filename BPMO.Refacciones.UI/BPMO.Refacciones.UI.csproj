@@ -14,6 +14,10 @@
     <AssemblyName>BPMO.Refacciones.UI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -125,6 +129,7 @@
     <Content Include="Buscador\XML\Buscador.SucursalLider.xml" />
     <Content Include="Buscador\XML\Buscador.TipoPedido.xml" />
     <Content Include="Buscador\XML\Buscador.UnidadOperativa.xml" />
+    <Content Include="Buscador\XML\Buscador.UsuarioLider.xml" />
     <Content Include="Catalogos.UI\ConfiguracionInicio.aspx" />
     <Content Include="Catalogos.UI\default.aspx" />
     <Content Include="Conexiones.xml" />

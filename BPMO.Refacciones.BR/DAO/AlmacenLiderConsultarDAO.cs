@@ -69,14 +69,14 @@ namespace BPMO.Refacciones.DAO {
                 sWhere.Append(" AND a.Activo = @Almacen_Activo");
                 Utileria.AgregarParametro(sqlCmd, "Almacen_Activo", almacen.Activo, System.Data.DbType.Boolean);
             }
-            if (almacen.InterEmpresas.HasValue) {
-                sWhere.Append(" AND a.InterEmpresas = @Almacen_InterEmpresas");
-                Utileria.AgregarParametro(sqlCmd, "Almacen_InterEmpresas", almacen.InterEmpresas, System.Data.DbType.Boolean);
-            }
-            if (almacen.AlmacenAlterno.HasValue) {
-                sWhere.Append(" AND a.AlmacenAlterno = @Almacen_AlmacenAlterno");
-                Utileria.AgregarParametro(sqlCmd, "Almacen_AlmacenAlterno", almacen.AlmacenAlterno, System.Data.DbType.Boolean);
-            }
+            //if (almacen.InterEmpresas.HasValue) {
+            //    sWhere.Append(" AND a.InterEmpresas = @Almacen_InterEmpresas");
+            //    Utileria.AgregarParametro(sqlCmd, "Almacen_InterEmpresas", almacen.InterEmpresas, System.Data.DbType.Boolean);
+            //}
+            //if (almacen.AlmacenAlterno.HasValue) {
+            //    sWhere.Append(" AND a.AlmacenAlterno = @Almacen_AlmacenAlterno");
+            //    Utileria.AgregarParametro(sqlCmd, "Almacen_AlmacenAlterno", almacen.AlmacenAlterno, System.Data.DbType.Boolean);
+            //}
             if (almacen.EsConsigna.HasValue) {
                 sWhere.Append(" AND a.Consigna = @Almacen_Consigna");
                 Utileria.AgregarParametro(sqlCmd, "Almacen_Consigna", almacen.EsConsigna, System.Data.DbType.Boolean);
@@ -133,10 +133,10 @@ namespace BPMO.Refacciones.DAO {
                     objAlmacen.Nombre = (String)Convert.ChangeType(row["Descripcion"], typeof(String));
                 if (!row.IsNull("Activo"))
                     objAlmacen.Activo = (Boolean)Convert.ChangeType(row["Activo"], typeof(Boolean));
-                if (!row.IsNull("InterEmpresas"))
-                    objAlmacen.InterEmpresas = (Boolean)Convert.ChangeType(row["InterEmpresas"], typeof(Boolean));
-                if (!row.IsNull("AlmacenAlterno"))
-                    objAlmacen.AlmacenAlterno = (Boolean)Convert.ChangeType(row["AlmacenAlterno"], typeof(Boolean));
+                //if (!row.IsNull("InterEmpresas"))
+                //    objAlmacen.InterEmpresas = (Boolean)Convert.ChangeType(row["InterEmpresas"], typeof(Boolean));
+                //if (!row.IsNull("AlmacenAlterno"))
+                //    objAlmacen.AlmacenAlterno = (Boolean)Convert.ChangeType(row["AlmacenAlterno"], typeof(Boolean));
                 if (!row.IsNull("Consigna"))
                     objAlmacen.EsConsigna = (Boolean)Convert.ChangeType(row["Consigna"], typeof(Boolean));
                 if (!row.IsNull("TipoAlmacen"))
