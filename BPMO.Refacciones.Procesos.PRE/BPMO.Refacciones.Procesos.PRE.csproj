@@ -12,10 +12,14 @@
     <AssemblyName>BPMO.Refacciones.Procesos.PRE</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,10 +62,13 @@
   <ItemGroup>
     <Compile Include="PRE\ConfiguracionReglaUsuarioPRE.cs" />
     <Compile Include="PRE\ConfiguracionTransferenciaPRE.cs" />
+    <Compile Include="PRE\ExcepcionEtapaEmbalajePRE.cs" />
     <Compile Include="REPORTESPRE\ConfiguracionesAsignadasPRE.cs" />
+    <Compile Include="VIS\IMantenimientoExcepcionEtapaEmbalajeVIS.cs" />
     <Compile Include="VIS\IBuscadorConfiguracionReglaVIS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VIS\IBuscadorConfiguracionTransferenciasVIS.cs" />
+    <Compile Include="VIS\IBuscadorExcepcionEtapaEmbalajeVIS.cs" />
     <Compile Include="VIS\IMantenimientoConfiguracionReglaVIS.cs" />
     <Compile Include="REPORTESVIS\IConfiguracionesAsignadasVIS.cs" />
     <Compile Include="VIS\IMantenimientoConfiguracionTransferenciaVIS.cs" />

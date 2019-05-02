@@ -11,6 +11,7 @@ namespace BPMO.Refacciones.BO {
     public class TipoPedidoBO : CatalogoBaseBO{
         #region Atributos
         private bool? aplicaTransferencia;
+        private bool? aplicaVenta;
         #endregion
         #region Constructores
         #endregion
@@ -18,7 +19,11 @@ namespace BPMO.Refacciones.BO {
         public bool? AplicaTransferencia {
             get { return aplicaTransferencia; }
             set { aplicaTransferencia = value; }
-        }        
+        }
+        public bool? AplicaVenta {
+            get { return aplicaVenta; }
+            set { aplicaVenta = value; }
+        }
         #endregion
         #region Métodos
         #endregion

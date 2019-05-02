@@ -71,6 +71,10 @@ namespace BPMO.Refacciones.DAO {
                 sWhere.Append(" AND transferencia = @_Transferencia");
                 Utileria.AgregarParametro(sqlCmd, "_Transferencia", tipoPedido.AplicaTransferencia, System.Data.DbType.Boolean);
             }
+            if (tipoPedido.AplicaVenta.HasValue) {
+                sWhere.Append(" AND Ventas = @_Ventas");
+                Utileria.AgregarParametro(sqlCmd, "_Ventas", tipoPedido.AplicaVenta, System.Data.DbType.Boolean);
+            }
             #endregion Valores
 
             string where = sWhere.ToString().Trim();

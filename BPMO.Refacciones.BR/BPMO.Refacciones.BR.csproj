@@ -12,10 +12,14 @@
     <AssemblyName>BPMO.Refacciones.BR</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,6 +76,7 @@
     <Compile Include="BR\ConfiguracionHoraTransferenciaBR.cs" />
     <Compile Include="BR\ConfiguracionReglaUsuarioBR.cs" />
     <Compile Include="BR\ConfiguracionTransferenciaBR.cs" />
+    <Compile Include="BR\ExcepcionEtapaEmbalajeBR.cs" />
     <Compile Include="BR\CotizacionNotaTallerBR.cs" />
     <Compile Include="BR\CreditoCoresBR.cs" />
     <Compile Include="BR\CreditoCoresProcesosBR.cs" />
@@ -104,6 +109,10 @@
     <Compile Include="DAO\ConfiguracionTransferenciaActualizarDAO.cs" />
     <Compile Include="DAO\ConfiguracionTransferenciaConsultarDAO.cs" />
     <Compile Include="DAO\ConfiguracionTransferenciaInsertarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionEtapaEmbalajeInsertarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionEtapaEmbalajeActualizarDAO.cs" />
+    <Compile Include="DAO\ConfiguracionEtapaEmbalajeConsultarDAO.cs" />
+    <Compile Include="DAO\TransportistaConsultarDAO.cs" />
     <Compile Include="DAO\CotizacionNotaTallerActualizarDAO.cs" />
     <Compile Include="DAO\CotizacionNotaTallerConsultarDAO.cs" />
     <Compile Include="DAO\CotizacionNotaTallerInsertarDAO.cs" />
