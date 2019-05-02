@@ -76,7 +76,7 @@
     <Compile Include="BR\ConfiguracionHoraTransferenciaBR.cs" />
     <Compile Include="BR\ConfiguracionReglaUsuarioBR.cs" />
     <Compile Include="BR\ConfiguracionTransferenciaBR.cs" />
-    <Compile Include="BR\ExcepcionEtapaEmbalajeBR.cs" />
+    <Compile Include="BR\ConfiguracionEtapaEmbalajeBR.cs" />
     <Compile Include="BR\CotizacionNotaTallerBR.cs" />
     <Compile Include="BR\CreditoCoresBR.cs" />
     <Compile Include="BR\CreditoCoresProcesosBR.cs" />

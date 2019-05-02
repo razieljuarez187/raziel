@@ -7,7 +7,7 @@ namespace BPMO.Refacciones.Procesos.VIS {
     /// <summary>
     /// Vista para el buscador de excepciones de etapa de embalaje
     /// </summary>
-    public interface IBuscadorExcepcionEtapaEmbalajeVIS {
+    public interface IBuscadorConfiguracionEtapaEmbalajeVIS {
         #region Propiedades
         /// <summary>
         /// Obtiene o establece el identificador de la excepción
@@ -56,7 +56,7 @@ namespace BPMO.Refacciones.Procesos.VIS {
         /// <summary>
         /// Obtiene o establece un listado de excepciones
         /// </summary>
-        List<ConfiguracionEtapaEmbalajeBO> ListadoExcepcionesEmbalaje { get; set; }
+        List<ConfiguracionEtapaEmbalajeBO> ListadoConfiguracionesEmbalaje { get; set; }
         #endregion Propiedades
         #region Métodos
         /// <summary>

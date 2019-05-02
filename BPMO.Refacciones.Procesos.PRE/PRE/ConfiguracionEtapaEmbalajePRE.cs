@@ -11,13 +11,13 @@ using BPMO.Refacciones.Procesos.VIS;
 using BPMO.Refacciones.Enumeradores;
 
 namespace BPMO.Refacciones.Procesos.PRE {
-    public class ExcepcionEtapaEmbalajePRE {
+    public class ConfiguracionEtapaEmbalajePRE {
         #region Atributos
-        private IBuscadorExcepcionEtapaEmbalajeVIS vistaConsulta;
-        private IMantenimientoExcepcionEtapaEmbalajeVIS vistaMantto;
+        private IBuscadorConfiguracionEtapaEmbalajeVIS vistaConsulta;
+        private IMantenimientoConfiguracionEtapaEmbalajeVIS vistaMantto;
         private IDataContext dataContext = null;
-        private ExcepcionEtapaEmbalajeBR excepcionBR;
-        private ConfiguracionEtapaEmbalajeBO excepcionBO;
+        private ConfiguracionEtapaEmbalajeBR configuracionBR;
+        private ConfiguracionEtapaEmbalajeBO configuracionBO;
         public enum ECatalogoBuscador {
             Empresa = 1,
             Sucursal = 2,
@@ -31,7 +31,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// </summary>
         /// <param name="vistaConsulta">Vista con la que trabajará el presentador</param>
         /// <param name="listadoCnx"> List DatosConexionBO provee parámetros de conexión a agregar</param>
-        public ExcepcionEtapaEmbalajePRE(IBuscadorExcepcionEtapaEmbalajeVIS vistaConsulta, List<DatosConexionBO> listadoCnx) {
+        public ConfiguracionEtapaEmbalajePRE(IBuscadorConfiguracionEtapaEmbalajeVIS vistaConsulta, List<DatosConexionBO> listadoCnx) {
             this.vistaConsulta = vistaConsulta;
             AgregarProviderDataContext(listadoCnx);
         }
@@ -40,7 +40,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// </summary>
         /// <param name="vistaMantenimiento">Vista con la que trabajará el presentador</param>
         /// <param name="listadoCnx"> List DatosConexionBO provee parámetros de conexión a agregar</param>
-        public ExcepcionEtapaEmbalajePRE(IMantenimientoExcepcionEtapaEmbalajeVIS vistaMantenimiento, List<DatosConexionBO> listadoCnx) {
+        public ConfiguracionEtapaEmbalajePRE(IMantenimientoConfiguracionEtapaEmbalajeVIS vistaMantenimiento, List<DatosConexionBO> listadoCnx) {
             this.vistaMantto = vistaMantenimiento;
             AgregarProviderDataContext(listadoCnx);
         }
@@ -50,13 +50,13 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// <summary>
         /// Consultar Listado de excepciones, si la búsqueda retorna 1 registro se presenta el detalle del elemento para su edición
         /// </summary>
-        public void ObtenerExcepciones() {
+        public void ObtenerConfiguraciones() {
             try {
                 List<ConfiguracionEtapaEmbalajeBO> excepciones = this.Consultar(this.InterfazADatosConsulta());
                 if (excepciones.Count == 1) {
                     vistaConsulta.EnviarAEditarBO(excepciones[0].Id.Value);
                 } else {
-                    vistaConsulta.ListadoExcepcionesEmbalaje = excepciones;
+                    vistaConsulta.ListadoConfiguracionesEmbalaje = excepciones;
                     if (excepciones.Count == 0)
                         vistaConsulta.MostrarMensaje("No existen registros que cumplan con la condición solicitada, favor de corregir.", ETipoMensajeIU.INFORMACION);
                 }
@@ -73,20 +73,20 @@ namespace BPMO.Refacciones.Procesos.PRE {
             string asc = "ASC";
             List<ConfiguracionEtapaEmbalajeBO> listaOrdenada = null;
             if (campo.ToUpper().Equals("ID"))
-                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoExcepcionesEmbalaje.OrderBy(order => order.Id).ToList() : vistaConsulta.ListadoExcepcionesEmbalaje.OrderByDescending(order => order.Id).ToList();
+                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionesEmbalaje.OrderBy(order => order.Id).ToList() : vistaConsulta.ListadoConfiguracionesEmbalaje.OrderByDescending(order => order.Id).ToList();
             if (campo.ToUpper().Equals("EMPRESA"))
-                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoExcepcionesEmbalaje.OrderBy(order => order.Empresa.Nombre).ToList() : vistaConsulta.ListadoExcepcionesEmbalaje.OrderByDescending(order => order.Empresa.NombreCorto).ToList();
+                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionesEmbalaje.OrderBy(order => order.Empresa.Nombre).ToList() : vistaConsulta.ListadoConfiguracionesEmbalaje.OrderByDescending(order => order.Empresa.NombreCorto).ToList();
             if (campo.ToUpper().Equals("SUCURSAL"))
-                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoExcepcionesEmbalaje.OrderBy(order => order.Sucursal.Nombre).ToList() : vistaConsulta.ListadoExcepcionesEmbalaje.OrderByDescending(order => order.Sucursal.Nombre).ToList();
+                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionesEmbalaje.OrderBy(order => order.Sucursal.Nombre).ToList() : vistaConsulta.ListadoConfiguracionesEmbalaje.OrderByDescending(order => order.Sucursal.Nombre).ToList();
             if (campo.ToUpper().Equals("ALMACEN"))
-                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoExcepcionesEmbalaje.OrderBy(order => order.Almacen.Nombre).ToList() : vistaConsulta.ListadoExcepcionesEmbalaje.OrderByDescending(order => order.Almacen.Nombre).ToList();
+                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionesEmbalaje.OrderBy(order => order.Almacen.Nombre).ToList() : vistaConsulta.ListadoConfiguracionesEmbalaje.OrderByDescending(order => order.Almacen.Nombre).ToList();
             if (campo.ToUpper().Equals("TIPOMOVIMIENTO"))
-                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoExcepcionesEmbalaje.OrderBy(order => order.TipoMovimiento.ToString()).ToList() : vistaConsulta.ListadoExcepcionesEmbalaje.OrderByDescending(order => order.TipoMovimiento.ToString()).ToList();
+                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionesEmbalaje.OrderBy(order => order.TipoMovimiento.ToString()).ToList() : vistaConsulta.ListadoConfiguracionesEmbalaje.OrderByDescending(order => order.TipoMovimiento.ToString()).ToList();
             if (campo.ToUpper().Equals("TIPOPEDIDO"))
-                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoExcepcionesEmbalaje.OrderBy(order => order.TipoPedido.Id).ToList() : vistaConsulta.ListadoExcepcionesEmbalaje.OrderByDescending(order => order.TipoPedido.Nombre).ToList();
+                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionesEmbalaje.OrderBy(order => order.TipoPedido.Id).ToList() : vistaConsulta.ListadoConfiguracionesEmbalaje.OrderByDescending(order => order.TipoPedido.Nombre).ToList();
             if (campo.ToUpper().Equals("ACTIVO"))
-                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoExcepcionesEmbalaje.OrderBy(order => order.Activo).ToList() : vistaConsulta.ListadoExcepcionesEmbalaje.OrderByDescending(order => order.Activo).ToList();
-            vistaConsulta.ListadoExcepcionesEmbalaje = listaOrdenada;
+                listaOrdenada = (orden.Equals(asc)) ? vistaConsulta.ListadoConfiguracionesEmbalaje.OrderBy(order => order.Activo).ToList() : vistaConsulta.ListadoConfiguracionesEmbalaje.OrderByDescending(order => order.Activo).ToList();
+            vistaConsulta.ListadoConfiguracionesEmbalaje = listaOrdenada;
         }
         /// <summary>
         /// Obtiene los datos de la interfaz de Consulta
@@ -109,8 +109,8 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// <param name="excepcionBO">Objeto que provee el criterio de selección para realizar la consulta</param>
         /// <returns>Lista de objetos que contiene la información que coincide con la consulta</returns>
         private List<ConfiguracionEtapaEmbalajeBO> Consultar(ConfiguracionEtapaEmbalajeBO excepcionBO) {
-            excepcionBR = new ExcepcionEtapaEmbalajeBR();
-            List<AuditoriaBaseBO> lstTransferencias = excepcionBR.Consultar(dataContext, excepcionBO);
+            configuracionBR = new ConfiguracionEtapaEmbalajeBR();
+            List<AuditoriaBaseBO> lstTransferencias = configuracionBR.Consultar(dataContext, excepcionBO);
             return lstTransferencias.ConvertAll(item => (ConfiguracionEtapaEmbalajeBO)item);
         }
         #endregion Consulta
@@ -125,12 +125,12 @@ namespace BPMO.Refacciones.Procesos.PRE {
                     vistaMantto.MostrarMensaje(camposRequeridos, ETipoMensajeIU.INFORMACION);
                     return;
                 }
-                excepcionBR = new ExcepcionEtapaEmbalajeBR();
-                excepcionBO = this.InterfazADatosMantto();
+                configuracionBR = new ConfiguracionEtapaEmbalajeBR();
+                configuracionBO = this.InterfazADatosMantto();
                 SeguridadBO seguridadBO = new SeguridadBO(Guid.Empty, this.vistaMantto.UsuarioSesion, this.vistaMantto.Adscripcion);
-                excepcionBR.Insertar(dataContext, excepcionBO, seguridadBO);
-                vistaMantto.Id = excepcionBO.Id = excepcionBR.UltimoIdGenerado;
-                this.DesplegarDetalleExcepcionEtapaEmbalaje(excepcionBO.Id);
+                configuracionBR.Insertar(dataContext, configuracionBO, seguridadBO);
+                vistaMantto.Id = configuracionBO.Id = configuracionBR.UltimoIdGenerado;
+                this.DesplegarDetalleConfiguracionEtapaEmbalaje(configuracionBO.Id);
                 vistaMantto.MostrarMensaje("Guardado Exitoso", ETipoMensajeIU.EXITO);
             } catch (Exception ex) {
                 vistaMantto.MostrarMensaje("Guardado no exitoso", ETipoMensajeIU.ERROR, ex.Message);
@@ -146,11 +146,11 @@ namespace BPMO.Refacciones.Procesos.PRE {
                     vistaMantto.MostrarMensaje(camposRequeridos, ETipoMensajeIU.INFORMACION);
                     return;
                 }
-                excepcionBR = new ExcepcionEtapaEmbalajeBR();
+                configuracionBR = new ConfiguracionEtapaEmbalajeBR();
                 ConfiguracionEtapaEmbalajeBO excepcion = this.InterfazADatosEditar();
                 SeguridadBO seguridadBO = new SeguridadBO(Guid.Empty, this.vistaMantto.UsuarioSesion, this.vistaMantto.Adscripcion);
-                excepcionBR.Actualizar(dataContext, excepcion, seguridadBO);
-                this.DesplegarDetalleExcepcionEtapaEmbalaje(vistaMantto.Id);
+                configuracionBR.Actualizar(dataContext, excepcion, seguridadBO);
+                this.DesplegarDetalleConfiguracionEtapaEmbalaje(vistaMantto.Id);
                 vistaMantto.MostrarMensaje("Guardado Exitoso", ETipoMensajeIU.EXITO);
             } catch (Exception ex) {
                 vistaMantto.MostrarMensaje("Guardado no exitoso", ETipoMensajeIU.ERROR, ex.Message);
@@ -161,7 +161,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// </summary>
         /// <returns>Objeto que contiene los datos obtenidos de la interfaz</returns>
         private ConfiguracionEtapaEmbalajeBO InterfazADatosEditar() {
-            ConfiguracionEtapaEmbalajeBO excepcion = (ConfiguracionEtapaEmbalajeBO)vistaMantto.ExcepcionEtapaEmbalajeBase;
+            ConfiguracionEtapaEmbalajeBO excepcion = (ConfiguracionEtapaEmbalajeBO)vistaMantto.ConfiguracionEtapaEmbalajeBase;
             excepcion.Empresa = new EmpresaLiderBO() { Id = vistaMantto.EmpresaId, Nombre = vistaMantto.NombreEmpresa };
             excepcion.Sucursal = new SucursalLiderBO() { Id = vistaMantto.SucursalId, Nombre = vistaMantto.NombreSucursal };
             excepcion.Almacen = new AlmacenBO() { Id = vistaMantto.AlmacenId, Nombre = vistaMantto.NombreAlmacen };
@@ -189,7 +189,7 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// Cancela la edición
         /// </summary>
         public void CancelarEdicion() {
-            this.DatosAInterfaz((ConfiguracionEtapaEmbalajeBO)this.vistaMantto.ExcepcionEtapaEmbalajeBase);
+            this.DatosAInterfaz((ConfiguracionEtapaEmbalajeBO)this.vistaMantto.ConfiguracionEtapaEmbalajeBase);
             vistaMantto.PreparaUIDetalle();
         }
         /// <summary>
@@ -205,49 +205,49 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// <summary>
         /// Despliega el Detalle de la excepción
         /// </summary>
-        public void DesplegarDetalleExcepcionEtapaEmbalaje(int? excepcionId) {
-            this.DatosAInterfaz(ConsultarExcepcion(new ConfiguracionEtapaEmbalajeBO { Id = excepcionId }));
+        public void DesplegarDetalleConfiguracionEtapaEmbalaje(int? configuracionId) {
+            this.DatosAInterfaz(ConsultarConfiguracion(new ConfiguracionEtapaEmbalajeBO { Id = configuracionId }));
             vistaMantto.PreparaUIDetalle();
         }
         /// <summary>
         /// Asocia los datos a la Interfaz
         /// </summary>
-        /// <param name="excepcion">Objeto con la información a desplegar </param>
-        private void DatosAInterfaz(ConfiguracionEtapaEmbalajeBO excepcion) {
-            vistaMantto.ExcepcionEtapaEmbalajeBase = excepcion;
-            vistaMantto.Id = excepcion.Id;
-            vistaMantto.EmpresaId = excepcion.Empresa.Id;
-            vistaMantto.NombreEmpresa = excepcion.Empresa.Nombre;
-            vistaMantto.SucursalId = excepcion.Sucursal.Id;
-            vistaMantto.NombreSucursal = excepcion.Sucursal.Nombre;
-            vistaMantto.AlmacenId = excepcion.Almacen.Id;
-            vistaMantto.NombreAlmacen = excepcion.Almacen.Nombre;
-            vistaMantto.TipoMovimiento = excepcion.TipoMovimiento;
-            vistaMantto.TipoPedidoId = excepcion.TipoPedido.Id;
-            vistaMantto.NombreTipoPedido = excepcion.TipoPedido.Nombre;
-            vistaMantto.Activo = excepcion.Activo;
+        /// <param name="configuracion">Objeto con la información a desplegar </param>
+        private void DatosAInterfaz(ConfiguracionEtapaEmbalajeBO configuracion) {
+            vistaMantto.ConfiguracionEtapaEmbalajeBase = configuracion;
+            vistaMantto.Id = configuracion.Id;
+            vistaMantto.EmpresaId = configuracion.Empresa.Id;
+            vistaMantto.NombreEmpresa = configuracion.Empresa.Nombre;
+            vistaMantto.SucursalId = configuracion.Sucursal.Id;
+            vistaMantto.NombreSucursal = configuracion.Sucursal.Nombre;
+            vistaMantto.AlmacenId = configuracion.Almacen.Id;
+            vistaMantto.NombreAlmacen = configuracion.Almacen.Nombre;
+            vistaMantto.TipoMovimiento = configuracion.TipoMovimiento;
+            vistaMantto.TipoPedidoId = configuracion.TipoPedido.Id;
+            vistaMantto.NombreTipoPedido = configuracion.TipoPedido.Nombre;
+            vistaMantto.Activo = configuracion.Activo;
             #region Información de la bitácora
-            string nombreUsuarioCreacion = this.ObtenerNombreUsuario(excepcion.Auditoria.UC.Value);
+            string nombreUsuarioCreacion = this.ObtenerNombreUsuario(configuracion.Auditoria.UC.Value);
             this.vistaMantto.UsuarioCreacionBitacora = nombreUsuarioCreacion;
-            this.vistaMantto.FechaCreacionBitacora = excepcion.Auditoria.FC;
-            if (excepcion.Auditoria.UC != excepcion.Auditoria.UUA) {
-                this.vistaMantto.UsuarioActualizacionBitacora = this.ObtenerNombreUsuario(excepcion.Auditoria.UUA.Value);
+            this.vistaMantto.FechaCreacionBitacora = configuracion.Auditoria.FC;
+            if (configuracion.Auditoria.UC != configuracion.Auditoria.UUA) {
+                this.vistaMantto.UsuarioActualizacionBitacora = this.ObtenerNombreUsuario(configuracion.Auditoria.UUA.Value);
             } else {
                 this.vistaMantto.UsuarioActualizacionBitacora = nombreUsuarioCreacion;
             }
-            this.vistaMantto.FechaActualizacionBitacora = excepcion.Auditoria.FUA;
+            this.vistaMantto.FechaActualizacionBitacora = configuracion.Auditoria.FUA;
             #endregion
         }
         /// <summary>
         /// Consulta una Configuración específica, de acuerdo a un objeto seleccionado
         /// </summary>
-        /// <param name="excepcion">Objeto que provee el criterio de selección para realizar la consulta</param>
+        /// <param name="configuracion">Objeto que provee el criterio de selección para realizar la consulta</param>
         /// <returns>Lista de objetos que contiene la información que coincide con la consulta</returns>
-        private ConfiguracionEtapaEmbalajeBO ConsultarExcepcion(ConfiguracionEtapaEmbalajeBO excepcion) {
-            if (excepcion.Id == null)
+        private ConfiguracionEtapaEmbalajeBO ConsultarConfiguracion(ConfiguracionEtapaEmbalajeBO configuracion) {
+            if (configuracion.Id == null)
                 throw new Exception("El ID de excepción es requerido para obtener un único registro");
-            this.excepcionBR = new ExcepcionEtapaEmbalajeBR();
-            ConfiguracionEtapaEmbalajeBO excepcionBO = (ConfiguracionEtapaEmbalajeBO)this.excepcionBR.Consultar(dataContext, excepcion)[0];
+            this.configuracionBR = new ConfiguracionEtapaEmbalajeBR();
+            ConfiguracionEtapaEmbalajeBO excepcionBO = (ConfiguracionEtapaEmbalajeBO)this.configuracionBR.Consultar(dataContext, configuracion)[0];
             return excepcionBO;
         }
         /// <summary>
@@ -301,14 +301,14 @@ namespace BPMO.Refacciones.Procesos.PRE {
         public object ObtenerObjetoBusqueda(ECatalogoBuscador tipoBusqueda, object objetoVista) {
             #region Validar VIS
             object objetoBuscador = null;
-            IMantenimientoExcepcionEtapaEmbalajeVIS vMantto = null;
-            IBuscadorExcepcionEtapaEmbalajeVIS vConsulta = null;
+            IMantenimientoConfiguracionEtapaEmbalajeVIS vMantto = null;
+            IBuscadorConfiguracionEtapaEmbalajeVIS vConsulta = null;
             bool esMantenimeinto = false;
-            if (objetoVista is IMantenimientoExcepcionEtapaEmbalajeVIS) {
-                vMantto = (IMantenimientoExcepcionEtapaEmbalajeVIS)objetoVista;
+            if (objetoVista is IMantenimientoConfiguracionEtapaEmbalajeVIS) {
+                vMantto = (IMantenimientoConfiguracionEtapaEmbalajeVIS)objetoVista;
                 esMantenimeinto = true;
-            } else if (objetoVista is IBuscadorExcepcionEtapaEmbalajeVIS) {
-                vConsulta = (IBuscadorExcepcionEtapaEmbalajeVIS)objetoVista;
+            } else if (objetoVista is IBuscadorConfiguracionEtapaEmbalajeVIS) {
+                vConsulta = (IBuscadorConfiguracionEtapaEmbalajeVIS)objetoVista;
                 esMantenimeinto = false;
             }
             #endregion
@@ -446,9 +446,9 @@ namespace BPMO.Refacciones.Procesos.PRE {
         /// <param name="objetoVista">Vusta quien llama al método</param>
         public void DesplegarBusqueda(ECatalogoBuscador tipoBusqueda, object objeto, object objetoVista) {
             bool esMantenimiento = false;
-            if (objetoVista is IMantenimientoExcepcionEtapaEmbalajeVIS)
+            if (objetoVista is IMantenimientoConfiguracionEtapaEmbalajeVIS)
                 esMantenimiento = true;
-            else if (objetoVista is IBuscadorExcepcionEtapaEmbalajeVIS)
+            else if (objetoVista is IBuscadorConfiguracionEtapaEmbalajeVIS)
                 esMantenimiento = false;
             if (objeto != null) {
                 switch (tipoBusqueda) {

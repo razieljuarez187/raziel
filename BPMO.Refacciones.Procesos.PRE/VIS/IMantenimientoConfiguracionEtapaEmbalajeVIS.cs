@@ -11,7 +11,7 @@ namespace BPMO.Refacciones.Procesos.VIS {
     /// <summary>
     /// Vista para el mantenimiento de excepciones de etapa de embalaje
     /// </summary>
-    public interface IMantenimientoExcepcionEtapaEmbalajeVIS {
+    public interface IMantenimientoConfiguracionEtapaEmbalajeVIS {
         #region Propiedades
         /// <summary>
         /// Usuario logueado
@@ -88,7 +88,7 @@ namespace BPMO.Refacciones.Procesos.VIS {
         /// <summary>
         /// Objeto base
         /// </summary>
-        ConfiguracionEtapaEmbalajeBO ExcepcionEtapaEmbalajeBase { get; set; }
+        ConfiguracionEtapaEmbalajeBO ConfiguracionEtapaEmbalajeBase { get; set; }
         #endregion
 
         #region Métodos

@@ -11,7 +11,7 @@ using BPMO.Refacciones.Enumeradores;
 
 namespace BPMO.Refacciones.DAO {
     /// <summary>
-    /// Acceso a Datos para Consultar registros de ConfiguracionTransferencia
+    /// Acceso a Datos para Consultar registros de ConfiguracionEtapaEmbalaje
     /// </summary>
     internal class ConfiguracionEtapaEmbalajeConsultarDAO : IDAOBaseConsultarAuditoria {
         #region Atributos
@@ -19,7 +19,7 @@ namespace BPMO.Refacciones.DAO {
 
         #region Métodos
         /// <summary>
-        /// Consulta una lista de ExcepcionEtapaEmbalaje en la base de datos
+        /// Consulta una lista de ConfiguracionEtapaEmbalaje en la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que provee los parámetros de búsqueda</param>

@@ -8,7 +8,7 @@ using BPMO.Refacciones.BO;
 
 namespace BPMO.Refacciones.DAO {
     /// <summary>
-    /// Acceso a Datos para Insertar registros de ExcepcionEtapaEmbalajeBO
+    /// Acceso a Datos para Insertar registros de ConfiguracionEtapaEmbalaje
     /// </summary>
     internal class ConfiguracionEtapaEmbalajeInsertarDAO : IDAOBaseInsertarAuditoria {
         #region Atributos
@@ -35,7 +35,7 @@ namespace BPMO.Refacciones.DAO {
 
         #region Métodos
         /// <summary>
-        /// Inserta un registro ExcepcionEtapaEmbalaje en la base de datos
+        /// Inserta un registro ConfiguracionEtapaEmbalaje en la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que provee los datos a Insertar</param>

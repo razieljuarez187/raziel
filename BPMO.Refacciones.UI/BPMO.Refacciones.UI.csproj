@@ -14,10 +14,14 @@
     <AssemblyName>BPMO.Refacciones.UI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -290,6 +294,7 @@
     <Content Include="Imagenes\SubMenuCatalogosExtraBig.png" />
     <Content Include="Imagenes\SubMenuCatalogosSubBig.png" />
     <Content Include="Master.UI\Site.Master" />
+    <Content Include="Procesos.UI\BuscadorConfiguracionEtapaEmbalajeUI.aspx" />
     <Content Include="Procesos.UI\BuscadorConfiguracionReglaUI.aspx" />
     <Content Include="Procesos.UI\BuscadorConfiguracionTransferenciasUI.aspx" />
     <Content Include="Procesos.UI\MantenimientoConfiguracionReglaUI.aspx" />
@@ -339,6 +344,13 @@
     </Compile>
     <Compile Include="Master.UI\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos.UI\BuscadorConfiguracionEtapaEmbalajeUI.aspx.cs">
+      <DependentUpon>BuscadorConfiguracionEtapaEmbalajeUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Procesos.UI\BuscadorConfiguracionEtapaEmbalajeUI.aspx.designer.cs">
+      <DependentUpon>BuscadorConfiguracionEtapaEmbalajeUI.aspx</DependentUpon>
     </Compile>
     <Compile Include="Procesos.UI\BuscadorConfiguracionReglaUI.aspx.cs">
       <DependentUpon>BuscadorConfiguracionReglaUI.aspx</DependentUpon>

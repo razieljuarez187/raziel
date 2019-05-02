@@ -7,9 +7,9 @@ using BPMO.Security.BR;
 
 namespace BPMO.Refacciones.BR {
     /// <summary>
-    /// Reglas de negocio para Excepciones de etapa de embalaje
+    /// Reglas de negocio para configuraciones de etapa de embalaje
     /// </summary>
-    public class ExcepcionEtapaEmbalajeBR : IBRBaseAuditoria {
+    public class ConfiguracionEtapaEmbalajeBR : IBRBaseAuditoria {
         #region Atributos
         private int registrosAfectados;
         private int ultimoIdGenerado;

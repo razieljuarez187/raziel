@@ -8,6 +8,9 @@ using BPMO.Primitivos.Utilerias;
 using BPMO.Refacciones.BO;
 
 namespace BPMO.Refacciones.DAO {
+    /// <summary>
+    /// Acceso a Datos para editar registros de ConfiguracionEtapaEmbalaje
+    /// </summary>
     internal class ConfiguracionEtapaEmbalajeActualizarDAO : IDAOBaseActualizarAuditoria {
         #region Atributos
         private int registrosAfectados;
@@ -25,7 +28,7 @@ namespace BPMO.Refacciones.DAO {
 
         #region Métodos
         /// <summary>
-        /// Actualiza los datos de ExcepcionEtapaEmbalajeBO en la base de datos
+        /// Actualiza los datos de ConfiguracionEtapaEmbalaje en la base de datos
         /// </summary>
         /// <param name="dataContext">Objeto que provee acceso a la base de datos</param>
         /// <param name="auditoriaBase">Objeto que provee los datos a almacenar</param>
